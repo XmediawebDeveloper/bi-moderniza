@@ -1,0 +1,6 @@
+[    1092ms] [INFO] [@barba/core]  2.10.3 @ https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js:6
+[    1102ms] [INFO] [@barba/core]  Transition found [once] {name: default, sync: true, once: , leave: , enter: } @ https://cdn.jsdelivr.net/npm/@barba/core@2.10.3/dist/barba.umd.min.js:6
+[    1329ms] [LOG] Slater loaded index.js: https://slater.app/19355/57209.js 🤙 @ https://wgb.agency/:863
+[    1553ms] [LOG] ✅ CookieFlow™ by Reform Digital® loaded · 📘: Docs: https://docs.reform.digital/cookie-flow @ https://cdn.jsdelivr.net/npm/@reform-digital/cookie-flow@2.3.1/prod/index.min.js:6
+[    1554ms] [LOG] ✅ TooltipX™ by Reform Digital® loaded · 📘: Docs: https://docs.reform.digital/tooltip-x @ https://cdn.jsdelivr.net/npm/@reform-digital/tooltip-x@1.1.0/prod/index.js:0
+[    1830ms] [LOG] ✅ TooltipX™ by Reform Digital® loaded · 📘: Docs: https://docs.reform.digital/tooltip-x @ https://cdn.jsdelivr.net/npm/@reform-digital/tooltip-x@1.1.0/prod/index.js:0

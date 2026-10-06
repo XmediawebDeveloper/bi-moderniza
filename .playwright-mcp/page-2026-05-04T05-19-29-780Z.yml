@@ -1,0 +1,524 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Moderniza home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]: Moderniza.
+      - generic [ref=e9]:
+        - link "Start a project" [ref=e10] [cursor=pointer]:
+          - /url: /contact/start
+          - text: Start a project
+        - button "Toggle menu" [ref=e12]
+    - generic [ref=e17]:
+      - button "About +" [ref=e19]:
+        - generic [ref=e20]: About
+        - generic [ref=e21]: +
+      - button "Process +" [ref=e23]:
+        - generic [ref=e24]: Process
+        - generic [ref=e25]: +
+      - button "Work +" [ref=e27]:
+        - generic [ref=e28]: Work
+        - generic [ref=e29]: +
+      - button "Contact +" [ref=e31]:
+        - generic [ref=e32]: Contact
+        - generic [ref=e33]: +
+      - link "Start a project →" [ref=e34] [cursor=pointer]:
+        - /url: /contact/start
+  - main [ref=e35]:
+    - generic [ref=e36]:
+      - img
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e40]: AI-powered code modernization
+          - generic [ref=e41]: · Why · What · Need
+        - heading "Modernize legacy code with confidence." [level=1] [ref=e42]:
+          - generic [ref=e44]: Modernize legacy code
+          - generic [ref=e46]: with confidence.
+        - paragraph [ref=e47]: An AI platform that analyses, converts, verifies and deploys legacy code — to AWS or Azure, in 30 to 90 minutes.
+        - generic [ref=e48]:
+          - link "Talk to us" [ref=e49] [cursor=pointer]:
+            - /url: /contact/call
+            - text: Talk to us
+            - generic [ref=e50]: →
+          - link "Explore cases" [ref=e51] [cursor=pointer]:
+            - /url: /work/projects
+            - text: Explore cases
+            - generic [ref=e52]: ↗
+          - generic [ref=e53]: Reply within 1 business day · NDA on request
+        - generic [ref=e54]:
+          - generic [ref=e55]: Scroll
+          - generic [ref=e57]: ↓
+          - generic [ref=e58]: Why → What → Need
+    - generic [ref=e61]:
+      - generic [ref=e63]: / 01 — Why
+      - generic [ref=e65]:
+        - heading "The legacy crisis, in five numbers." [level=2] [ref=e67]:
+          - text: The legacy crisis,
+          - emphasis [ref=e68]: in five numbers
+          - text: .
+        - generic [ref=e69]:
+          - paragraph [ref=e70]: Tech debt isn’t an engineering anecdote. It’s a balance-sheet item that grows every quarter — and quietly blocks every cloud, AI and mobile programme that depends on the code beneath.
+          - paragraph [ref=e71]: "These are the five numbers that show up on every modernization slide we see:"
+      - list [ref=e72]:
+        - listitem [ref=e73]:
+          - generic [ref=e75]:
+            - text: "01"
+            - paragraph [ref=e76]: $1.52T
+            - heading "Global technical debt, growing every year." [level=3] [ref=e77]
+            - paragraph [ref=e78]: Most of it sits inside legacy systems nobody wants to touch — and nobody can afford to leave alone.
+        - listitem [ref=e80]:
+          - generic [ref=e82]:
+            - text: "02"
+            - paragraph [ref=e83]: 75%
+            - heading "Of enterprise apps still run on legacy." [level=3] [ref=e84]
+            - paragraph [ref=e85]: "Cloud, AI, and mobile roadmaps stall on the same wall: code older than the people maintaining it."
+        - listitem [ref=e87]:
+          - generic [ref=e89]:
+            - text: "03"
+            - paragraph [ref=e90]: 12–24 mo
+            - heading "Average modernization project, often abandoned." [level=3] [ref=e91]
+            - paragraph [ref=e92]: Manual rewrites lose institutional knowledge and ship late. Lift-and-shift just hides the problem in a cloud.
+        - listitem [ref=e94]:
+          - generic [ref=e96]:
+            - text: "04"
+            - paragraph [ref=e97]: $200–500
+            - heading "Per function point, paid by hand." [level=3] [ref=e98]
+            - paragraph [ref=e99]: Manual modernization is slow, error-prone, and burns the senior engineers you need on real work.
+        - listitem [ref=e101]:
+          - generic [ref=e103]:
+            - text: "05"
+            - paragraph [ref=e104]: 1 in 2
+            - heading "Old AI translations don’t even compile." [level=3] [ref=e105]
+            - paragraph [ref=e106]: Naive LLM rewrites drift on names, signatures and imports — they look right, then break at the build.
+    - generic [ref=e109]:
+      - generic [ref=e110]: Modernize with confidence
+      - generic [ref=e111]: ★
+      - generic [ref=e112]: Analyse · Convert · Verify · Deploy
+      - generic [ref=e113]: ★
+      - generic [ref=e114]: Modernize with confidence
+      - generic [ref=e115]: ★
+      - generic [ref=e116]: Analyse · Convert · Verify · Deploy
+      - generic [ref=e117]: ★
+    - generic [ref=e120]:
+      - generic [ref=e122]: / 02 — What
+      - generic [ref=e124]:
+        - heading "One platform. Four verbs." [level=2] [ref=e126]:
+          - text: One platform.
+          - text: Four verbs.
+        - paragraph [ref=e128]: Moderniza doesn’t just translate code — it understands it, secures it, verifies it and deploys it. Four verbs share one workspace, one stream and one bar. Tilt the cards to feel the shape.
+      - list [ref=e129]:
+        - listitem [ref=e130]:
+          - generic [ref=e134]:
+            - generic [ref=e135]:
+              - generic [ref=e136]: "01"
+              - generic [ref=e137]: →
+            - heading "Analyse" [level=3] [ref=e138]
+            - paragraph [ref=e139]: Understand the codebase, deeply.
+            - list [ref=e140]:
+              - listitem [ref=e141]:
+                - generic [ref=e143]: Multi-language semantic parsing across the stack
+              - listitem [ref=e144]:
+                - generic [ref=e146]: Functions, classes, APIs, SQL, call-graph, dependencies
+              - listitem [ref=e147]:
+                - generic [ref=e149]: Architecture pattern detection — MVC, REST, monolith
+              - listitem [ref=e150]:
+                - generic [ref=e152]: A rich blueprint that becomes the AI’s source of truth
+        - listitem [ref=e153]:
+          - generic [ref=e157]:
+            - generic [ref=e158]:
+              - generic [ref=e159]: "02"
+              - generic [ref=e160]: →
+            - heading "Convert" [level=3] [ref=e161]
+            - paragraph [ref=e162]: Rewrite — intelligently, not literally.
+            - list [ref=e163]:
+              - listitem [ref=e164]:
+                - generic [ref=e166]: "Contract-first: names & paths are declared before code"
+              - listitem [ref=e167]:
+                - generic [ref=e169]: Adaptive batching — complex files get dedicated AI calls
+              - listitem [ref=e170]:
+                - generic [ref=e172]: Stitch pass fixes imports, calls, and remaining stubs
+              - listitem [ref=e173]:
+                - generic [ref=e175]: Output is built around your target stack, not pasted into it
+        - listitem [ref=e176]:
+          - generic [ref=e180]:
+            - generic [ref=e181]:
+              - generic [ref=e182]: "03"
+              - generic [ref=e183]: →
+            - heading "Verify" [level=3] [ref=e184]
+            - paragraph [ref=e185]: Prove it behaves like the original.
+            - list [ref=e186]:
+              - listitem [ref=e187]:
+                - generic [ref=e189]: Auto-generated test cases derived from the blueprint
+              - listitem [ref=e190]:
+                - generic [ref=e192]: Sandboxed execution against the converted app
+              - listitem [ref=e193]:
+                - generic [ref=e195]: Up to 3 auto-fix loops to reach >95% pass rate
+              - listitem [ref=e196]:
+                - generic [ref=e198]: Security checks ensure old vulnerabilities don’t carry over
+        - listitem [ref=e199]:
+          - generic [ref=e203]:
+            - generic [ref=e204]:
+              - generic [ref=e205]: "04"
+              - generic [ref=e206]: →
+            - heading "Deploy" [level=3] [ref=e207]
+            - paragraph [ref=e208]: Ship to production with one click.
+            - list [ref=e209]:
+              - listitem [ref=e210]:
+                - generic [ref=e212]: AWS (EC2 / ECS / EKS) and Azure (AKS), out of the box
+              - listitem [ref=e213]:
+                - generic [ref=e215]: Auto-generated Docker, Terraform and CI pipelines
+              - listitem [ref=e216]:
+                - generic [ref=e218]: GitLab integration with first-commit handover
+              - listitem [ref=e219]:
+                - generic [ref=e221]: A live URL — not a zip file someone has to figure out
+    - generic [ref=e224]:
+      - generic [ref=e226]: / 03 — How
+      - heading "The six-phase pipeline. In plain English." [level=2] [ref=e228]
+      - generic [ref=e229]: Every conversion runs through the same six phases. Each phase has a streamed artefact, a date, and an automated gate. You always know what’s done, what’s next, and what’s blocked.
+      - list [ref=e230]:
+        - listitem [ref=e232]:
+          - generic [ref=e233]:
+            - text: P0
+            - heading "Contract" [level=3] [ref=e234]
+          - paragraph [ref=e237]: "Pre-flight: every file path, class and method signature is declared before a line is written."
+        - listitem [ref=e238]:
+          - generic [ref=e239]:
+            - text: P1
+            - heading "Skeleton" [level=3] [ref=e240]
+          - paragraph [ref=e243]: A compilable project structure is generated to match the contract — empty bodies, real shape.
+        - listitem [ref=e244]:
+          - generic [ref=e245]:
+            - text: P2
+            - heading "Test cases" [level=3] [ref=e246]
+          - paragraph [ref=e249]: Behavioural tests are derived from the analysis. No runtime needed; the spec writes itself.
+        - listitem [ref=e250]:
+          - generic [ref=e251]:
+            - text: P3
+            - heading "Convert" [level=3] [ref=e252]
+          - paragraph [ref=e255]: Code is converted layer-by-layer with adaptive complexity batching. Difficult files get more attention.
+        - listitem [ref=e256]:
+          - generic [ref=e257]:
+            - text: P4
+            - heading "Stitch" [level=3] [ref=e258]
+          - paragraph [ref=e261]: Imports, callsites and stub fills are reconciled across the project. The build goes green.
+        - listitem [ref=e262]:
+          - generic [ref=e263]:
+            - text: P5
+            - heading "Verify" [level=3] [ref=e264]
+          - paragraph [ref=e267]: Tests run in a sandbox. Failures trigger up-to-3 automated fix loops until parity is proven.
+    - generic [ref=e270]:
+      - generic [ref=e272]: / 04 — Proof
+      - heading "Manual. Old AI. Moderniza. The same project, three ways." [level=2] [ref=e274]
+      - generic [ref=e275]:
+        - generic [ref=e276]:
+          - heading "Manual rewrite" [level=3] [ref=e278]
+          - generic [ref=e279]:
+            - generic [ref=e282]:
+              - generic [ref=e283]: 20-file project
+              - generic [ref=e284]: 2–4 weeks
+            - generic [ref=e288]:
+              - generic [ref=e289]: Compiles without fix
+              - generic [ref=e290]: ≈ 50%
+            - generic [ref=e294]:
+              - generic [ref=e295]: Functional parity
+              - generic [ref=e296]: ≈ 65%
+        - generic [ref=e298]:
+          - heading "Old AI translators" [level=3] [ref=e300]
+          - generic [ref=e301]:
+            - generic [ref=e304]:
+              - generic [ref=e305]: 20-file project
+              - generic [ref=e306]: 20–40 min
+            - generic [ref=e310]:
+              - generic [ref=e311]: Compiles without fix
+              - generic [ref=e312]: ≈ 60%
+            - generic [ref=e316]:
+              - generic [ref=e317]: Functional parity
+              - generic [ref=e318]: ≈ 55%
+        - generic [ref=e320]:
+          - generic [ref=e321]:
+            - heading "Moderniza" [level=3] [ref=e322]
+            - generic [ref=e323]: ours
+          - generic [ref=e324]:
+            - generic [ref=e327]:
+              - generic [ref=e328]: 20-file project
+              - generic [ref=e329]: 8–15 min
+            - generic [ref=e333]:
+              - generic [ref=e334]: Compiles without fix
+              - generic [ref=e335]: "> 98%"
+            - generic [ref=e339]:
+              - generic [ref=e340]: Functional parity
+              - generic [ref=e341]: "> 95% (verified)"
+      - generic [ref=e343]: "Sources: internal benchmarks across 200+ conversions; baseline metrics from CISQ 2022 industry estimates. Naive AI baseline taken from public translator tools."
+    - generic [ref=e345]:
+      - generic [ref=e347]: / 05 — Journey
+      - heading "Six steps from a legacy zip to a live URL." [level=2] [ref=e349]
+      - img [ref=e351]
+      - list [ref=e370]:
+        - listitem [ref=e371]:
+          - generic [ref=e373]: "01"
+          - heading "Upload" [level=3] [ref=e375]
+          - paragraph [ref=e376]: GitHub URL, ZIP, or single file.
+        - listitem [ref=e377]:
+          - generic [ref=e379]: "02"
+          - heading "Analyse" [level=3] [ref=e381]
+          - paragraph [ref=e382]: Blueprint + security findings.
+        - listitem [ref=e383]:
+          - generic [ref=e385]: "03"
+          - heading "Choose" [level=3] [ref=e387]
+          - paragraph [ref=e388]: Target stack, validated by AI.
+        - listitem [ref=e389]:
+          - generic [ref=e391]: "04"
+          - heading "Convert" [level=3] [ref=e393]
+          - paragraph [ref=e394]: Real-time stream, phase-by-phase.
+        - listitem [ref=e395]:
+          - generic [ref=e397]: "05"
+          - heading "Review" [level=3] [ref=e399]
+          - paragraph [ref=e400]: Code, tests, diagnostics, diffs.
+        - listitem [ref=e401]:
+          - generic [ref=e403]: "06"
+          - heading "Deploy" [level=3] [ref=e405]
+          - paragraph [ref=e406]: AWS or Azure — one click. Live URL.
+      - generic [ref=e407]: "Total time, end-to-end: 30 – 90 minutes."
+    - generic [ref=e410]:
+      - generic [ref=e412]: / 06 — Need
+      - generic [ref=e414]:
+        - heading "A great project needs both sides showing up." [level=2] [ref=e416]:
+          - text: A great project
+          - text: needs both sides showing up.
+        - paragraph [ref=e418]: Here’s what we ask of you on day one — and what you can ask of us in return. No fine print, no hidden assumptions, no “you should have known.”
+      - generic [ref=e419]:
+        - generic [ref=e420]:
+          - generic [ref=e421]:
+            - generic [ref=e422]: From you
+            - generic [ref=e423]: 4 things
+          - list [ref=e424]:
+            - listitem [ref=e425]:
+              - generic [ref=e426]: "01"
+              - generic [ref=e427]:
+                - paragraph [ref=e428]: A repo or a zip
+                - paragraph [ref=e429]: GitHub URL, archive, or even a single file. We start with what you have.
+            - listitem [ref=e430]:
+              - generic [ref=e431]: "02"
+              - generic [ref=e432]:
+                - paragraph [ref=e433]: A target stack — or a question
+                - paragraph [ref=e434]: We’ll guide you through Python / Java / Node / .NET, React / Vue, Postgres / Mongo.
+            - listitem [ref=e435]:
+              - generic [ref=e436]: "03"
+              - generic [ref=e437]:
+                - paragraph [ref=e438]: A 30-minute window
+                - paragraph [ref=e439]: One stakeholder, one screen-share, one decision. That’s the whole demo.
+            - listitem [ref=e440]:
+              - generic [ref=e441]: "04"
+              - generic [ref=e442]:
+                - paragraph [ref=e443]: Permission to ship
+                - paragraph [ref=e444]: When the tests are green and the build is signed, we’ll want to deploy. You decide where.
+        - generic [ref=e445]:
+          - generic [ref=e446]:
+            - generic [ref=e447]: From us
+            - generic [ref=e448]: 4 things
+          - list [ref=e449]:
+            - listitem [ref=e450]:
+              - generic [ref=e451]: "01"
+              - generic [ref=e452]:
+                - paragraph [ref=e453]: A blueprint, before any code
+                - paragraph [ref=e454]: Every name and path declared up front. No drift, no surprises.
+            - listitem [ref=e455]:
+              - generic [ref=e456]: "02"
+              - generic [ref=e457]:
+                - paragraph [ref=e458]: Tests written before the rewrite
+                - paragraph [ref=e459]: We prove parity, not just produce output.
+            - listitem [ref=e460]:
+              - generic [ref=e461]: "03"
+              - generic [ref=e462]:
+                - paragraph [ref=e463]: A live stream of every phase
+                - paragraph [ref=e464]: You see what’s happening — and what isn’t — in real time.
+            - listitem [ref=e465]:
+              - generic [ref=e466]: "04"
+              - generic [ref=e467]:
+                - paragraph [ref=e468]: A bundle, not a black box
+                - paragraph [ref=e469]: Source, IaC, Dockerfiles, docs — yours forever, vendor-locked to nobody.
+    - generic [ref=e471]:
+      - generic [ref=e473]: / 07 — Built for
+      - heading "Built for the people who own the roadmap." [level=2] [ref=e475]
+      - list [ref=e476]:
+        - listitem [ref=e477]:
+          - generic [ref=e478]:
+            - generic [ref=e479]: / 01
+            - heading "Enterprise IT" [level=3] [ref=e480]
+            - paragraph [ref=e481]: Modernise legacy monoliths to microservices.
+        - listitem [ref=e483]:
+          - generic [ref=e484]:
+            - generic [ref=e485]: / 02
+            - heading "CTOs & Tech Leaders" [level=3] [ref=e486]
+            - paragraph [ref=e487]: Accelerate digital-transformation roadmaps.
+        - listitem [ref=e489]:
+          - generic [ref=e490]:
+            - generic [ref=e491]: / 03
+            - heading "Software Architects" [level=3] [ref=e492]
+            - paragraph [ref=e493]: Evaluate and execute migrations end-to-end.
+        - listitem [ref=e495]:
+          - generic [ref=e496]:
+            - generic [ref=e497]: / 04
+            - heading "DevOps Engineers" [level=3] [ref=e498]
+            - paragraph [ref=e499]: Auto-generate cloud-native deployment pipelines.
+        - listitem [ref=e501]:
+          - generic [ref=e502]:
+            - generic [ref=e503]: / 05
+            - heading "Consulting Firms" [level=3] [ref=e504]
+            - paragraph [ref=e505]: Deliver modernization at scale, with proof.
+        - listitem [ref=e507]:
+          - generic [ref=e508]:
+            - generic [ref=e509]: / 06
+            - heading "Startups" [level=3] [ref=e510]
+            - paragraph [ref=e511]: Pivot the stack without a year-long rewrite.
+    - generic [ref=e515]:
+      - generic [ref=e517]: / 08 — Why we win
+      - heading "Six things nobody else does in one workspace." [level=2] [ref=e519]
+      - list [ref=e520]:
+        - listitem [ref=e521]:
+          - generic [ref=e523]:
+            - generic [ref=e524]: / 01
+            - heading "End-to-end automation" [level=3] [ref=e525]
+            - paragraph [ref=e526]: From upload to a deployed app — no manual steps in between.
+        - listitem [ref=e528]:
+          - generic [ref=e530]:
+            - generic [ref=e531]: / 02
+            - heading "Contract-first methodology" [level=3] [ref=e532]
+            - paragraph [ref=e533]: Eliminates broken imports, drifted method names, half-finished files.
+        - listitem [ref=e535]:
+          - generic [ref=e537]:
+            - generic [ref=e538]: / 03
+            - heading "Behavioural verification" [level=3] [ref=e539]
+            - paragraph [ref=e540]: Test-proven parity, not just translation that “looks right.”
+        - listitem [ref=e542]:
+          - generic [ref=e544]:
+            - generic [ref=e545]: / 04
+            - heading "Security-embedded" [level=3] [ref=e546]
+            - paragraph [ref=e547]: Vulnerabilities flagged before conversion and not replicated after.
+        - listitem [ref=e549]:
+          - generic [ref=e551]:
+            - generic [ref=e552]: / 05
+            - heading "Multi-cloud out of the box" [level=3] [ref=e553]
+            - paragraph [ref=e554]: AWS & Azure, with the IaC generated for you.
+        - listitem [ref=e556]:
+          - generic [ref=e558]:
+            - generic [ref=e559]: / 06
+            - heading "Real-time visibility" [level=3] [ref=e560]
+            - paragraph [ref=e561]: Watch every phase stream, live — no ‘trust me’ black box.
+      - generic [ref=e563]:
+        - generic [ref=e564]:
+          - text: “
+          - paragraph [ref=e565]: It doesn’t just translate code — it understands it, secures it, verifies it, and deploys it.
+        - generic [ref=e566]:
+          - text: “
+          - paragraph [ref=e567]: From legacy zip to a live URL — in 30 to 90 minutes, end-to-end.
+        - generic [ref=e568]:
+          - text: “
+          - paragraph [ref=e569]: Compiles > 98% of the time. Verified parity > 95%.
+    - generic [ref=e571]:
+      - generic [ref=e572]:
+        - paragraph [ref=e573]:
+          - generic [ref=e574]: 0%
+        - paragraph [ref=e575]: of Moderniza builds compile without a manual fix
+      - generic [ref=e576]:
+        - paragraph [ref=e577]:
+          - generic [ref=e578]: 0%+
+        - paragraph [ref=e579]: verified functional parity, against original tests
+      - generic [ref=e580]:
+        - paragraph [ref=e581]:
+          - generic [ref=e582]: 0 min
+        - paragraph [ref=e583]: median end-to-end time, upload to deployed app
+      - generic [ref=e584]:
+        - paragraph [ref=e585]:
+          - generic [ref=e586]: 0+
+        - paragraph [ref=e587]: conversions completed across enterprise pilots
+    - generic [ref=e589]:
+      - generic [ref=e591]: / 09 — Next
+      - generic [ref=e593]:
+        - heading "Bring a repo. Leave with a build. In 30 minutes." [level=2] [ref=e595]:
+          - text: Bring a repo.
+          - text: Leave with a build.
+          - text: In 30 minutes.
+        - generic [ref=e596]:
+          - paragraph [ref=e597]: Drop us a GitHub URL or a zip. We’ll run a live blueprint, walk you through every phase, and ship a deployed sandbox before the call ends.
+          - generic [ref=e598]:
+            - link "Start a project →" [ref=e599] [cursor=pointer]:
+              - /url: /contact/start
+              - generic [ref=e600]: Start a project →
+            - link "Book a call" [ref=e601] [cursor=pointer]:
+              - /url: /contact/call
+              - generic [ref=e602]: Book a call
+          - generic [ref=e603]:
+            - generic [ref=e604]: Open · Q3 / Q4 2026 capacity
+            - generic [ref=e606]: ·
+            - generic [ref=e607]: Reply within 1 business day
+            - generic [ref=e608]: ·
+            - generic [ref=e609]: NDA on request
+  - contentinfo [ref=e610]:
+    - generic [ref=e612]:
+      - generic [ref=e613]:
+        - generic [ref=e614]:
+          - paragraph [ref=e619]: Moderniza Studio
+          - heading "From a clear why, to a delivered need." [level=3] [ref=e620]:
+            - text: From a clear why,
+            - text: to a delivered need.
+          - link "Start a project →" [ref=e621] [cursor=pointer]:
+            - /url: /contact/start
+            - text: Start a project
+            - generic [ref=e622]: →
+        - generic [ref=e623]:
+          - generic [ref=e624]:
+            - paragraph [ref=e625]: About
+            - list [ref=e626]:
+              - listitem [ref=e627]:
+                - link "Why we exist" [ref=e628] [cursor=pointer]:
+                  - /url: /why
+              - listitem [ref=e629]:
+                - link "What we do" [ref=e630] [cursor=pointer]:
+                  - /url: /what
+              - listitem [ref=e631]:
+                - link "Who we are" [ref=e632] [cursor=pointer]:
+                  - /url: /who
+          - generic [ref=e633]:
+            - paragraph [ref=e634]: Process
+            - list [ref=e635]:
+              - listitem [ref=e636]:
+                - link "Discover" [ref=e637] [cursor=pointer]:
+                  - /url: /process/discover
+              - listitem [ref=e638]:
+                - link "Define" [ref=e639] [cursor=pointer]:
+                  - /url: /process/define
+              - listitem [ref=e640]:
+                - link "Deliver" [ref=e641] [cursor=pointer]:
+                  - /url: /process/deliver
+          - generic [ref=e642]:
+            - paragraph [ref=e643]: Work
+            - list [ref=e644]:
+              - listitem [ref=e645]:
+                - link "Projects" [ref=e646] [cursor=pointer]:
+                  - /url: /work/projects
+              - listitem [ref=e647]:
+                - link "Outcomes" [ref=e648] [cursor=pointer]:
+                  - /url: /work/outcomes
+          - generic [ref=e649]:
+            - paragraph [ref=e650]: Contact
+            - list [ref=e651]:
+              - listitem [ref=e652]:
+                - link "Start a project" [ref=e653] [cursor=pointer]:
+                  - /url: /contact/start
+              - listitem [ref=e654]:
+                - link "Book a call" [ref=e655] [cursor=pointer]:
+                  - /url: /contact/call
+      - generic [ref=e656]:
+        - paragraph [ref=e657]: © 2026 Moderniza. All rights reserved.
+        - generic [ref=e658]:
+          - link "Privacy" [ref=e659] [cursor=pointer]:
+            - /url: /legal/privacy
+          - link "Terms" [ref=e660] [cursor=pointer]:
+            - /url: /legal/terms
+          - link "Cookies" [ref=e661] [cursor=pointer]:
+            - /url: /legal/cookies
+          - link "Security" [ref=e662] [cursor=pointer]:
+            - /url: /security
+          - generic [ref=e663]: ·
+          - generic [ref=e664]: Open · accepting Q3 / Q4 2026 projects
