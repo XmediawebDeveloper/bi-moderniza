@@ -79,31 +79,18 @@ const GENERAL_INFO: Spec[] = [
   },
 ];
 
-const CONTACTS: { kind: string; lines: { label: string; value: ReactNode }[]; icon: IconKind }[] = [
+const CONTACTS: { kind: string; icon: IconKind }[] = [
   {
     kind: "Sales Contact",
     icon: "person",
-    lines: [
-      { label: "Name", value: "Leelairajan, Chief Executive Officer" },
-      { label: "Email", value: <a href="mailto:leelairajan@gmail.com" className="text-ink/80 hover:text-ember">leelairajan@gmail.com</a> },
-      { label: "Phone", value: "Pending" },
-    ],
   },
   {
     kind: "Security Contact",
     icon: "shield",
-    lines: [
-      { label: "Name", value: "Chandra Kumar, Chief Technology Officer" },
-      { label: "Email", value: <a href="mailto:chandrakumar@xmedia.in" className="text-ink/80 hover:text-ember">chandrakumar@xmedia.in</a> },
-      { label: "Phone", value: "Pending" },
-    ],
   },
   {
     kind: "Contacts",
     icon: "doc",
-    lines: [
-      { label: "", value: "Business Integra Technology Solutions, Inc., 6550 Rock Spring Drive, Suite 600, Bethesda, MD 20817-1185" },
-    ],
   },
 ];
 
@@ -301,7 +288,7 @@ function Section({
   return (
     <section id={id} className={`relative scroll-mt-28 ${bgClass} ${!dark ? "border-t border-ink/10" : ""}`}>
       <div className={`absolute inset-0 ${dark ? "bg-grid opacity-30" : "bg-grid-soft opacity-50"}`} />
-      <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 sec-pad">
+      <div className="relative mx-auto max-w-[1400px] px-5 pt-5 pb-12 md:px-8 md:pt-7 md:pb-16">
         <Reveal className={`flex items-center gap-3 type-eyebrow ${dark ? "text-glow" : "text-ink/60"}`}>
           <span className={`h-px flex-1 ${dark ? "bg-glow/30" : "bg-ink/15"}`} />
         </Reveal>
@@ -383,14 +370,6 @@ export default function TrustCenterPage() {
             <Reveal key={c.kind} delay={((i % 4) + 1) as 1 | 2 | 3 | 4} className="rounded-3xl border border-white/10 bg-graphite/40 p-7 lift h-full">
               <CardIcon kind={c.icon} tone="dark" className="h-11 w-11" />
               <h3 className="mt-5 text-xl font-semibold tracking-tight text-chalk">{c.kind}</h3>
-              <dl className="mt-4 space-y-2 text-sm">
-                {c.lines.map((l, li) => (
-                  <div key={li} className="flex gap-2">
-                    {l.label && <dt className="w-16 shrink-0 text-chalk/60">{l.label}:</dt>}
-                    <dd className="text-chalk/80 leading-relaxed [&_a]:text-chalk/80 [&_a:hover]:text-glow">{l.value}</dd>
-                  </div>
-                ))}
-              </dl>
             </Reveal>
           ))}
         </div>

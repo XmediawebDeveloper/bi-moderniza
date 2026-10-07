@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsButton } from "./CookieConsent";
 
 const COLS = [
   {
@@ -106,6 +107,7 @@ export default function Footer() {
             <Link href="/ai-governance" className="hover:text-ink">AI governance</Link>
             <Link href="/trust-center" className="hover:text-ink">Trust Center</Link>
             <Link href="/contact" className="hover:text-ink">Contact</Link>
+            <CookieSettingsButton className="hover:text-ink" />
           </div>
         </div>
       </div>
