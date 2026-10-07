@@ -33,7 +33,7 @@ const SECTION_MENU: { id: string; label: string }[] = [
   { id: "access", label: "Access" },
 ];
 
-type Spec = { label: string; value: ReactNode; wide?: boolean };
+type Spec = { label: string; value: ReactNode };
 
 const ext = (href: string, text = href) => (
   <a href={href} className="font-medium text-ink underline decoration-ember decoration-2 underline-offset-2 hover:text-ember break-all">{text}</a>
@@ -49,9 +49,9 @@ const GENERAL_INFO: Spec[] = [
   { label: "Certification Type", value: "FedRAMP 20x Class C" },
   { label: "Authorization Path", value: "FedRAMP Program (20x) — confirm before publishing" },
   { label: "Service Model", value: "Software as a Service (SaaS)" },
-  { label: "Deployment Model", value: "Pending — package says “Public Cloud”, trust_center.json says “Single-tenant cloud, one isolated environment per customer”; must match where it runs on submission day", wide: true },
+  { label: "Deployment Model", value: "Pending — package says “Public Cloud”, trust_center.json says “Single-tenant cloud, one isolated environment per customer”; must match where it runs on submission day" },
   { label: "Business Category", value: "Development Tools; Artificial Intelligence (AI) — application modernization and legacy code conversion" },
-  { label: "FIPS 199 Security Categorization", value: "Pending (not yet adopted)" },
+  { label: "FIPS 199 Security Categorization", value: "Moderate" },
   { label: "Digital Identity Level", value: "Pending" },
   { label: "FedRAMP Authorization Status", value: "In progress; not yet FedRAMP authorized" },
   { label: "Fully Operational Since", value: "Pending (owner to confirm the date)" },
@@ -62,7 +62,21 @@ const GENERAL_INFO: Spec[] = [
   { label: "Next Ongoing Certification Report", value: "2026-12-15 (then every 90 days)" },
   { label: "Company Address", value: "6550 Rock Spring Drive, Suite 600, Bethesda, MD 20817-1185" },
   { label: "Product Website", value: ext("https://bimod.mo.vc") },
-  { label: "Product Logo", value: <>{ext("https://bimod.mo.vc/logo.svg")} (SVG download)</> },
+  {
+    label: "Product Logo",
+    value: (
+      <>
+        <a
+          href="/moderniza-logo.png"
+          download="moderniza-logo.png"
+          className="font-medium text-ink underline decoration-ember decoration-2 underline-offset-2 hover:text-ember break-all"
+        >
+          https://bimod.mo.vc/moderniza-logo.png
+        </a>{" "}
+        (PNG download)
+      </>
+    ),
+  },
 ];
 
 const CONTACTS: { kind: string; lines: { label: string; value: ReactNode }[]; icon: IconKind }[] = [
@@ -85,7 +99,7 @@ const CONTACTS: { kind: string; lines: { label: string; value: ReactNode }[]; ic
     ],
   },
   {
-    kind: "Contracts",
+    kind: "Contacts",
     icon: "doc",
     lines: [
       { label: "", value: "Business Integra Technology Solutions, Inc., 6550 Rock Spring Drive, Suite 600, Bethesda, MD 20817-1185" },
@@ -94,13 +108,13 @@ const CONTACTS: { kind: string; lines: { label: string; value: ReactNode }[]; ic
 ];
 
 const SERVICES: { name: string; desc: string; category: string; inScope: "Yes" | "No" }[] = [
-  { name: "Blueprint", desc: "Scans the uploaded legacy source (inventory, reading plan, business-rule extraction; unsafe files are quarantined) and produces the target architecture, epics, user stories and screen designs. Code generation does not start until the Blueprint is approved.", category: "Pending", inScope: "Yes" },
-  { name: "Contract", desc: "Defines the entities, APIs, business rules and screens the modern application must honor, built from the approved Blueprint and approved rules.", category: "Pending", inScope: "Yes" },
-  { name: "Code", desc: "Splits the work into tasks and generates the application; accepted only after it builds, starts, answers API smoke tests, navigates correctly and passes its generated tests.", category: "Pending", inScope: "Yes" },
-  { name: "Testing", desc: "Runs the generated application, records every defect in an issue ledger and repairs it (Run & Fix), then produces the fidelity, maintainability and security code report.", category: "Pending", inScope: "Yes" },
-  { name: "Deploy", desc: "Deploys the delivery into the customer’s containers after the pre-deploy gates pass.", category: "Pending", inScope: "Yes" },
-  { name: "Business Rules & Drools Workbench", desc: "Review, editing and Drools export of the extracted business rules.", category: "Pending", inScope: "Yes" },
-  { name: "Demo evidence page", desc: "Public, human-readable rendering of live control evidence.", category: "Pending", inScope: "No" },
+  { name: "Blueprint", desc: "Scans the uploaded legacy source (inventory, reading plan, business-rule extraction; unsafe files are quarantined) and produces the target architecture, epics, user stories and screen designs. Code generation does not start until the Blueprint is approved.", category: "Moderate", inScope: "Yes" },
+  { name: "Contract", desc: "Defines the entities, APIs, business rules and screens the modern application must honor, built from the approved Blueprint and approved rules.", category: "Moderate", inScope: "Yes" },
+  { name: "Code", desc: "Splits the work into tasks and generates the application; accepted only after it builds, starts, answers API smoke tests, navigates correctly and passes its generated tests.", category: "Moderate", inScope: "Yes" },
+  { name: "Testing", desc: "Runs the generated application, records every defect in an issue ledger and repairs it (Run & Fix), then produces the fidelity, maintainability and security code report.", category: "Moderate", inScope: "Yes" },
+  { name: "Deploy", desc: "Deploys the delivery into the customer’s containers after the pre-deploy gates pass.", category: "Moderate", inScope: "Yes" },
+  { name: "Business Rules", desc: "Review, editing and export of the extracted business rules.", category: "Moderate", inScope: "Yes" },
+  { name: "Demo evidence page", desc: "Public, human-readable rendering of live control evidence.", category: "Moderate", inScope: "No" },
 ];
 
 const BASELINE_GUIDES: { title: string; body: string; href: string }[] = [
@@ -148,16 +162,6 @@ const SECURITY_CARDS: { title: string; body: ReactNode; icon: IconKind; wide?: b
   { title: "Role & Attribute-Based Access Control", icon: "verify", body: "Moderniza has built-in roles, custom roles and per-account rights. Higher privileges need a just-in-time elevation confirmed with a passkey. Scripts and integrations use service accounts, never a person’s account. A daily access review revokes sessions that have no second-factor sign-in behind them." },
   { title: "Federated Identity", icon: "group", body: "Users sign in with a password plus one second factor of their choice: passkey, authenticator app (2FA) or fingerprint / face lock. Single sign-on through OIDC is supported. PIV/CAC sign-in is built but off by default; it is turned on per customer." },
   { title: "Moderniza Trust Center API Documentation", icon: "server", body: <>The Trust Center data is open through a read-only API under <code className="font-mono text-[13px]">/api/v1/trust-center</code>: index, cso, certification (per KSI), snapshots, policies, vulnerabilities, changes, access and health. Public calls get the public view; a token with <code className="font-mono text-[13px]">compliance:read</code> unlocks full evidence on the same URLs.</> },
-  {
-    title: "Future Plans",
-    icon: "rocket",
-    body: [
-      "Engage a FedRAMP-recognized independent assessor.",
-      "Move hosting to AWS GovCloud, with Claude through Amazon Bedrock inside the boundary.",
-      "Switch to FIPS 140-validated cryptography and encrypt the database connection.",
-      "Publish assessment results and authorization decisions on this Trust Center and its API.",
-    ],
-  },
 ];
 
 const SUBPROCESSORS: (string | ReactNode)[][] = [
@@ -272,12 +276,12 @@ function SpecGrid({ items, tone }: { items: Spec[]; tone: Bg }) {
   const labelCls = dark ? "text-glow" : "text-ink/65";
   const valueCls = dark ? "text-chalk" : "text-ink";
   return (
-    <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {items.map((it, i) => (
         <Reveal
           key={it.label}
           delay={((i % 4) + 1) as 1 | 2 | 3 | 4}
-          className={`rounded-2xl border p-5 ${card} ${it.wide ? "sm:col-span-2 lg:col-span-3" : ""}`}
+          className={`h-full rounded-2xl border p-5 ${card}`}
         >
           <p className={`font-mono text-[10px] uppercase tracking-[0.16em] ${labelCls}`}>{it.label}</p>
           <p className={`mt-2 text-[15px] leading-relaxed ${valueCls}`}>{it.value}</p>
@@ -305,7 +309,7 @@ function Section({
           {title}
         </Reveal>
         {lede && (
-          <Reveal delay={2} as="p" className={`mt-6 max-w-3xl text-base md:text-lg leading-relaxed ${dark ? "text-chalk/80" : "text-ink/70"}`}>
+          <Reveal delay={2} as="p" className={`mt-6 text-base md:text-lg leading-relaxed ${dark ? "text-chalk/80" : "text-ink/70"}`}>
             {lede}
           </Reveal>
         )}
@@ -318,7 +322,7 @@ function Section({
 function Prose({ paras, tone }: { paras: ReactNode[]; tone: Bg }) {
   const dark = isDark(tone);
   return (
-    <div className={`mt-6 max-w-3xl space-y-5 text-[15px] leading-relaxed ${dark ? "text-chalk/80" : "text-ink/75"}`}>
+    <div className={`mt-6 space-y-5 text-[15px] leading-relaxed ${dark ? "text-chalk/80" : "text-ink/75"}`}>
       {paras.map((p, i) => (
         <Reveal key={i} delay={1} as="p">{p}</Reveal>
       ))}
@@ -395,7 +399,7 @@ export default function TrustCenterPage() {
       {/* ============ 03 SERVICE LIST ============ */}
       <Section id="services" bg="chalk" title="Service List (CDS-CSO-SVC)">
         <SubHead tone="chalk" first>Services &amp; Security Categories</SubHead>
-        <Prose tone="chalk" paras={["All services below are offered together under one certification. FIPS 199 categorization is not yet adopted, so each security category is shown as Pending."]} />
+        <Prose tone="chalk" paras={["All services below are offered together under one certification. Each service has a Moderate FIPS 199 security categorization."]} />
         <Table
           tone="chalk"
           head={["Service", "Description", "Security Category", "In Minimum Assessment Scope"]}
@@ -415,7 +419,7 @@ export default function TrustCenterPage() {
         <Prose
           tone="bone"
           paras={[
-            <>The Moderniza Secure Configuration Guide v1.0 (2 October 2026, draft for approval) tells customer administrators how to run Moderniza safely: first steps, roles and privileges, privilege elevation, service accounts, inactive accounts, removing an administrator, second factors, passwords and lockout, sessions, single sign-on, AI use and customer code (stop all AI, agent limits, which AI vendor sees your code), uploads and data classification, audit records and retention, integrations and secrets. Published at {ext("https://bimod.mo.vc/docs/secure-configuration")}.</>,
+            <>The Moderniza Secure Configuration Guide v1.0 (2 October 2026, draft for approval) tells customer administrators how to run Moderniza safely: first steps, roles and privileges, privilege elevation, service accounts, inactive accounts, removing an administrator, second factors, passwords and lockout, sessions, single sign-on, AI use and customer code (stop all AI, agent limits, which AI vendor sees your code), uploads and data classification, audit records and retention, integrations and secrets.</>,
           ]}
         />
 
@@ -453,13 +457,13 @@ export default function TrustCenterPage() {
         <p className="mt-5 text-sm text-chalk/80">Most documents are version 1.0, issued 2 October 2026, as drafts for approval.</p>
 
         <SubHead tone="ink">Minimum Assessment Scope</SubHead>
-        <Prose tone="ink" paras={["The scope covers the six customer-facing services in the Service List (Blueprint, Contract, Code, Testing, Deploy, Business Rules & Drools Workbench), the platform that runs them, its database and backups, and the five outside companies in the Sub-processors section. The Demo evidence page is outside the scope."]} />
+        <Prose tone="ink" paras={["The scope covers the six customer-facing services in the Service List (Blueprint, Contract, Code, Testing, Deploy, Business Rules), the platform that runs them, its database and backups, and the five outside companies in the Sub-processors section. The Demo evidence page is outside the scope."]} />
 
         <SubHead tone="ink">Continuous KSI Validation Reporting</SubHead>
-        <Prose tone="ink" paras={["KSI results are published live on the Moderniza Trust Center and refreshed every 6 hours. Latest snapshot (6 October 2026, 06:35 UTC): 32 of 46 KSIs pass, 14 fail. Failing items are tracked in the POA&M. Agency customers and assessors with a read-only account see the evidence behind each measurement and the snapshot history."]} />
+        <Prose tone="ink" paras={["KSI results are published live on the Moderniza Trust Center and refreshed every 6 hours. Failing items are tracked in the POA&M. Agency customers and assessors with a read-only account see the evidence behind each measurement and the snapshot history."]} />
 
         <SubHead tone="ink">Machine-Readable Package Data Schema</SubHead>
-        <Prose tone="ink" paras={[<>The package overview follows the official FedRAMP Certification Package Overview JSON schema (2026-06-24), and is served by the Trust Center API at <code className="font-mono text-[13px] text-glow">/api/v1/trust-center/cso</code>. KSI rules follow the FedRAMP Consolidated Rules for 2026 (version 2026.07.14.01).</>]} />
+        <Prose tone="ink" paras={[<>The package overview follows the official FedRAMP Certification Package Overview JSON schema (2026-06-24), and is served by the Trust Center API. KSI rules follow the FedRAMP Consolidated Rules for 2026 (version 2026.07.14.01).</>]} />
       </Section>
 
       {/* ============ 06 SECURITY & CONTINUOUS MONITORING ============ */}
