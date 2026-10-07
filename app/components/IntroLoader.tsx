@@ -103,7 +103,7 @@ export default function IntroLoader() {
         <span className="relative inline-block h-5 w-5 rounded-full bg-glow">
           <span className="absolute inset-1 rounded-full bg-ink" />
         </span>
-        Moderniza · Studio
+        Moderniza
       </div>
       <div className="absolute right-5 top-5 text-[11px] uppercase tracking-[0.22em] text-mist">v 26 · 04</div>
       <div className="absolute left-5 bottom-5 flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-mist">
@@ -115,7 +115,7 @@ export default function IntroLoader() {
           {phase === "fade" && "ready"}
         </span>
       </div>
-      <div className="absolute right-5 bottom-5 text-[11px] uppercase tracking-[0.22em] text-mist">Why · What · Need</div>
+      <div className="absolute right-5 bottom-5 text-[11px] uppercase tracking-[0.22em] text-mist">Blueprint · Contract · Code · Testing · Deploy</div>
 
       {/* Headline that reveals in the robot's wake (clip-path follows robot x) */}
       <motion.div
@@ -125,10 +125,10 @@ export default function IntroLoader() {
         className="absolute inset-0 flex items-center justify-center px-8 pointer-events-none"
       >
         <h1
-          aria-label="Modernize with confidence."
+          aria-label="Modernize legacy systems. Prove nothing was lost."
           className="text-center text-[40px] sm:text-[64px] md:text-[92px] lg:text-[112px] font-semibold leading-[0.95] tracking-[-0.04em] text-chalk"
         >
-          Modernize with <span className="italic text-glow">confidence.</span>
+          Modernize legacy systems. <span className="italic text-glow">Prove nothing was lost.</span>
         </h1>
       </motion.div>
 

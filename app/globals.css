@@ -160,13 +160,30 @@ body {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+  transition-delay: 0s;
 }
 .mega {
   opacity: 0;
   pointer-events: none;
+  max-width: calc(100vw - 2rem);
   transform: translateY(-8px);
-  transition: opacity 240ms ease, transform 240ms ease;
+  /* short delay on close so a diagonal mouse path into the panel never drops it */
+  transition: opacity 200ms ease 180ms, transform 200ms ease 180ms;
 }
+/* after a submenu link is clicked the panel stays closed until the pointer leaves the item */
+.menu-trigger.menu-closed .mega,
+.menu-trigger.menu-closed:hover .mega,
+.menu-trigger.menu-closed:focus-within .mega {
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+  transition: none;
+}
+.menu-trigger.menu-closed .mega-wrap { pointer-events: none !important; }
+/* the wrapper covers the gap between the trigger and the panel, so hover is never lost */
+.mega-wrap { pointer-events: none; }
+.menu-trigger:hover .mega-wrap,
+.menu-trigger:focus-within .mega-wrap { pointer-events: auto; }
 
 /* ---- gradient text ---- */
 .text-gradient {
@@ -995,9 +1012,11 @@ html.intro-done .intro-after {
    ============================================================ */
 /* Panel boot: slides down + scanlines fade in */
 @keyframes term-boot {
-  0%   { opacity: 0; transform: translate(-50%, -12px) scaleY(0.85); filter: brightness(2); }
+  /* horizontal centring comes from the Tailwind `translate` utility on .mega,
+     so the keyframes only move on Y — otherwise the -50% is applied twice. */
+  0%   { opacity: 0; transform: translateY(-12px) scaleY(0.85); filter: brightness(2); }
   30%  { opacity: 1; filter: brightness(1.4); }
-  100% { opacity: 1; transform: translate(-50%, 0) scaleY(1); filter: brightness(1); }
+  100% { opacity: 1; transform: translateY(0) scaleY(1); filter: brightness(1); }
 }
 
 /* Glitch flicker reveal — used on each item line */
@@ -4834,3 +4853,62 @@ html.intro-done .intro-after {
   }
 }
 
+
+/* =============================================================================
+   TYPOGRAPHY SCALE — one set of text styles used on every page.
+   Fonts come from the theme (Geist Sans / Geist Mono). Sizes use clamp() so
+   the same class renders the same way on every page and viewport.
+   ========================================================================== */
+.type-eyebrow {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.type-nav {
+  font-family: var(--font-geist-sans), ui-sans-serif, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.type-h1 {
+  font-size: clamp(3rem, 2.25rem + 1.9vw, 4.5rem);      /* 48px → 72px (Trust Center h1) */
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+.type-h2 {
+  font-size: clamp(1.875rem, 1.3rem + 1.5vw, 3rem);     /* 30px → 48px (Trust Center h2) */
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+}
+.type-h3 {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);     /* 20px → 24px */
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+.type-h4 {
+  font-size: 1.0625rem;                                  /* 17px */
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+.type-lede {
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);   /* 17px → 20px */
+  line-height: 1.6;
+}
+.type-body {
+  font-size: 0.9375rem;                                  /* 15px */
+  line-height: 1.65;
+}
+.type-small {
+  font-size: 0.8125rem;                                  /* 13px */
+  line-height: 1.5;
+}
+/* one vertical rhythm for every content section */
+.sec-pad { padding-block: clamp(5rem, 3rem + 6vw, 8rem); }
+.sec-pad-sm { padding-block: clamp(3.5rem, 2rem + 4vw, 5rem); }

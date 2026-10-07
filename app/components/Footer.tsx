@@ -2,34 +2,47 @@ import Link from "next/link";
 
 const COLS = [
   {
-    title: "About",
+    title: "Product",
+    items: [
+      ["How it works", "/how-it-works"],
+      ["Features", "/platform"],
+      ["Languages", "/languages"],
+      ["Business rules", "/business-rules"],
+      ["Verification", "/verification"],
+      ["Cost & transparency", "/pricing-transparency"],
+    ],
+  },
+  {
+    title: "Solutions",
+    items: [
+      ["For CIOs", "/solutions#cios"],
+      ["For architects", "/solutions#architects"],
+      ["For security teams", "/solutions#security-teams"],
+      ["Mainframe", "/solutions#mainframe"],
+      [".NET", "/solutions#microsoft"],
+      ["Salesforce", "/solutions#salesforce"],
+    ],
+  },
+  {
+    title: "Trust",
+    items: [
+      ["Security", "/security"],
+      ["AI governance", "/ai-governance"],
+      ["Trust Center", "/trust-center"],
+      ["Deployment", "/deployment"],
+    ],
+  },
+  {
+    title: "Company",
     items: [
       ["Why we exist", "/why"],
       ["What we do", "/what"],
       ["Who we are", "/who"],
-    ],
-  },
-  {
-    title: "Process",
-    items: [
-      ["Discover", "/process/discover"],
-      ["Define", "/process/define"],
-      ["Deliver", "/process/deliver"],
-    ],
-  },
-  {
-    title: "Work",
-    items: [
-      ["Projects", "/work/projects"],
-      ["Outcomes", "/work/outcomes"],
-    ],
-  },
-  {
-    title: "Enterprises",
-    items: [
-      ["Overview", "/enterprises"],
-      ["Trust Center", "/trust-center"],
-      ["Start a project", "/contact/start"],
+      ["Process", "/process/discover"],
+      ["Work", "/work/projects"],
+      ["Enterprises", "/enterprises"],
+      ["FAQ", "/faq"],
+      ["Contact", "/contact"],
     ],
   },
 ];
@@ -40,7 +53,7 @@ export default function Footer() {
       <div className="absolute inset-0 bg-grid-soft opacity-60" />
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-ember/10 blur-3xl" />
 
-      <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-20">
+      <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 sec-pad-sm md:!py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_2.6fr]">
           <div>
             <div className="flex items-center gap-2">
@@ -48,20 +61,20 @@ export default function Footer() {
                 <span className="absolute inset-1 rounded-full bg-chalk" />
                 <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember" />
               </span>
-              <p className="text-[11px] uppercase tracking-[0.2em] text-ink/60">
-                Moderniza Studio
+              <p className="type-eyebrow text-ink/60">
+                Moderniza
               </p>
             </div>
-            <h3 className="mt-6 text-4xl md:text-5xl font-semibold leading-[1.05] tracking-tight">
-              From a clear why,
+            <h3 className="mt-6 type-h2">
+              Modernize legacy systems.
               <br />
-              to a delivered <span className="text-gradient-ink">need</span>.
+              <span className="text-gradient-ink">Prove nothing was lost.</span>
             </h3>
             <Link
-              href="/contact/start"
+              href="/contact"
               className="mt-8 inline-flex h-12 items-center gap-3 rounded-full bg-ink px-5 text-sm font-semibold text-chalk hover:bg-graphite transition-colors"
             >
-              Start a project
+              Book a demo
               <span className="text-base">→</span>
             </Link>
           </div>
@@ -69,13 +82,13 @@ export default function Footer() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {COLS.map((c) => (
               <div key={c.title}>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-ink/55">
+                <p className="type-eyebrow text-ink/55">
                   {c.title}
                 </p>
                 <ul className="mt-4 space-y-2.5">
                   {c.items.map(([label, href]) => (
                     <li key={label}>
-                      <Link href={href} className="text-sm text-ink/80 hover:text-ember">
+                      <Link href={href} className="type-body text-ink/80 hover:text-ember">
                         {label}
                       </Link>
                     </li>
@@ -86,18 +99,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-ink/10 pt-6 text-xs text-ink/60 md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-4 border-t border-ink/10 pt-6 type-small text-ink/60 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Moderniza. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-5">
-            <Link href="/legal/privacy" className="hover:text-ink">Privacy</Link>
-            <Link href="/legal/terms" className="hover:text-ink">Terms</Link>
-            <Link href="/legal/cookies" className="hover:text-ink">Cookies</Link>
             <Link href="/security" className="hover:text-ink">Security</Link>
-            <span className="hidden md:inline">·</span>
-            <span className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-ember pulse-dot" />
-              Open · accepting Q3 / Q4 2026 projects
-            </span>
+            <Link href="/ai-governance" className="hover:text-ink">AI governance</Link>
+            <Link href="/trust-center" className="hover:text-ink">Trust Center</Link>
+            <Link href="/contact" className="hover:text-ink">Contact</Link>
           </div>
         </div>
       </div>

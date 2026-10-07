@@ -20,10 +20,10 @@ export default function PageHero({ crumb, eyebrow, title, lede, meta, rightSlot 
       <div className="pointer-events-none absolute bottom-0 -left-20 h-[260px] w-[460px] rounded-full bg-ember/15 blur-3xl float-y" />
       <AmbientFx tone="dark" density="med" corner="tr" />
 
-      <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 pt-24 md:pt-32 pb-20 md:pb-28">
+      <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 sec-pad">
         <div className={rightSlot ? "grid gap-10 lg:grid-cols-[minmax(0,1fr)_440px] lg:items-center" : ""}>
           <div>
-            <Reveal className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-mist">
+            <Reveal className="flex flex-wrap items-center gap-2 type-eyebrow text-mist">
               {crumb.map((c, i) => (
                 <span key={i} className="flex items-center gap-2">
                   {c.href ? (
@@ -36,24 +36,24 @@ export default function PageHero({ crumb, eyebrow, title, lede, meta, rightSlot 
               ))}
             </Reveal>
 
-            <Reveal delay={1} className="mt-7 flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-glow">
+            <Reveal delay={1} className="mt-7 flex items-center gap-3 type-eyebrow text-glow">
               <span aria-hidden className="h-2 w-2 rounded-full bg-glow pulse-dot" />
-              <span className="font-mono">{eyebrow}</span>
+              <span>{eyebrow}</span>
               <span className="h-px flex-1 bg-glow/30" />
             </Reveal>
 
-            <Reveal delay={2} as="h1" className="mt-8 max-w-[18ch] text-5xl md:text-7xl lg:text-[112px] font-semibold leading-[0.95] tracking-[-0.035em]">
+            <Reveal delay={2} as="h1" className="mt-8 max-w-[18ch] type-h1">
               {title}
             </Reveal>
 
             {lede && (
-              <Reveal delay={3} className="mt-8 max-w-[60ch] text-lg md:text-xl text-chalk/80 leading-relaxed">
+              <Reveal delay={3} className="mt-8 max-w-[60ch] type-lede text-chalk/80">
                 {lede}
               </Reveal>
             )}
 
             {meta && (
-              <Reveal delay={4} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-mist">
+              <Reveal delay={4} className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-3 type-small text-mist">
                 {meta}
               </Reveal>
             )}

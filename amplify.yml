@@ -8,6 +8,10 @@ frontend:
         - npm ci --cache .npm --prefer-offline
     build:
       commands:
+        # Amplify only exposes console env vars at build time. Write the ones the
+        # server needs at request time (Strapi reads, contact-form SMTP) into
+        # .env.production so the SSR runtime can read them.
+        - env | grep -E '^(STRAPI_URL|STRAPI_TOKEN|SMTP_)' >> .env.production || true
         - npm run build
   artifacts:
     # SSR/ISR app: the build output is .next (NOT `out` — that is only for static export).

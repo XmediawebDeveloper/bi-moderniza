@@ -142,16 +142,16 @@ function DashboardPanel() {
       <div className="strip-body strip-dash-body">
         <div className="strip-dash-row">
           <div className="strip-kpi">
-            <span className="strip-kpi-num">99.98%</span>
-            <span className="strip-kpi-lbl">uptime</span>
+            <span className="strip-kpi-num">5</span>
+            <span className="strip-kpi-lbl">steps</span>
           </div>
           <div className="strip-kpi">
-            <span className="strip-kpi-num">2.4M</span>
-            <span className="strip-kpi-lbl">lines / day</span>
+            <span className="strip-kpi-num">6</span>
+            <span className="strip-kpi-lbl">quality gates</span>
           </div>
           <div className="strip-kpi">
-            <span className="strip-kpi-num">12×</span>
-            <span className="strip-kpi-lbl">faster</span>
+            <span className="strip-kpi-num">12</span>
+            <span className="strip-kpi-lbl">repair rounds</span>
           </div>
         </div>
         <svg viewBox="0 0 200 60" className="strip-dash-chart" aria-hidden>

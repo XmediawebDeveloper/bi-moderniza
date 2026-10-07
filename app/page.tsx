@@ -26,170 +26,156 @@ const REACTIONS: Array<"wave" | "point" | "cheer" | "wink" | "shrug" | "heart"> 
   "wave", "point", "cheer", "shrug", "wink", "heart",
 ];
 
-const WHY_ICONS: IconKind[] = ["money", "chart", "clock", "money", "broken"];
+const WHY_ICONS: IconKind[] = ["doc", "broken", "shield"];
 const WHAT_ICONS: IconKind[] = ["analyse", "convert", "verify", "deploy"];
 const WHAT_GIFS = ["/G1.gif", "/G2.gif", "/G3.gif", "/G4.gif"];
-const BUILT_FOR_ICONS: IconKind[] = ["server", "person", "blueprint", "gear", "group", "rocket"];
-const DIFF_ICONS: IconKind[] = ["cycle", "doc", "verify", "shield", "cloud", "pulse"];
+const BUILT_FOR_ICONS: IconKind[] = ["person", "group", "blueprint", "shield", "gear"];
+const DIFF_ICONS: IconKind[] = ["doc", "chart", "verify", "gear", "shield", "cloud"];
 
 const WHY_FALLBACK = [
   {
     no: "01",
-    metric: "$1.52T",
-    title: "Global technical debt, growing every year.",
-    body: "Most of it sits inside legacy systems nobody wants to touch — and nobody can afford to leave alone.",
+    metric: "Hidden rules",
+    title: "Business logic is buried in code that only a few people can read.",
+    body: "Decades of rules live inside COBOL programs, JCL batch jobs, stored procedures and ageing desktop apps. The people who wrote them have retired or moved on.",
   },
   {
     no: "02",
-    metric: "75%",
-    title: "Of enterprise apps still run on legacy.",
-    body: "Cloud, AI, and mobile roadmaps stall on the same wall: code older than the people maintaining it.",
+    metric: "Risky rewrites",
+    title: "Big-bang projects run late, over budget, and break behaviour users depend on.",
+    body: "A manual rewrite takes years. It costs more than planned. Worst of all, it quietly drops the rules nobody knew were there.",
   },
   {
     no: "03",
-    metric: "12–24 mo",
-    title: "Average modernization project, often abandoned.",
-    body: "Manual rewrites lose institutional knowledge and ship late. Lift-and-shift just hides the problem in a cloud.",
-  },
-  {
-    no: "04",
-    metric: "$200–500",
-    title: "Per function point, paid by hand.",
-    body: "Manual modernization is slow, error-prone, and burns the senior engineers you need on real work.",
-  },
-  {
-    no: "05",
-    metric: "1 in 2",
-    title: "Old AI translations don&rsquo;t even compile.",
-    body: "Naive LLM rewrites drift on names, signatures and imports — they look right, then break at the build.",
+    metric: "Black-box AI",
+    title: "Most AI code tools translate file by file and hope the result works.",
+    body: "Nobody can prove what was kept — the interest rounding, the exception for one region, the validation added after an audit twenty years ago.",
   },
 ];
 
 const WHAT_FALLBACK = [
   {
     no: "01",
-    h: "Analyse",
-    sub: "Understand the codebase, deeply.",
+    h: "Plan first",
+    sub: "Understand the whole application, not one file at a time.",
     items: [
-      "Multi-language semantic parsing across the stack",
-      "Functions, classes, APIs, SQL, call-graph, dependencies",
-      "Architecture pattern detection — MVC, REST, monolith",
-      "A rich blueprint that becomes the AI&rsquo;s source of truth",
+      "Every file is scanned and classified by language and role",
+      "Your app today, the plan, your screens and app flow — in plain words",
+      "Business rules found by code and explained by AI",
+      "A ready backlog of epics, stories and acceptance criteria",
     ],
   },
   {
     no: "02",
-    h: "Convert",
-    sub: "Rewrite — intelligently, not literally.",
+    h: "Freeze the plan",
+    sub: "One contract that every agent must follow.",
     items: [
-      "Contract-first: names &amp; paths are declared before code",
-      "Adaptive batching — complex files get dedicated AI calls",
-      "Stitch pass fixes imports, calls, and remaining stubs",
-      "Output is built around your target stack, not pasted into it",
+      "Every service, API, data model, rule, screen and test — frozen",
+      "Every name locked in a symbol registry, sealed with a checksum",
+      "OpenAPI and database schema files generated from it",
+      "A compare view shows anything dropped or added",
     ],
   },
   {
     no: "03",
-    h: "Verify",
-    sub: "Prove it behaves like the original.",
+    h: "Build against it",
+    sub: "Parallel AI agents, no drift.",
     items: [
-      "Auto-generated test cases derived from the blueprint",
-      "Sandboxed execution against the converted app",
-      "Up to 3 auto-fix loops to reach &gt;95% pass rate",
-      "Security checks ensure old vulnerabilities don&rsquo;t carry over",
+      "Tasks built in dependency-ordered waves",
+      "Agents build in parallel against the locked contract",
+      "Imports and wiring checked after every wave",
+      "Six gates must pass before code leaves this step",
     ],
   },
   {
     no: "04",
-    h: "Deploy",
-    sub: "Ship to production with one click.",
+    h: "Prove it runs",
+    sub: "Started, tested and checked before you see it.",
     items: [
-      "AWS (EC2 / ECS / EKS) and Azure (AKS), out of the box",
-      "Auto-generated Docker, Terraform and CI pipelines",
-      "GitLab integration with first-commit handover",
-      "A live URL — not a zip file someone has to figure out",
+      "Every API called and every screen opened in a real browser",
+      "Problems fixed automatically against the live stack",
+      "Old vs new compared by business category",
+      "Anything not measured is labelled unmeasured — never 100%",
     ],
   },
 ];
 
 const PIPELINE_FALLBACK = [
-  { i: "P0", h: "Contract", t: "Pre-flight: every file path, class and method signature is declared before a line is written." },
-  { i: "P1", h: "Skeleton", t: "A compilable project structure is generated to match the contract — empty bodies, real shape." },
-  { i: "P2", h: "Test cases", t: "Behavioural tests are derived from the analysis. No runtime needed; the spec writes itself." },
-  { i: "P3", h: "Convert", t: "Code is converted layer-by-layer with adaptive complexity batching. Difficult files get more attention." },
-  { i: "P4", h: "Stitch", t: "Imports, callsites and stub fills are reconciled across the project. The build goes green." },
-  { i: "P5", h: "Verify", t: "Tests run in a sandbox. Failures trigger up-to-3 automated fix loops until parity is proven." },
+  { i: "Step 1", h: "Blueprint", t: "Every file is scanned and classified. You get your current app explained in plain words: screens, data, batch jobs, business rules, and a ready backlog of epics and stories." },
+  { i: "Step 2", h: "Contract", t: "The blueprint becomes a frozen specification of services, APIs, data models, rules, screens, access and tests. Every name is locked so agents cannot drift." },
+  { i: "Step 3", h: "Code", t: "The contract is split into tasks and built in dependency-ordered waves by parallel AI agents. Code must pass six gates before it leaves this step." },
+  { i: "Step 4", h: "Testing", t: "The new application is started for real. Every API and screen is checked, problems are fixed automatically, and old vs new is compared by business category." },
+  { i: "Step 5", h: "Deploy", t: "The verified app goes live on Docker or Kubernetes, with a delivery repository and CI/CD files ready for your team." },
 ];
 
 const COMPARE_FALLBACK = [
   {
     label: "Manual rewrite",
     rows: [
-      { l: "20-file project", v: "2–4 weeks", w: 92, t: "ember" as const },
-      { l: "Compiles without fix", v: "≈ 50%", w: 50, t: "mist" as const },
-      { l: "Functional parity", v: "≈ 65%", w: 65, t: "mist" as const },
+      { l: "Rules traced to their source line", v: "By hand, if at all", w: 15, t: "mist" as const },
+      { l: "Frozen contract before any code", v: "Rarely", w: 20, t: "mist" as const },
+      { l: "Started and tested before release", v: "At the end", w: 30, t: "ember" as const },
     ],
   },
   {
     label: "Old AI translators",
     rows: [
-      { l: "20-file project", v: "20–40 min", w: 32, t: "ember" as const },
-      { l: "Compiles without fix", v: "≈ 60%", w: 60, t: "mist" as const },
-      { l: "Functional parity", v: "≈ 55%", w: 55, t: "mist" as const },
+      { l: "Rules traced to their source line", v: "No", w: 8, t: "mist" as const },
+      { l: "Frozen contract before any code", v: "No — file by file", w: 8, t: "mist" as const },
+      { l: "Started and tested before release", v: "Hope it works", w: 12, t: "ember" as const },
     ],
   },
   {
     label: "Moderniza",
     rows: [
-      { l: "20-file project", v: "8–15 min", w: 14, t: "glow" as const },
-      { l: "Compiles without fix", v: "&gt; 98%", w: 98, t: "glow" as const },
-      { l: "Functional parity", v: "&gt; 95% (verified)", w: 95, t: "glow" as const },
+      { l: "Rules traced to their source line", v: "Every rule", w: 100, t: "glow" as const },
+      { l: "Frozen contract before any code", v: "Yes — symbol registry", w: 100, t: "glow" as const },
+      { l: "Started and tested before release", v: "Six gates, live tests", w: 100, t: "glow" as const },
     ],
   },
 ];
 
 const JOURNEY_FALLBACK = [
-  { n: "01", h: "Upload", t: "GitHub URL, ZIP, or single file." },
-  { n: "02", h: "Analyse", t: "Blueprint + security findings." },
-  { n: "03", h: "Choose", t: "Target stack, validated by AI." },
-  { n: "04", h: "Convert", t: "Real-time stream, phase-by-phase." },
-  { n: "05", h: "Review", t: "Code, tests, diagnostics, diffs." },
-  { n: "06", h: "Deploy", t: "AWS or Azure — one click. Live URL." },
+  { n: "01", h: "A running application", t: "Deployed and reachable." },
+  { n: "02", h: "Source code", t: "In your Git repository." },
+  { n: "03", h: "CI/CD files", t: "A Jenkinsfile and Kubernetes manifests for AWS or Azure." },
+  { n: "04", h: "Blueprint", t: "The old system, in plain words." },
+  { n: "05", h: "Frozen contract", t: "With OpenAPI and database schema files." },
+  { n: "06", h: "Business-rules document", t: "Source file and line for each rule." },
+  { n: "07", h: "Equivalence and code reports", t: "Old vs new, and a code report." },
+  { n: "08", h: "Batch job documentation", t: "For every scheduled job." },
+  { n: "09", h: "Cost ledger", t: "Every AI call made on your project." },
 ];
 
 const BUILT_FOR = [
-  ["Enterprise IT", "Modernise legacy monoliths to microservices."],
-  ["CTOs &amp; Tech Leaders", "Accelerate digital-transformation roadmaps."],
-  ["Software Architects", "Evaluate and execute migrations end-to-end."],
-  ["DevOps Engineers", "Auto-generate cloud-native deployment pipelines."],
-  ["Consulting Firms", "Deliver modernization at scale, with proof."],
-  ["Startups", "Pivot the stack without a year-long rewrite."],
+  ["CIOs and CTOs", "Retire mainframe and legacy platforms with a plan you can show the board."],
+  ["Application owners", "Get a new system that behaves like the old one, with proof."],
+  ["Enterprise architects", "Choose the target stack and architecture; get a contract, not a guess."],
+  ["Public sector and regulated teams", "Strong login, tamper-evident audit, self-hosted and air-gapped options."],
+  ["System integrators", "Run many modernization projects with one consistent, measurable process."],
 ];
 
 const DIFFERENTIATORS = [
-  ["End-to-end automation", "From upload to a deployed app — no manual steps in between."],
-  ["Contract-first methodology", "Eliminates broken imports, drifted method names, half-finished files."],
-  ["Behavioural verification", "Test-proven parity, not just translation that &ldquo;looks right.&rdquo;"],
-  ["Security-embedded", "Vulnerabilities flagged before conversion and not replicated after."],
-  ["Multi-cloud out of the box", "AWS &amp; Azure, with the IaC generated for you."],
-  ["Real-time visibility", "Watch every phase stream, live — no &lsquo;trust me&rsquo; black box."],
+  ["Nothing lost", "Rules are found by code, explained by AI, then checked against the original source. Each rule gets one owner in the new code, and the platform asks for proof it was built."],
+  ["Nothing hidden", "See the plan before code is written, the cost before each phase, and every AI call with its tokens and cost."],
+  ["Runs, not just compiles", "Before release, code must build, start in Docker, pass health checks, answer every API without server errors, and pass its own tests."],
+  ["You stay in charge", "Approve budgets, choose the target stack, and run each step by hand or let it flow automatically. Pause and resume any time."],
+  ["Secure by default", "Passkeys, tamper-evident audit log, just-in-time admin access, and a one-switch AI kill switch."],
+  ["Your infrastructure", "Single-tenant SaaS, self-hosted, fully air-gapped, or AI routed through AWS GovCloud."],
 ];
 
 const SOUNDBITES = [
-  "It doesn&rsquo;t just translate code — it understands it, secures it, verifies it, and deploys it.",
-  "From legacy zip to a live URL — in 30 to 90 minutes, end-to-end.",
-  "Compiles &gt; 98% of the time. Verified parity &gt; 95%.",
-  "Twenty files in fifteen minutes. A hundred in under an hour.",
-  "Watch every phase stream live. No &ldquo;come back tomorrow.&rdquo;",
-  "Modernize with confidence — finally, a process you can show your board.",
+  "Modernize legacy systems. Prove nothing was lost.",
+  "If something could not be measured, Moderniza says &ldquo;unmeasured&rdquo; — it never fills the gap with 100%.",
+  "Plan first. Freeze the plan. Build against it. Prove it runs.",
 ];
 
 const NEED_FALLBACK: { n: string; items: [string, string][] }[] = [
   {
     n: "From you",
     items: [
-      ["A repo or a zip", "GitHub URL, archive, or even a single file. We start with what you have."],
-      ["A target stack — or a question", "We&rsquo;ll guide you through Python / Java / Node / .NET, React / Vue, Postgres / Mongo."],
+      ["Your code, as it is", "A Git repository URL, a folder upload, or a .zip, .war or .ear archive. We start with what you have."],
+      ["A target stack — or a question", "Python with FastAPI, React or Angular and PostgreSQL is the most proven. Java Spring Boot, C# .NET and Go are ready. Many more can be selected."],
       ["A 30-minute window", "One stakeholder, one screen-share, one decision. That&rsquo;s the whole demo."],
       ["Permission to ship", "When the tests are green and the build is signed, we&rsquo;ll want to deploy. You decide where."],
     ],
@@ -197,31 +183,31 @@ const NEED_FALLBACK: { n: string; items: [string, string][] }[] = [
   {
     n: "From us",
     items: [
-      ["A blueprint, before any code", "Every name and path declared up front. No drift, no surprises."],
-      ["Tests written before the rewrite", "We prove parity, not just produce output."],
-      ["A live stream of every phase", "You see what&rsquo;s happening — and what isn&rsquo;t — in real time."],
-      ["A bundle, not a black box", "Source, IaC, Dockerfiles, docs — yours forever, vendor-locked to nobody."],
+      ["A blueprint, before any code", "Your current app explained in plain words, and a frozen contract every agent must follow. No drift, no surprises."],
+      ["Proof, not promises", "Six gates, live API and screen checks, and an old-vs-new equivalence report that marks what was not measured."],
+      ["Every step, live", "The live console, the running app, and every agent&rsquo;s instructions, files, tokens and cost."],
+      ["A delivery, not a black box", "Source, Jenkinsfile, Kubernetes manifests, blueprint, rules document and reports — in your own repository."],
     ],
   },
 ];
 
 const METRICS_FALLBACK = [
-  { num: 98,  suf: "%",   label: "of Moderniza builds compile without a manual fix" },
-  { num: 95,  suf: "%+",  label: "verified functional parity, against original tests" },
-  { num: 90,  suf: " min", label: "median end-to-end time, upload to deployed app" },
-  { num: 200, suf: "+",   label: "conversions completed across enterprise pilots" },
+  { num: 0, suf: "", label: "Rule-level traceability — every rule linked to its source file and line", title: "Traced" },
+  { num: 6, suf: " gates", label: "Code must build, start and answer its APIs before release", title: "" },
+  { num: 0, suf: "", label: "You approve the spend — cost estimate shown before each phase", title: "Approved" },
+  { num: 0, suf: "", label: "Runs where you need it — single-tenant SaaS, self-hosted, air-gapped or GovCloud", title: "Anywhere" },
 ];
 
 const CTA_FALLBACK = {
   eyebrow: "/ 09 — Next",
-  headline_line1: "Bring a repo.",
-  headline_line2: "Leave with a build.",
-  headline_line3: "In 30 minutes.",
-  body: "Drop us a GitHub URL or a zip. We’ll run a live blueprint, walk you through every phase, and ship a deployed sandbox before the call ends.",
-  primary_label: "Start a project →",
-  primary_url: "/contact/start",
-  secondary_label: "Start a project",
-  secondary_url: "/contact/start",
+  headline_line1: "See your own code",
+  headline_line2: "modernized.",
+  headline_line3: "Before anything is built.",
+  body: "Bring a repository. We will scan it and show you the blueprint, the plan and the cost estimate — before anything is built.",
+  primary_label: "Book a demo →",
+  primary_url: "/contact",
+  secondary_label: "See how it works",
+  secondary_url: "/how-it-works",
   status_text: "Open · Q3 / Q4 2026 capacity",
 };
 
@@ -249,7 +235,7 @@ export default async function Home() {
   const differentList = diffRows.length       ? diffRows.map((d) => [d.h, d.b] as [string, string]) : DIFFERENTIATORS;
   const diffIcons: IconKind[] = diffRows.length ? diffRows.map((d) => d.icon_kind) : DIFF_ICONS;
   const soundbites    = soundbiteRows.length  ? soundbiteRows.map((s) => s.text) : SOUNDBITES;
-  const metrics       = metricRows.length     ? metricRows.map((m) => ({ num: m.num, suf: m.suffix, label: m.label })) : METRICS_FALLBACK;
+  const metrics       = metricRows.length     ? metricRows.map((m) => ({ num: m.num, suf: m.suffix, label: m.label, title: "" })) : METRICS_FALLBACK;
   const whyIcons: IconKind[] = whyRows.length ? whyRows.map((w) => w.icon_kind) : WHY_ICONS;
   const whatIcons: IconKind[] = whatRows.length ? whatRows.map((w) => w.icon_kind) : WHAT_ICONS;
   const whatGifs = whatRows.length
@@ -287,24 +273,26 @@ export default async function Home() {
           <div className="mt-8 grid gap-12 md:grid-cols-[1fr_1.5fr]">
             <Reveal delay={1}>
               <h2 className="text-4xl md:text-6xl font-semibold leading-[1.02] tracking-[-0.02em]">
-                The legacy crisis,
+                Your legacy systems run the business.
                 <br />
-                <em className="not-italic text-gradient">in five numbers</em>.
+                <em className="not-italic text-gradient">Nobody wants to touch them</em>.
               </h2>
             </Reveal>
             <Reveal delay={2} className="text-chalk/80 text-lg leading-relaxed">
               <p>
-                Tech debt isn&rsquo;t an engineering anecdote. It&rsquo;s a balance-sheet item that
-                grows every quarter — and quietly blocks every cloud, AI and mobile programme
-                that depends on the code beneath.
+                Decades of business logic live inside COBOL programs, JCL batch jobs, stored procedures
+                and ageing desktop apps. The people who wrote them have retired or moved on. The
+                documentation is missing, or describes a system that no longer exists.
               </p>
               <p className="mt-4 text-mist">
-                These are the five numbers that show up on every modernization slide we see:
+                A manual rewrite takes years. It costs more than planned. Worst of all, it quietly drops
+                the rules nobody knew were there — the interest rounding, the exception for one region,
+                the validation added after an audit twenty years ago.
               </p>
             </Reveal>
           </div>
 
-          <ul className="mt-14 grid gap-px md:grid-cols-2 lg:grid-cols-5 bg-white/10 border border-white/10 rounded-3xl overflow-visible">
+          <ul className={`mt-14 grid gap-px md:grid-cols-2 ${why.length > 4 ? "lg:grid-cols-5" : "lg:grid-cols-3"} bg-white/10 border border-white/10 rounded-3xl overflow-visible`}>
             {why.map((p, i) => (
               <Reveal
                 key={p.no}
@@ -323,7 +311,7 @@ export default async function Home() {
                       <CardIcon kind={whyIcons[i % whyIcons.length]} tone="dark" className="h-11 w-11" />
                       <span className="chip text-[11px] tracking-[0.16em] text-mist">{p.no}</span>
                     </div>
-                    <p className="mt-5 text-3xl md:text-4xl font-semibold tracking-tight text-glow font-mono digit-rise">
+                    <p className="mt-5 text-2xl md:text-3xl font-semibold tracking-tight text-glow digit-rise">
                       {p.metric}
                     </p>
                     <h3
@@ -361,16 +349,18 @@ export default async function Home() {
           <div className="mt-8 grid gap-12 md:grid-cols-[1fr_1.4fr] md:items-end">
             <Reveal delay={1}>
               <h2 className="text-4xl md:text-6xl font-semibold leading-[1.02] tracking-[-0.02em]">
-                One platform.
+                Plan first. Freeze the plan.
                 <br />
-                Four <span className="text-gradient-ink">verbs</span>.
+                Build against it. <span className="text-gradient-ink">Prove it runs.</span>
               </h2>
             </Reveal>
             <Reveal delay={2} className="text-lg text-ink/75 leading-relaxed">
               <p>
-                Moderniza doesn&rsquo;t just translate code — it understands it, secures it,
-                verifies it and deploys it. Four verbs share one workspace, one stream and one
-                bar. Tilt the cards to feel the shape.
+                Moderniza does not translate files one by one. It first builds a complete picture of
+                what your application does. It turns that picture into a frozen contract — every
+                service, API, data model, rule, screen and test. Then AI agents build against that
+                contract in parallel, and the result is started, tested and checked before you ever
+                see it.
               </p>
             </Reveal>
           </div>
@@ -437,13 +427,13 @@ export default async function Home() {
           </Reveal>
 
           <Reveal delay={1} as="h2" className="mt-8 max-w-3xl text-4xl md:text-6xl font-semibold leading-[1.02] tracking-[-0.02em]">
-            The six-phase pipeline. <span className="text-gradient">In plain English.</span>
+            From legacy code to a running application <span className="text-gradient">in five steps.</span>
           </Reveal>
 
           <Reveal delay={2} className="mt-6 max-w-2xl text-lg text-chalk/80">
-            Every conversion runs through the same six phases. Each phase has a streamed
-            artefact, a date, and an automated gate. You always know what&rsquo;s done, what&rsquo;s
-            next, and what&rsquo;s blocked.
+            Moderniza follows the same five steps for every project. Each step has a clear output
+            you can review. Each step is checked before the next one starts. And you decide when
+            the next one starts.
           </Reveal>
 
           <ol className="mt-14 relative">
@@ -466,6 +456,13 @@ export default async function Home() {
               </Reveal>
             ))}
           </ol>
+
+          <Reveal delay={2} className="mt-10">
+            <Link href="/how-it-works" className="group inline-flex items-center gap-2 text-sm font-semibold text-glow">
+              Explore the full process
+              <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
+            </Link>
+          </Reveal>
         </div>
       </section>
 
@@ -526,8 +523,8 @@ export default async function Home() {
           </div>
 
           <Reveal delay={2} className="mt-10 text-sm text-ink/55">
-            Sources: internal benchmarks across 200+ conversions; baseline metrics from
-            CISQ 2022 industry estimates. Naive AI baseline taken from public translator tools.
+            A comparison of process, not of measured numbers. Moderniza shows what it could not
+            measure — anything unmeasured is labelled unmeasured, never 100%.
           </Reveal>
         </div>
       </section>
@@ -543,7 +540,7 @@ export default async function Home() {
           </Reveal>
 
           <Reveal delay={1} as="h2" className="mt-8 max-w-3xl text-4xl md:text-6xl font-semibold leading-[1.02] tracking-[-0.02em]">
-            Six steps from a legacy zip <span className="text-gradient">to a live URL</span>.
+            What every modernization <span className="text-gradient">delivers</span>.
           </Reveal>
 
           <PathDraw className="mt-16 hidden md:block" duration={1700}>
@@ -566,7 +563,7 @@ export default async function Home() {
             </svg>
           </PathDraw>
 
-          <ul className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+          <ul className={`mt-6 grid gap-4 md:grid-cols-2 ${journey.length > 6 ? "lg:grid-cols-3" : "lg:grid-cols-6"}`}>
             {journey.map((s, i) => (
               <Reveal
                 key={s.n}
@@ -587,7 +584,7 @@ export default async function Home() {
           </ul>
 
           <Reveal delay={2} className="mt-10 text-sm text-mist">
-            Total time, end-to-end: <span className="text-glow font-semibold">30 – 90 minutes</span>.
+            Every deliverable is yours to keep — source, documents and reports, in your own repository.
           </Reveal>
         </div>
       </section>
@@ -668,7 +665,7 @@ export default async function Home() {
           </Reveal>
 
           <Reveal delay={1} as="h2" className="mt-8 max-w-3xl text-4xl md:text-6xl font-semibold leading-[1.02] tracking-[-0.02em]">
-            Built for the people <span className="text-gradient">who own the roadmap</span>.
+            For the people <span className="text-gradient">who own the risk</span>.
           </Reveal>
 
           <ul className="mt-14 grid gap-px md:grid-cols-2 lg:grid-cols-3 bg-white/10 border border-white/10 rounded-3xl overflow-visible">
@@ -717,7 +714,7 @@ export default async function Home() {
           </Reveal>
 
           <Reveal delay={1} as="h2" className="mt-8 max-w-4xl text-4xl md:text-6xl font-semibold leading-[1.02] tracking-[-0.02em]">
-            Six things <span className="text-gradient-ink">nobody else</span> does in one workspace.
+            Built for systems you <span className="text-gradient-ink">cannot afford</span> to get wrong.
           </Reveal>
 
           <ul className="mt-14 grid gap-px md:grid-cols-2 lg:grid-cols-3 bg-ink/10 border border-ink/10 rounded-3xl overflow-visible">
@@ -776,7 +773,7 @@ export default async function Home() {
           {metrics.map((m, i) => (
             <Reveal key={m.label} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
               <p className="text-5xl md:text-6xl font-semibold tracking-[-0.02em]">
-                <Counter to={m.num} suffix={m.suf} />
+                {m.num > 0 ? <Counter to={m.num} suffix={m.suf} /> : m.title}
               </p>
               <p className="mt-3 text-sm text-mist max-w-xs mx-auto md:mx-0">{m.label}</p>
             </Reveal>

@@ -55,23 +55,23 @@ export type HeroIntroProps = {
 };
 
 const DEFAULT_PILLS: Pill[] = [
-  { label: "analysing", tone: "live" },
-  { label: "compiling", tone: "neutral" },
-  { label: "verified",  tone: "neutral" },
-  { label: "uptime · 99.97%", tone: "neutral" },
+  { label: "blueprint", tone: "live" },
+  { label: "contract", tone: "neutral" },
+  { label: "code", tone: "neutral" },
+  { label: "testing · deploy", tone: "neutral" },
 ];
 
 export default function HeroIntro({
-  eyebrow = "AI-powered code modernization",
-  headline_line1 = "Modernize legacy code",
-  headline_line2 = "with",
-  italic_word = "confidence.",
-  subheading = "An AI platform that analyses, converts, verifies and deploys legacy code — to AWS or Azure, in 30 to 90 minutes.",
-  primary_cta_label = "Talk to us",
-  primary_cta_url = "/contact/start",
-  secondary_cta_label = "Explore cases",
-  secondary_cta_url = "/work/projects",
-  scroll_note = "Why → What → Need",
+  eyebrow = "AI-powered legacy modernization platform",
+  headline_line1 = "Modernize legacy systems.",
+  headline_line2 = "Prove",
+  italic_word = "nothing was lost.",
+  subheading = "Moderniza reads your legacy code, explains it in plain words, freezes a plan you approve, builds the new application with parallel AI agents, runs it for real, and deploys it. Every business rule is traced back to the exact file and line it came from.",
+  primary_cta_label = "Book a demo",
+  primary_cta_url = "/contact",
+  secondary_cta_label = "See how it works",
+  secondary_cta_url = "/how-it-works",
+  scroll_note = "Blueprint → Contract → Code → Testing → Deploy",
   pills = DEFAULT_PILLS,
 }: HeroIntroProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -175,7 +175,7 @@ export default function HeroIntro({
             <span
               key={`${p.label}-${idx}`}
               className={[
-                "inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white/50 backdrop-blur-md px-2.5 py-1 text-[9px] uppercase tracking-[0.22em] text-ink/70",
+                "inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white/50 backdrop-blur-md px-2.5 py-1 type-eyebrow !text-[10px] text-ink/70",
                 idx === 3 ? "hidden md:inline-flex font-mono" : "",
               ].join(" ")}
             >
@@ -191,11 +191,10 @@ export default function HeroIntro({
           initial="hidden"
           animate={state}
           transition={{ delay: 0.05 }}
-          className="flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-ink/55"
+          className="flex items-center gap-3 type-eyebrow text-ink/55"
         >
           <span aria-hidden className="flex h-1.5 w-1.5 rounded-full bg-ember pulse-dot" />
           <span>{eyebrow}</span>
-          <span className="hidden md:inline text-ink/35">· Why · What · Need</span>
         </motion.div>
 
         {/* Headline — clip-mask line rise + bracket lock-on */}
@@ -214,7 +213,7 @@ export default function HeroIntro({
             <path d="M 0 88 L 0 100 L 12 100" className="bracket-draw" style={{ animationDelay: "0.9s" }} />
             <path d="M 100 88 L 100 100 L 88 100" className="bracket-draw" style={{ animationDelay: "1.1s" }} />
           </svg>
-          <h1 className="relative max-w-[14ch] text-[36px] sm:text-[44px] md:text-[52px] lg:text-[64px] xl:text-[72px] font-semibold leading-[0.98] tracking-[-0.035em]">
+          <h1 className="relative max-w-[16ch] type-h1">
           <span className="block overflow-hidden pb-[0.06em]">
             <motion.span
               variants={lineMask}
@@ -246,7 +245,7 @@ export default function HeroIntro({
           initial="hidden"
           animate={state}
           transition={{ delay: 0.55 }}
-          className="mt-6 max-w-[52ch] text-sm sm:text-base text-ink/75 leading-relaxed"
+          className="mt-6 max-w-[56ch] type-lede text-ink/75"
         >
           {subheading}
         </motion.p>
@@ -262,7 +261,7 @@ export default function HeroIntro({
           <Link
             href={primary_cta_url}
             aria-label={primary_cta_label}
-            className="group inline-flex h-10 items-center gap-2 rounded-full bg-ink px-5 text-[13px] font-semibold text-chalk transition-colors hover:bg-graphite"
+            className="group inline-flex h-11 items-center gap-2 rounded-full bg-ink px-5 text-sm font-semibold text-chalk transition-colors hover:bg-graphite"
           >
             {primary_cta_label}
             <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
@@ -270,14 +269,11 @@ export default function HeroIntro({
           <Link
             href={secondary_cta_url}
             aria-label={secondary_cta_label}
-            className="group inline-flex h-10 items-center gap-2 rounded-full border border-ink/25 px-5 text-[13px] text-ink transition-colors hover:border-ink/60 hover:bg-ink/[0.04]"
+            className="group inline-flex h-11 items-center gap-2 rounded-full border border-ink/25 px-5 text-sm font-medium text-ink transition-colors hover:border-ink/60 hover:bg-ink/[0.04]"
           >
             {secondary_cta_label}
             <span aria-hidden className="text-ink/60 transition-transform group-hover:translate-x-0.5">↗</span>
           </Link>
-          <span className="ml-1 hidden md:inline text-[11px] text-ink/50">
-            Reply within 1 business day · NDA on request
-          </span>
         </motion.div>
 
         {/* Scroll indicator */}
@@ -286,7 +282,7 @@ export default function HeroIntro({
           initial="hidden"
           animate={state}
           transition={{ delay: 0.9 }}
-          className="mt-10 md:mt-14 flex items-center gap-3 text-[10px] uppercase tracking-[0.22em] text-ink/55"
+          className="mt-10 md:mt-14 flex items-center gap-3 type-eyebrow text-ink/55"
         >
           <span>Scroll</span>
           <span aria-hidden className="h-px w-12 bg-ink/25" />

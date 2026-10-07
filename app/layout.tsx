@@ -17,9 +17,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Moderniza — Modernize legacy code with confidence",
+  title: {
+    default: "Moderniza — AI Legacy Modernization You Can Verify",
+    template: "%s — Moderniza",
+  },
   description:
-    "Moderniza is an AI platform that analyses, converts, verifies and deploys legacy code — to AWS or Azure, in 30 to 90 minutes.",
+    "Turn COBOL, JCL, .NET, Salesforce and PHP systems into modern, running applications — with every business rule traced to its source line.",
 };
 
 export default function RootLayout({
