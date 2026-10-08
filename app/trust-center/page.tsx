@@ -46,20 +46,20 @@ const GENERAL_INFO: Spec[] = [
   { label: "Provider", value: "Business Integra Technology Solutions, Inc." },
   { label: "Cloud Service Offering", value: "Moderniza (acronym MODZ)" },
   { label: "FedRAMP ID", value: "Pending assignment (package ID used today: “Business Integra Technology Solutions, Inc. MODZ”)" },
-  { label: "Certification Type", value: "FedRAMP 20x Class C" },
+  { label: "Certification Type", value: "FedRAMP 20x Class C Target" },
   { label: "Authorization Path", value: "FedRAMP Program (20x) — confirm before publishing" },
   { label: "Service Model", value: "Software as a Service (SaaS)" },
-  { label: "Deployment Model", value: "Pending — package says “Public Cloud”, trust_center.json says “Single-tenant cloud, one isolated environment per customer”; must match where it runs on submission day" },
+  { label: "Deployment Model", value: "Public Cloud" },
   { label: "Business Category", value: "Development Tools; Artificial Intelligence (AI) — application modernization and legacy code conversion" },
   { label: "FIPS 199 Security Categorization", value: "Moderate" },
-  { label: "Digital Identity Level", value: "Pending" },
+  { label: "Digital Identity Level", value: "IAL Level 2 / AAL Level 2 / FAL Level 2" },
   { label: "FedRAMP Authorization Status", value: "In progress; not yet FedRAMP authorized" },
   { label: "Fully Operational Since", value: "Pending (owner to confirm the date)" },
   { label: "Hosting Environment", value: "Moderniza-operated servers; encrypted backups in AWS US East (N. Virginia). Move to AWS GovCloud planned" },
   { label: "UEI Number", value: "NBELUNT3NMG3" },
   { label: "CAGE Code", value: "3BGU6" },
-  { label: "Independent Assessor", value: "To be engaged" },
-  { label: "Next Ongoing Certification Report", value: "2026-12-15 (then every 90 days)" },
+  { label: "Independent Assessor", value: "Kompleye" },
+  { label: "Next Ongoing Certification Report", value: "TBD" },
   { label: "Company Address", value: "6550 Rock Spring Drive, Suite 600, Bethesda, MD 20817-1185" },
   { label: "Product Website", value: ext("https://bimod.mo.vc") },
   {
@@ -79,7 +79,7 @@ const GENERAL_INFO: Spec[] = [
   },
 ];
 
-const CONTACTS: { kind: string; icon: IconKind }[] = [
+const CONTACTS: { kind: string; icon: IconKind; details?: Spec[] }[] = [
   {
     kind: "Sales Contact",
     icon: "person",
@@ -91,6 +91,9 @@ const CONTACTS: { kind: string; icon: IconKind }[] = [
   {
     kind: "Contacts",
     icon: "doc",
+    details: [
+      { label: "Office", value: "6550 Rock Spring Dr., Suite 600, Bethesda, MD 20817" },
+    ],
   },
 ];
 
@@ -357,7 +360,7 @@ export default function TrustCenterPage() {
       <Section
         id="overview" bg="chalk"
         title="Overview"
-        lede="Moderniza is a Software as a Service (SaaS) offering that converts legacy estates (COBOL, VB6, PHP, Java, .NET and others) into modern, tested, containerised applications. Work runs through five steps — Blueprint, Contract, Code, Testing and Deploy — and every step leaves a ledger the customer can audit. Moderniza is offered to government customers by Business Integra Technology Solutions, Inc."
+        lede="BI’s AI Moderniza is a Software as a Service (SaaS) offering that converts legacy estates (COBOL, VB6, PHP, Java, .NET and others) into modern, tested, containerised applications. Work runs through five steps — Blueprint, Contract, Code, Testing and Deploy — and every step leaves a ledger the customer can audit. Moderniza is offered to government customers by Business Integra Technology Solutions, Inc."
       >
         <SubHead tone="chalk" first>General Information</SubHead>
         <SpecGrid tone="chalk" items={GENERAL_INFO} />
@@ -370,6 +373,16 @@ export default function TrustCenterPage() {
             <Reveal key={c.kind} delay={((i % 4) + 1) as 1 | 2 | 3 | 4} className="rounded-3xl border border-white/10 bg-graphite/40 p-7 lift h-full">
               <CardIcon kind={c.icon} tone="dark" className="h-11 w-11" />
               <h3 className="mt-5 text-xl font-semibold tracking-tight text-chalk">{c.kind}</h3>
+              {c.details && (
+                <dl className="mt-5 space-y-4">
+                  {c.details.map((d) => (
+                    <div key={d.label}>
+                      <dt className="text-xs font-semibold uppercase tracking-wider text-chalk/50">{d.label}</dt>
+                      <dd className="mt-1 text-sm leading-relaxed text-chalk/85">{d.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
             </Reveal>
           ))}
         </div>
@@ -412,8 +425,8 @@ export default function TrustCenterPage() {
                 <h4 className="text-base font-semibold tracking-tight text-ink">{g.title}</h4>
               </div>
               <p className="mt-3 flex-1 text-sm text-ink/70 leading-relaxed">{g.body}</p>
-              <a href={g.href} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 self-start text-sm font-medium text-ink hover:text-ember transition-colors">
-                View Document <span aria-hidden>→</span>
+              <a href="/contact" className="mt-4 inline-flex items-center gap-2 self-start text-sm font-medium text-ink hover:text-ember transition-colors">
+                Request Access <span aria-hidden>→</span>
               </a>
             </Reveal>
           ))}
@@ -432,7 +445,7 @@ export default function TrustCenterPage() {
         <Prose tone="ink" paras={["Moderniza follows the FedRAMP 20x model: automated checks and machine-readable evidence instead of static documents and point-in-time reviews. Every Key Security Indicator (KSI) is measured by a script against the running platform. A snapshot is taken every 6 hours and added to a hash-chained ledger, so any edited or missing snapshot is detected. The checks themselves are mutation-tested, so a check that always passes is caught."]} />
 
         <SubHead tone="ink">Security Package Contents</SubHead>
-        <Table tone="ink" head={["#", "Folder"]} rows={PACKAGE_CONTENTS} minWidth={560} firstStrong={false} />
+        <Table tone="ink" head={["#", "Folder", "Availability"]} rows={PACKAGE_CONTENTS.map((r) => [...r, "Available on Request"])} minWidth={560} firstStrong={false} />
         <p className="mt-5 text-sm text-chalk/80">Most documents are version 1.0, issued 2 October 2026, as drafts for approval.</p>
 
         <SubHead tone="ink">Minimum Assessment Scope</SubHead>
@@ -481,15 +494,14 @@ export default function TrustCenterPage() {
       {/* ============ 08 RESOURCES ============ */}
       <Section id="resources" bg="bone" title="Resources (CDS-CSO-IRP)">
         <SubHead tone="bone" first>Resources Table</SubHead>
-        <Prose tone="bone" paras={["Policies and related documents, with version, status, length and how to get them."]} />
+        <Prose tone="bone" paras={["Policies and related documents, with version, length and how to get them."]} />
         <Table
           tone="bone"
-          head={["Policy / Procedure", "Summary", "Version", "Status", "Words", "Availability"]}
+          head={["Policy / Procedure", "Summary", "Version", "Words", "Availability"]}
           rows={POLICIES.map((p) => [
             p.name,
             p.summary,
             p.version,
-            <Badge key="s" kind={p.status.startsWith("Approved") ? "pos" : "warn"}>{p.status}</Badge>,
             p.words,
             p.availability,
           ])}
@@ -517,8 +529,8 @@ export default function TrustCenterPage() {
         {/* Contact Banner */}
         <Reveal delay={2} className="mt-10 flex flex-col items-start gap-4 rounded-3xl border border-glow/25 bg-glow/[0.05] p-7 sm:flex-row sm:items-center sm:justify-between">
           <h3 className="text-lg font-semibold tracking-tight text-chalk">Questions about our FedRAMP program or security posture?</h3>
-          <MagneticButton href="mailto:chandrakumar@xmedia.in" className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-glow px-5 text-sm font-semibold text-ink hover:bg-chalk transition-colors ring-pulse">
-            Contact Us → chandrakumar@xmedia.in
+          <MagneticButton href="mailto:info@businessintegra.com" className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-glow px-5 text-sm font-semibold text-ink hover:bg-chalk transition-colors ring-pulse">
+            Contact Us → info@businessintegra.com
           </MagneticButton>
         </Reveal>
       </Section>
