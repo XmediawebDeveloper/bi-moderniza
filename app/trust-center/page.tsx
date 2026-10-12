@@ -83,10 +83,18 @@ const CONTACTS: { kind: string; icon: IconKind; details?: Spec[] }[] = [
   {
     kind: "Sales Contact",
     icon: "person",
+    details: [
+      { label: "", value: "Selva Jayaraman" },
+      { label: "Email", value: extDark("mailto:growth@businessintegra.com", "growth@businessintegra.com") },
+    ],
   },
   {
     kind: "Security Contact",
     icon: "shield",
+    details: [
+      { label: "", value: "Prathiba Ramadoss" },
+      { label: "Email", value: extDark("mailto:Security@businessintegra.com", "Security@businessintegra.com") },
+    ],
   },
   {
     kind: "Contacts",
@@ -375,10 +383,12 @@ export default function TrustCenterPage() {
               <h3 className="mt-5 text-xl font-semibold tracking-tight text-chalk">{c.kind}</h3>
               {c.details && (
                 <dl className="mt-5 space-y-4">
-                  {c.details.map((d) => (
-                    <div key={d.label}>
-                      <dt className="text-xs font-semibold uppercase tracking-wider text-chalk/50">{d.label}</dt>
-                      <dd className="mt-1 text-sm leading-relaxed text-chalk/85">{d.value}</dd>
+                  {c.details.map((d, di) => (
+                    <div key={d.label || di}>
+                      {d.label && (
+                        <dt className="text-xs font-semibold uppercase tracking-wider text-chalk/50">{d.label}</dt>
+                      )}
+                      <dd className={`${d.label ? "mt-1 text-chalk/85" : "font-semibold text-chalk"} text-sm leading-relaxed`}>{d.value}</dd>
                     </div>
                   ))}
                 </dl>
