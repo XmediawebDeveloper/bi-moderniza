@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_OTHER_BOTS } from "../components/ContactRobot";
 import Reveal from "../components/Reveal";
 import Counter from "../components/Counter";
 import Tilt from "../components/Tilt";
@@ -130,7 +130,8 @@ export default async function WhoPage() {
             ))}
           </>
         }
-        rightSlot={<ContactRobot variant="team" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_OTHER_BOTS ? <ContactRobot variant="team" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_OTHER_BOTS}
       />
 
       {/* ============ Team grid ============ */}

@@ -10,9 +10,11 @@ type PageHeroProps = {
   lede?: React.ReactNode;
   meta?: React.ReactNode;
   rightSlot?: React.ReactNode;
+  /** Center all hero content horizontally and vertically (used without a rightSlot). */
+  centered?: boolean;
 };
 
-export default function PageHero({ crumb, eyebrow, title, lede, meta, rightSlot }: PageHeroProps) {
+export default function PageHero({ crumb, eyebrow, title, lede, meta, rightSlot, centered = false }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-ink">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" />
@@ -21,9 +23,17 @@ export default function PageHero({ crumb, eyebrow, title, lede, meta, rightSlot 
       <AmbientFx tone="dark" density="med" corner="tr" />
 
       <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 sec-pad">
-        <div className={rightSlot ? "grid gap-10 lg:grid-cols-[minmax(0,1fr)_440px] lg:items-center" : ""}>
-          <div>
-            <Reveal className="flex flex-wrap items-center gap-2 type-eyebrow text-mist">
+        <div
+          className={
+            rightSlot
+              ? "grid gap-10 lg:grid-cols-[minmax(0,1fr)_440px] lg:items-center"
+              : centered
+                ? "flex min-h-[360px] flex-col items-center justify-center md:min-h-[440px] lg:min-h-[520px]"
+                : ""
+          }
+        >
+          <div className={centered ? "flex w-full flex-col items-center text-center" : ""}>
+            <Reveal className={`flex flex-wrap items-center gap-2 type-eyebrow text-mist${centered ? " justify-center" : ""}`}>
               {crumb.map((c, i) => (
                 <span key={i} className="flex items-center gap-2">
                   {c.href ? (
@@ -36,24 +46,25 @@ export default function PageHero({ crumb, eyebrow, title, lede, meta, rightSlot 
               ))}
             </Reveal>
 
-            <Reveal delay={1} className="mt-7 flex items-center gap-3 type-eyebrow text-glow">
+            <Reveal delay={1} className={`mt-7 flex items-center gap-3 type-eyebrow text-glow${centered ? " w-full max-w-[640px] justify-center" : ""}`}>
+              {centered && <span aria-hidden className="h-px flex-1 bg-glow/30" />}
               <span aria-hidden className="h-2 w-2 rounded-full bg-glow pulse-dot" />
               <span>{eyebrow}</span>
               <span className="h-px flex-1 bg-glow/30" />
             </Reveal>
 
-            <Reveal delay={2} as="h1" className="mt-8 max-w-[18ch] type-h1">
+            <Reveal delay={2} as="h1" className={`mt-8 max-w-[18ch] type-h1${centered ? " mx-auto text-balance" : ""}`}>
               {title}
             </Reveal>
 
             {lede && (
-              <Reveal delay={3} className="mt-8 max-w-[60ch] type-lede text-chalk/80">
+              <Reveal delay={3} className={`mt-8 max-w-[60ch] type-lede text-chalk/80${centered ? " mx-auto text-pretty" : ""}`}>
                 {lede}
               </Reveal>
             )}
 
             {meta && (
-              <Reveal delay={4} className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-3 type-small text-mist">
+              <Reveal delay={4} className={`mt-10 flex flex-wrap items-center gap-x-3 gap-y-3 type-small text-mist${centered ? " justify-center" : ""}`}>
                 {meta}
               </Reveal>
             )}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_SCAN_BOT } from "../components/ContactRobot";
 import { Section, Bullets, Table, Prose, Callout, CtaBand } from "../components/content";
 
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function VerificationPage() {
         title={<>Proof, <span className="text-gradient">not promises</span>.</>}
         lede="Code that compiles is not code that works. Moderniza starts the new application for real and checks it from every side before it is released. And it is honest about the result: what was measured, how it was measured, and what was not."
         meta={<><span>5 layers of checks</span><span>·</span><span>6 exit gates</span><span>·</span><span>Up to 12 repair rounds</span></>}
-        rightSlot={<ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_SCAN_BOT ? <ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_SCAN_BOT}
       />
 
       <Section tone="light" id="planning" eyebrow="/ Layer 1 — Checks during planning" title={<>Nothing is dropped <span className="text-gradient-ink">before the build</span>.</>}>

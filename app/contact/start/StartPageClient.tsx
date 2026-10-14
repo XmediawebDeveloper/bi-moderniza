@@ -5,7 +5,7 @@ import PageHero from "../../components/PageHero";
 import Reveal from "../../components/Reveal";
 import MagneticButton from "../../components/MagneticButton";
 import CardIcon from "../../components/CardIcon";
-import ContactRobot from "../../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_CONTACT_BOT } from "../../components/ContactRobot";
 import type { StartPage } from "../../lib/strapi";
 
 type ContactForm = {
@@ -259,7 +259,8 @@ export default function StartPageClient({ data }: { data: StartPage | null }) {
             ))}
           </>
         }
-        rightSlot={<ContactRobot className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_CONTACT_BOT ? <ContactRobot className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_CONTACT_BOT}
       />
 
       <section className="relative bg-chalk text-ink">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_CONTACT_BOT } from "../components/ContactRobot";
 import { Section, Bullets, Cards, Prose, OwnerNote, CtaBand } from "../components/content";
 
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function AiGovernancePage() {
         title={<>AI you can stop, <span className="text-gradient">watch and limit</span>.</>}
         lede="Moderniza uses AI agents to do the heavy lifting. That only works if you stay in control of them. Every agent works inside fences, every call is recorded, and one switch stops them all."
         meta={<><span>Kill switch</span><span>·</span><span>Agent fence</span><span>·</span><span>Agent limits</span><span>·</span><span>AI ledger</span></>}
-        rightSlot={<ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_CONTACT_BOT ? <ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_CONTACT_BOT}
       />
 
       <Section tone="light" id="kill-switch" eyebrow="/ 01 — Stop all AI" title={<>One <span className="text-gradient-ink">switch</span>.</>}>

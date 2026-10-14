@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_CONTACT_BOT } from "../components/ContactRobot";
 import { Section, Bullets, Table, Prose, Callout, CtaBand } from "../components/content";
 
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function PricingTransparencyPage() {
         title={<>Know the cost <span className="text-gradient">before you spend it</span>.</>}
         lede="AI modernization should not be a blank cheque. Moderniza shows you an estimate before each phase, asks for your approval, and records every AI call so you can see exactly where the money went."
         meta={<><span>Budget gates</span><span>·</span><span>Tokenomics</span><span>·</span><span>Agent ledger</span></>}
-        rightSlot={<ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_CONTACT_BOT ? <ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_CONTACT_BOT}
       />
 
       <Section tone="light" id="budget-gates" eyebrow="/ 01 — Budget gates" title={<>Nothing past the gate starts <span className="text-gradient-ink">without your decision</span>.</>}>

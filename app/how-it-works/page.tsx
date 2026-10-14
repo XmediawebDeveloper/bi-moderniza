@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_SCAN_BOT } from "../components/ContactRobot";
 import Reveal from "../components/Reveal";
 import { Section, Bullets, Table, Cards, SubHead, Prose, CtaBand } from "../components/content";
 
@@ -28,7 +28,8 @@ export default function HowItWorksPage() {
         title={<>A process you can follow, <span className="text-gradient">check and control</span>.</>}
         lede="Moderniza follows the same five steps for every project. Each step has a clear output you can review. Each step is checked before the next one starts. And you decide when the next one starts."
         meta={<><span>5 steps</span><span>·</span><span>2 approval gates</span><span>·</span><span>1 hand-back loop</span></>}
-        rightSlot={<ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_SCAN_BOT ? <ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_SCAN_BOT}
       />
 
       {/* Process graphic */}

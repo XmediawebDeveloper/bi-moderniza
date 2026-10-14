@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_SCAN_BOT } from "../components/ContactRobot";
 import Reveal from "../components/Reveal";
 import CardIcon, { type IconKind } from "../components/CardIcon";
 import { Section, CtaBand } from "../components/content";
@@ -38,7 +38,8 @@ export default function SolutionsPage() {
         title={<>Modernization for your role <span className="text-gradient">and your platform</span>.</>}
         lede="The same five steps, the same gates and the same reports — applied to the risk you own and the platform you run."
         meta={<><span>By role</span><span>·</span><span>By legacy platform</span></>}
-        rightSlot={<ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_SCAN_BOT ? <ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_SCAN_BOT}
       />
 
       <Section tone="light" id="by-role" eyebrow="/ 01 — By role" title={<>For the people <span className="text-gradient-ink">who own the risk</span>.</>}>

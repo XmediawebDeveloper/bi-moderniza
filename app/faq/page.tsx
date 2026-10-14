@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_OTHER_BOTS } from "../components/ContactRobot";
 import Reveal from "../components/Reveal";
 import { Section, CtaBand } from "../components/content";
 
@@ -72,7 +72,8 @@ export default function FaqPage() {
         title={<>Frequently asked <span className="text-gradient">questions</span>.</>}
         lede="The questions buyers ask before a demo — about the product, the languages, the proof, the cost, and where the code goes."
         meta={<>{GROUPS.map((g, i) => (<span key={g.id}><a href={`#${g.id}`} className="hover:text-glow transition-colors">{g.title}</a>{i < GROUPS.length - 1 && <span> · </span>}</span>))}</>}
-        rightSlot={<ContactRobot variant="chat" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_OTHER_BOTS ? <ContactRobot variant="chat" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_OTHER_BOTS}
       />
 
       {GROUPS.map((g, gi) => (

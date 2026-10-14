@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_SCAN_BOT } from "../components/ContactRobot";
 import { Section, Bullets, Table, Prose, CtaBand } from "../components/content";
 
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function LanguagesPage() {
         title={<>What we modernize — <span className="text-gradient">and what we build</span>.</>}
         lede="We publish an honest support level for every language. Many vendors say “we support everything”. We tell you exactly how deep the support goes, so you can plan with confidence."
         meta={<><span>Full</span><span>·</span><span>Supported</span><span>·</span><span>Detected</span></>}
-        rightSlot={<ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_SCAN_BOT ? <ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_SCAN_BOT}
       />
 
       <Section tone="light" id="levels" eyebrow="/ 01 — Support levels explained" title={<>Three levels, <span className="text-gradient-ink">stated plainly</span>.</>}>

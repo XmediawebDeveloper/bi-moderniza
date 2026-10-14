@@ -61,7 +61,7 @@ const GENERAL_INFO: Spec[] = [
   { label: "Independent Assessor", value: "Kompleye" },
   { label: "Next Ongoing Certification Report", value: "TBD" },
   { label: "Company Address", value: "6550 Rock Spring Drive, Suite 600, Bethesda, MD 20817-1185" },
-  { label: "Product Website", value: ext("https://bimod.mo.vc") },
+  { label: "Product Website", value: ext("https://platform.gomoderniza.ai") },
   {
     label: "Product Logo",
     value: (
@@ -71,7 +71,7 @@ const GENERAL_INFO: Spec[] = [
           download="moderniza-logo.png"
           className="font-medium text-ink underline decoration-ember decoration-2 underline-offset-2 hover:text-ember break-all"
         >
-          https://bimod.mo.vc/moderniza-logo.png
+          https://platform.gomoderniza.ai/moderniza-logo.png
         </a>{" "}
         (PNG download)
       </>
@@ -527,7 +527,7 @@ export default function TrustCenterPage() {
             { h: "Public Information", b: <>This page is public and needs no account. It is updated whenever certification details change, and KSI results refresh every 6 hours.</> },
             { h: "Machine-Readable Data", b: <>The same data is available as JSON from the Trust Center API, for example {extDark("https://bimod.mo.vc/api/v1/trust-center/cso")} (package overview) and {extDark("https://bimod.mo.vc/api/v1/trust-center/certification")} (KSI results).</> },
             { h: "Full Certification Package", b: <>Federal agencies, assessors and other authorized parties can ask the Security Contact for the full package. Approved requesters receive a read-only account with the compliance:read permission, which unlocks per-measurement evidence and snapshot history on the same pages and API.</> },
-            { h: "Trust Center Navigation Instructions", b: <>The Moderniza Trust Center is the central place for security, privacy, compliance and FedRAMP 20x Class C information. Open it from the website’s Resources menu or at {extDark("https://bimod.mo.vc/trust-center")}. Restricted documents are shown in the list with a request link; they open after the request is verified.</> },
+            { h: "Trust Center Navigation Instructions", b: <>The Moderniza Trust Center is the central place for security, privacy, compliance and FedRAMP 20x Class C information. Open it from the website’s Resources menu or at {extDark("https://platform.gomoderniza.ai/api/v1/trust-center/package-overview")}. Restricted documents are shown in the list with a request link; they open after the request is verified.</> },
           ].map((item, i) => (
             <Reveal key={item.h} delay={((i % 4) + 1) as 1 | 2 | 3 | 4} className="rounded-3xl border border-white/10 bg-graphite/40 p-6 lift">
               <h4 className="text-lg font-semibold tracking-tight text-chalk">{item.h}</h4>

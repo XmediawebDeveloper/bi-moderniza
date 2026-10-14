@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_CONTACT_BOT } from "../components/ContactRobot";
 import { Section, Bullets, Table, Prose, CtaBand } from "../components/content";
 
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function DeploymentPage() {
         title={<>Run Moderniza where <span className="text-gradient">your code must stay</span>.</>}
         lede="Single-tenant SaaS, self-hosted, fully air-gapped, or with AI routed through AWS GovCloud — and a delivery that lands in the toolchain your team already runs."
         meta={<><span>SaaS</span><span>·</span><span>Self-hosted</span><span>·</span><span>Air-gapped</span><span>·</span><span>GovCloud AI</span></>}
-        rightSlot={<ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_CONTACT_BOT ? <ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_CONTACT_BOT}
       />
 
       <Section tone="light" id="where" eyebrow="/ Part A — Where Moderniza runs" title={<>Four ways to <span className="text-gradient-ink">run the platform</span>.</>}>

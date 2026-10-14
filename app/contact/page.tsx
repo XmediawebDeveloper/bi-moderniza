@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_CONTACT_BOT } from "../components/ContactRobot";
 import ContactForm from "./ContactForm";
 
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function ContactPage() {
         title={<>See Moderniza on <span className="text-gradient">your own code</span>.</>}
         lede="Tell us about your system. In the demo we scan a repository and walk you through the blueprint, the contract, the plan and the cost estimate."
         meta={<><span>We talk</span><span>·</span><span>We scan</span><span>·</span><span>You decide</span></>}
-        rightSlot={<ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_CONTACT_BOT ? <ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_CONTACT_BOT}
       />
       <ContactForm />
     </>

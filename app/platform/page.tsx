@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_SCAN_BOT } from "../components/ContactRobot";
 import { Section, Bullets, Cards, SubHead, Prose, CtaBand } from "../components/content";
 
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function PlatformPage() {
         title={<>One platform for the <span className="text-gradient">whole modernization</span>.</>}
         lede="Moderniza covers the full journey — from reading code nobody understands to running the new application in production. Features are grouped by the job they do."
         meta={<><span>Understand</span><span>·</span><span>Plan</span><span>·</span><span>Build</span><span>·</span><span>Verify</span><span>·</span><span>Deliver</span></>}
-        rightSlot={<ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_SCAN_BOT ? <ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_SCAN_BOT}
       />
 
       <Section tone="light" id="understand" eyebrow="/ 01 — Understand" title={<>Read the code <span className="text-gradient-ink">nobody understands</span>.</>}>

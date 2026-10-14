@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_OTHER_BOTS } from "../components/ContactRobot";
 import Reveal from "../components/Reveal";
 import Tilt from "../components/Tilt";
 import MagneticButton from "../components/MagneticButton";
@@ -151,7 +151,8 @@ export default async function WhatPage() {
             ))}
           </>
         }
-        rightSlot={<ContactRobot variant="blueprint" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_OTHER_BOTS ? <ContactRobot variant="blueprint" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_OTHER_BOTS}
       />
 
       {/* ============ Four steps ============ */}

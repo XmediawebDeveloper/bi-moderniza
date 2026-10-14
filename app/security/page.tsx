@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_CONTACT_BOT } from "../components/ContactRobot";
 import { Section, Bullets, Table, Prose, OwnerNote, CtaBand, Arrow } from "../components/content";
 import Reveal from "../components/Reveal";
 
@@ -19,7 +19,8 @@ export default function SecurityPage() {
         title={<>Security built in, <span className="text-gradient">not bolted on</span>.</>}
         lede="Your source code is one of your most sensitive assets. Moderniza is built to protect it — from the way people sign in to the way every build is scanned and signed."
         meta={<><span>Passkeys</span><span>·</span><span>Hash-chained audit</span><span>·</span><span>Signed builds</span><span>·</span><span>FedRAMP 20x readiness</span></>}
-        rightSlot={<ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_CONTACT_BOT ? <ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_CONTACT_BOT}
       />
 
       <Section tone="light" id="identity" eyebrow="/ 01 — Sign-in and identity" title={<>Phishing-resistant <span className="text-gradient-ink">by default</span>.</>}>

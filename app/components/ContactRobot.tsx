@@ -12,6 +12,38 @@
  * across variants — only the laptop's screen content and reactions change.
  */
 
+/**
+ * PINK_HEART_SCAN_BOT_VISIBILITY — Set SHOW_PINK_HEART_SCAN_BOT = true to restore this specific robot.
+ * RESTORE_PINK_HEART_SCAN_BOT: flipping this one flag brings the robot back on every page that
+ * used it (why, process/discover, platform, business-rules, languages, solutions, verification,
+ * how-it-works) and returns those heroes from the centered layout to the original two-column layout.
+ *
+ * Controls only the `variant="scan"` robot (HUD "UNIT · 06 / scan-bot").
+ * Pages render it as `SHOW_PINK_HEART_SCAN_BOT ? <ContactRobot variant="scan" … /> : undefined`
+ * so that, when hidden, PageHero drops its right-hand column entirely. All other
+ * variants are unaffected, and this component's code/styles stay intact.
+ */
+export const SHOW_PINK_HEART_SCAN_BOT = false;
+
+/**
+ * PINK_HEART_CONTACT_BOT_VISIBILITY — Set SHOW_PINK_HEART_CONTACT_BOT = true to restore this specific robot.
+ * RESTORE_PINK_HEART_CONTACT_BOT: flipping this one flag brings back the `variant="form"` robot
+ * (HUD "UNIT · 04 / contact-bot", also the default variant) on every page that used it (security,
+ * ai-governance, contact, contact/start, deployment, pricing-transparency) and returns those heroes
+ * from the centered layout to the original two-column layout. Other variants are unaffected.
+ */
+export const SHOW_PINK_HEART_CONTACT_BOT = false;
+
+/**
+ * PINK_HEART_OTHER_BOTS_VISIBILITY — Set SHOW_PINK_HEART_OTHER_BOTS = true to restore these robots.
+ * RESTORE_PINK_HEART_OTHER_BOTS: covers the remaining variants — chat ("UNIT · 05 / call-bot"),
+ * blueprint ("UNIT · 07 / plan-bot"), ship ("UNIT · 08 / ship-bot"), team ("UNIT · 09 / crew-bot")
+ * and shield ("UNIT · 10 / vault-bot") — on what, process/define, process/deliver, work/projects,
+ * work/outcomes, who, enterprises and faq. Flipping it to true restores them with their original
+ * two-column hero layout.
+ */
+export const SHOW_PINK_HEART_OTHER_BOTS = false;
+
 export type RobotVariant =
   | "form"      // contact/start — listening / form / confirmation
   | "chat"      // contact/call  — calendar / pick a slot / confirmed
@@ -105,6 +137,13 @@ export default function ContactRobot({
   variant?: RobotVariant;
   className?: string;
 }) {
+  // RESTORE_PINK_HEART_SCAN_BOT: central safety net — the scan variant renders nothing while hidden,
+  // even if a page forgets the SHOW_PINK_HEART_SCAN_BOT check. Other variants are unaffected.
+  if (variant === "scan" && !SHOW_PINK_HEART_SCAN_BOT) return null;
+  // RESTORE_PINK_HEART_CONTACT_BOT: same safety net for the contact-bot (form variant).
+  if (variant === "form" && !SHOW_PINK_HEART_CONTACT_BOT) return null;
+  // RESTORE_PINK_HEART_OTHER_BOTS: same safety net for every remaining variant.
+  if (variant !== "scan" && variant !== "form" && !SHOW_PINK_HEART_OTHER_BOTS) return null;
   const meta = VARIANT_META[variant];
   return (
     <div aria-hidden className={`cr-wrap ${className}`} role="img">

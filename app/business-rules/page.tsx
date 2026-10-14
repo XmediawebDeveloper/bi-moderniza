@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
-import ContactRobot from "../components/ContactRobot";
+import ContactRobot, { SHOW_PINK_HEART_SCAN_BOT } from "../components/ContactRobot";
 import { Section, Bullets, Prose, Callout, CtaBand } from "../components/content";
 
 export const metadata: Metadata = {
@@ -18,7 +18,8 @@ export default function BusinessRulesPage() {
         title={<>Every business rule, <span className="text-gradient">traced to its source line</span>.</>}
         lede="The biggest risk in any modernization is the rule nobody knew about. Moderniza finds rules with code first, uses AI only to explain them, and then checks every AI answer against the original source. Rules are not just documented — they are carried into the new code and proven."
         meta={<><span>Found by code</span><span>·</span><span>Explained by AI</span><span>·</span><span>Checked by code</span></>}
-        rightSlot={<ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" />}
+        rightSlot={SHOW_PINK_HEART_SCAN_BOT ? <ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
+        centered={!SHOW_PINK_HEART_SCAN_BOT}
       />
 
       <Section tone="light" id="found" eyebrow="/ Part 1 — How rules are found" title={<>Code finds them. AI explains them. <span className="text-gradient-ink">Code checks the AI.</span></>}>
