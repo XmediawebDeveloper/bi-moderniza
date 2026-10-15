@@ -525,9 +525,9 @@ export default function TrustCenterPage() {
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {[
             { h: "Public Information", b: <>This page is public and needs no account. It is updated whenever certification details change, and KSI results refresh every 6 hours.</> },
-            { h: "Machine-Readable Data", b: <>The same data is available as JSON from the Trust Center API, for example {extDark("https://bimod.mo.vc/api/v1/trust-center/cso")} (package overview) and {extDark("https://bimod.mo.vc/api/v1/trust-center/certification")} (KSI results).</> },
+            { h: "Machine-Readable Data", b: <>The same data is available as JSON from the Trust Center API, for example {extDark("https://platform.gomoderniza.ai/api/v1/trust-center/package-overview")} (package overview) and {extDark("https://bimod.mo.vc/api/v1/trust-center/certification")} (KSI results).</> },
             { h: "Full Certification Package", b: <>Federal agencies, assessors and other authorized parties can ask the Security Contact for the full package. Approved requesters receive a read-only account with the compliance:read permission, which unlocks per-measurement evidence and snapshot history on the same pages and API.</> },
-            { h: "Trust Center Navigation Instructions", b: <>The Moderniza Trust Center is the central place for security, privacy, compliance and FedRAMP 20x Class C information. Open it from the website’s Resources menu or at {extDark("https://platform.gomoderniza.ai/api/v1/trust-center/package-overview")}. Restricted documents are shown in the list with a request link; they open after the request is verified.</> },
+            { h: "Trust Center Navigation Instructions", b: <>The Moderniza Trust Center is the central place for security, privacy, compliance and FedRAMP 20x Class C information. Open it from the website’s Resources menu or at {extDark("https://bimod.mo.vc/api/v1/trust-center/cso")}. Restricted documents are shown in the list with a request link; they open after the request is verified.</> },
           ].map((item, i) => (
             <Reveal key={item.h} delay={((i % 4) + 1) as 1 | 2 | 3 | 4} className="rounded-3xl border border-white/10 bg-graphite/40 p-6 lift">
               <h4 className="text-lg font-semibold tracking-tight text-chalk">{item.h}</h4>
