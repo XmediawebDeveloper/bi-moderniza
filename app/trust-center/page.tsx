@@ -45,7 +45,7 @@ const extDark = (href: string, text = href) => (
 const GENERAL_INFO: Spec[] = [
   { label: "Provider", value: "Business Integra Technology Solutions, Inc." },
   { label: "Cloud Service Offering", value: "Moderniza (acronym MODZ)" },
-  { label: "FedRAMP ID", value: "Pending assignment (package ID used today: “Business Integra Technology Solutions, Inc. MODZ”)" },
+  { label: "FedRAMP ID", value: "FR2701557044" },
   { label: "Certification Type", value: "FedRAMP 20x Class C Target" },
   { label: "Authorization Path", value: "FedRAMP Program (20x) — confirm before publishing" },
   { label: "Service Model", value: "Software as a Service (SaaS)" },
