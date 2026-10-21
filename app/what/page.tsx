@@ -28,9 +28,7 @@ const HERO_FALLBACK = {
   hero_title: "Four steps. One new app.",
   hero_lede: "We take the software you've been putting off rebuilding and turn it into a modern app — without the multi-year project. Same features. Same business rules. Faster, cheaper to run, and easy to keep changing.",
   hero_meta: [
-    { id: 0, text: "Most projects take 1 to 12 weeks" },
-    { id: 0, text: "Behaves like the original" },
-    { id: 0, text: "Works on day one" },
+    { id: 0, text: "Old vs new compared by category" },
   ],
 };
 
@@ -62,11 +60,11 @@ const STEPS_FALLBACK = [
   {
     no: "03",
     title: "Test",
-    sub: "We prove the new one matches.",
+    sub: "We compare the new one with the old.",
     icon_kind: "verify",
     items: [
       { id: 1, text: "We compare the new app to the old one, side by side." },
-      { id: 2, text: "If anything behaves differently, we fix it before you see it." },
+      { id: 2, text: "Old vs new is compared by category; anything unmeasured is shown as unmeasured." },
       { id: 3, text: "We re-run the same checks until it all lines up." },
       { id: 4, text: "Old security holes don't get carried over." },
     ],
@@ -92,29 +90,16 @@ const QUESTIONS_FALLBACK = [
   { question: "What about our team?", answer: "Your team stays in charge. We hand over the new app fully — code, documents, instructions — so anyone can pick it up later." },
 ];
 
-const COMPARISON_FALLBACK = [
-  {
-    label: "Hand-rebuild",
-    is_ours: false,
-    metric_1_label: "Time", metric_1_value: "Months", metric_1_weight: 92,
-    metric_2_label: "Works on day one", metric_2_value: "About half", metric_2_weight: 50,
-    metric_3_label: "Behaves like original", metric_3_value: "Roughly", metric_3_weight: 65,
-  },
-  {
-    label: "Other AI tools",
-    is_ours: false,
-    metric_1_label: "Time", metric_1_value: "Hours", metric_1_weight: 32,
-    metric_2_label: "Works on day one", metric_2_value: "Most of the time", metric_2_weight: 60,
-    metric_3_label: "Behaves like original", metric_3_value: "Often not", metric_3_weight: 55,
-  },
-  {
-    label: "Moderniza",
-    is_ours: true,
-    metric_1_label: "Time", metric_1_value: "Days to weeks", metric_1_weight: 14,
-    metric_2_label: "Works on day one", metric_2_value: "Almost always", metric_2_weight: 98,
-    metric_3_label: "Behaves like original", metric_3_value: "Proven", metric_3_weight: 95,
-  },
-];
+type Comparison = {
+  label: string;
+  is_ours: boolean;
+  metric_1_label: string; metric_1_value: string; metric_1_weight: number;
+  metric_2_label: string; metric_2_value: string; metric_2_weight: number;
+  metric_3_label: string; metric_3_value: string; metric_3_weight: number;
+};
+
+// Unmeasured comparisons removed (v2.0 Do NOT claim: no numbers until measured).
+const COMPARISON_FALLBACK: Comparison[] = [];
 
 const CTA_FALLBACK = {
   headline: "See it on your app.",
@@ -235,6 +220,7 @@ export default async function WhatPage() {
       </section>
 
       {/* ============ Comparison ============ */}
+      {comparison.length > 0 && (
       <section className="relative bg-chalk text-ink">
         <div className="absolute inset-0 bg-grid-soft opacity-60" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
@@ -279,6 +265,7 @@ export default async function WhatPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ============ CTA ============ */}
       <section className="relative bg-ink overflow-hidden">

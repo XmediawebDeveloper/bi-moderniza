@@ -37,6 +37,7 @@ export default function DeploymentPage() {
           { title: "Kubernetes —", body: "local clusters (kind, k3d, minikube) or your registry, with rollout and a measured reachability check." },
           { title: "AWS and Azure delivery —", body: "Jenkinsfile and Kubernetes manifests for AWS ECR/EKS and Azure ACR/AKS." },
           { title: "Your Git —", body: "the full delivery is pushed to your repository." },
+          { title: "Clean removal —", body: "deleting a project removes its app containers, volumes, images and databases too." },
         ]} />
       </Section>
 
@@ -51,6 +52,8 @@ export default function DeploymentPage() {
           ["Slack", "Review notifications by webhook"],
           ["AWS / Azure", "Container registry and Kubernetes delivery manifests"],
           ["OpenID Connect IdPs", "Okta, Entra ID, Keycloak, Login.gov for single sign-on"],
+          ["Wazuh", "Second SIEM — every event is sent to Splunk and Wazuh"],
+          ["Prometheus · Grafana · Uptime Kuma", "Metrics history, dashboards, alert rules and uptime checks behind the Monitoring page"],
         ]} />
         <Prose tone="light">
           <p>GitLab, Jenkins, SonarQube, Sentry, Splunk and Syft each have a live connection test inside the product.</p>

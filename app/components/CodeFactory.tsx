@@ -52,7 +52,7 @@ export default function CodeFactory({ className = "" }: { className?: string }) 
 
         <p className="mt-6 max-w-[60ch] text-lg text-chalk/75 leading-relaxed">
           Every project rides the same line. Files enter on the left, get scanned, rewritten and verified
-          by three stations, and roll off the other end as production-ready code.
+          by three stations, and roll off the other end as a running application, started and tested.
         </p>
 
         {/* THE FACTORY SVG */}
@@ -364,13 +364,13 @@ export default function CodeFactory({ className = "" }: { className?: string }) 
                 ● ONLINE
               </text>
               <text x="100" y="0" fill="#f5f1ea" fontFamily="var(--font-geist-mono), monospace" fontSize="11" letterSpacing="1.5" opacity="0.7">
-                throughput · 312 fns / min
+                steps · 5
               </text>
               <text x="380" y="0" fill="#f5f1ea" fontFamily="var(--font-geist-mono), monospace" fontSize="11" letterSpacing="1.5" opacity="0.7">
                 drift · 0
               </text>
               <text x="500" y="0" fill="#22d3ee" fontFamily="var(--font-geist-mono), monospace" fontSize="11" letterSpacing="1.5">
-                verified · 100%
+                gates · 6
               </text>
             </g>
           </svg>
@@ -391,7 +391,7 @@ export default function CodeFactory({ className = "" }: { className?: string }) 
           <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
             <div className="text-[10px] uppercase tracking-[0.22em] text-glow font-mono">Station 03</div>
             <div className="mt-2 font-semibold text-chalk">Verify</div>
-            <p className="mt-1 text-chalk/65">A stamping arm signs off only when behaviour matches the original — no exceptions.</p>
+            <p className="mt-1 text-chalk/65">Code leaves the line only after it passes six gates; old vs new is compared by business category.</p>
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function VerificationPage() {
         eyebrow="/ Verification & quality"
         title={<>Proof, <span className="text-gradient">not promises</span>.</>}
         lede="Code that compiles is not code that works. Moderniza starts the new application for real and checks it from every side before it is released. And it is honest about the result: what was measured, how it was measured, and what was not."
-        meta={<><span>5 layers of checks</span><span>·</span><span>6 exit gates</span><span>·</span><span>Up to 12 repair rounds</span></>}
+        meta={<><span>5 layers of checks</span><span>·</span><span>6 exit gates</span><span>·</span><span>2 repair rounds by default</span></>}
         rightSlot={SHOW_PINK_HEART_SCAN_BOT ? <ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
         centered={!SHOW_PINK_HEART_SCAN_BOT}
       />
@@ -42,7 +42,7 @@ export default function VerificationPage() {
           ["6", "Generated tests", "The app’s own tests pass against the live stack"],
         ]} />
         <Prose>
-          <p>A deploy-parity gate is added when it can be measured. Failed gates are diagnosed and repaired automatically — up to 12 rounds, scaled to project size. The loop stops early when repairs stop making progress, and reports why.</p>
+          <p>A deploy-parity gate is added when it can be measured. Failed gates are diagnosed and repaired automatically for a set number of rounds (two by default). The loop stops early when repairs stop making progress, and reports why. When the code has not changed, a held result is reused instead of measured again.</p>
         </Prose>
       </Section>
 
@@ -54,7 +54,12 @@ export default function VerificationPage() {
           { body: "Mutation testing to prove the tests catch real bugs" },
           { body: "Traffic replay to compare behaviour" },
           { body: "Runtime smoke checks" },
-          { body: "Business-rule tests in Given/When/Then form" },
+          { body: "Business-rule tests in Given/When/Then form, each rule shown as proven, failed or not run" },
+          { title: "Every data screen works —", body: "has its API, is written, and calls the app" },
+          { title: "Database checks —", body: "every table found, the schema built from the app’s own models, defects reported by name" },
+          { title: "Nothing ran is not a pass —", body: "empty or fully skipped suites are reported" },
+          { title: "Mutation score —", body: "how many deliberate bugs the tests caught (report only)" },
+          { title: "Source unchanged —", body: "the original source fingerprint checked again" },
         ]} />
         <Prose tone="light"><p>Run & Fix repairs problems against the live stack. Findings that belong to an earlier step are handed back and tracked until closed.</p></Prose>
       </Section>

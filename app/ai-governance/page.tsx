@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PageHero from "../components/PageHero";
 import ContactRobot, { SHOW_PINK_HEART_CONTACT_BOT } from "../components/ContactRobot";
-import { Section, Bullets, Cards, Prose, OwnerNote, CtaBand } from "../components/content";
+import { Section, Bullets, Cards, Prose, CtaBand } from "../components/content";
 
 export const metadata: Metadata = {
   title: { absolute: "Responsible AI Governance for Code Modernization — Moderniza" },
@@ -56,18 +56,26 @@ export default function AiGovernancePage() {
         ]} />
       </Section>
 
-      <Section tone="light" id="ledger" eyebrow="/ 05 — Every call recorded" title={<>Project, stage, agent, model, <span className="text-gradient-ink">tokens and cost</span>.</>}>
-        <Prose tone="light">
+      <Section tone="light" id="stop" eyebrow="/ 05 — Agents that stop when you say stop" title={<>Stop means <span className="text-gradient-ink">stop</span>.</>}>
+        <Bullets tone="light" items={[
+          { title: "Pause stops everything —", body: "agents, builds and tests of the paused step stop within seconds." },
+          { title: "Usage limits handled honestly —", body: "when the AI account reaches its limit, the run parks and restarts after the reset instead of failing call after call." },
+          { title: "Judged by progress —", body: "a fix agent keeps working while it makes progress and is stopped when it goes silent; every other agent has a fixed time limit." },
+          { title: "Your source is sealed —", body: "a fingerprint of the original source is checked in Testing and before Deploy." },
+        ]} />
+      </Section>
+
+      <Section tone="dark" id="ledger" eyebrow="/ 06 — Every call recorded" title={<>Project, stage, agent, model, <span className="text-gradient">tokens and cost</span>.</>}>
+        <Prose>
           <p>Every AI call is logged with project, stage, agent, model, tokens and cost. Review it in the agent ledger, model usage and agent board pages.</p>
         </Prose>
       </Section>
 
-      <Section tone="dark" id="ai-route" eyebrow="/ 06 — Choice of AI route" title={<>Choose where <span className="text-gradient">AI traffic goes</span>.</>}>
-        <Cards cols={2} items={[
+      <Section tone="light" id="ai-route" eyebrow="/ 07 — Choice of AI route" title={<>Choose where <span className="text-gradient-ink">AI traffic goes</span>.</>}>
+        <Cards tone="light" cols={2} items={[
           { title: "Anthropic Claude", body: "The default for every step.", icon: "bolt" },
           { title: "AWS Bedrock in GovCloud", body: "For teams that need AI traffic to stay inside a government cloud boundary.", icon: "cloud" },
         ]} />
-        <OwnerNote>Whether customer code is used to train AI models is governed by our AI provider agreement. Ask us for the current statement.</OwnerNote>
       </Section>
 
       <CtaBand />

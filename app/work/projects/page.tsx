@@ -19,110 +19,32 @@ const PROJECT_ICONS: IconKind[] = ["umbrella", "bank", "heart", "rocket", "flag"
 
 export const metadata: Metadata = {
   title: "Projects — Moderniza",
-  description: "Real projects, real businesses, real results. Six examples of old apps we've turned into new ones.",
+  description: "Moderniza project stories, published only with the customer's written permission.",
 };
 
 const HERO_FALLBACK = {
   hero_eyebrow: "/ Selected work",
-  hero_title: "Six old apps. Six fresh starts.",
-  hero_lede: "Real projects, real businesses, real results. Some names are anonymised on request — but every story is one we can walk you through, line by line, on a call.",
-  hero_meta: [
-    { id: 0, text: "200+ projects so far" },
-    { id: 0, text: "Zero abandoned" },
-    { id: 0, text: "References on request" },
-  ],
+  hero_title: "Project stories, with permission.",
+  hero_lede: "Project stories appear here only with the customer's written permission.",
+  hero_meta: [] as { id: number; text: string }[],
 };
 
-const PROJECTS_FALLBACK = [
-  {
-    no: "01",
-    sector: "Insurance",
-    company: "Northhold Mutual",
-    pitch: "A 14-year-old policy app, fully renewed.",
-    body: "Their main system felt slow, looked tired, and was getting harder to change every year. We rebuilt the whole thing in seven weeks. Same features, same calculations — but pages now load instantly, and small changes ship in hours instead of months.",
-    icon_kind: "umbrella",
-    metrics: [
-      { label: "Pages renewed", value: "All" },
-      { label: "Time", value: "7 weeks" },
-      { label: "Behaves the same", value: "96%" },
-      { label: "Hosting cost", value: "−42%" },
-    ],
-  },
-  {
-    no: "02",
-    sector: "Banking",
-    company: "Helio Trust Co.",
-    pitch: "Overnight processing cut from 4½ hours to 38 minutes.",
-    body: "Their nightly run, originally written in the nineties, was the team's biggest worry. We moved it to modern infrastructure and made every step visible. They get the same answers as before — they just get them before breakfast instead of after.",
-    icon_kind: "bank",
-    metrics: [
-      { label: "Run time", value: "−86%" },
-      { label: "Errors", value: "0" },
-      { label: "Replayed history", value: "3 years" },
-      { label: "Team alerts", value: "−72%" },
-    ],
-  },
-  {
-    no: "03",
-    sector: "Healthcare",
-    company: "Vesper Diagnostics",
-    pitch: "A patient portal, made fast and modern.",
-    body: "Patients were frustrated by slow page loads and the staff were tired of bug reports. We modernised the whole experience while keeping the underlying records system untouched — so the rebuild felt like a refresh, not a transplant.",
-    icon_kind: "heart",
-    metrics: [
-      { label: "Pages", value: "412" },
-      { label: "Time", value: "5 weeks" },
-      { label: "Page speed", value: "+61%" },
-      { label: "Audit ready", value: "Yes" },
-    ],
-  },
-  {
-    no: "04",
-    sector: "Logistics",
-    company: "Cargonaut",
-    pitch: "Their freight app, rebuilt without a single hour of downtime.",
-    body: "We ran the new app alongside the old one for four weeks, comparing every result, before flipping the switch. The team didn't notice the moment of cutover — they only noticed everything was suddenly faster.",
-    icon_kind: "rocket",
-    metrics: [
-      { label: "Time", value: "9 weeks" },
-      { label: "Downtime", value: "0 minutes" },
-      { label: "Speed", value: "+54%" },
-      { label: "Side-by-side run", value: "4 weeks" },
-    ],
-  },
-  {
-    no: "05",
-    sector: "Public sector",
-    company: "City of Roeder",
-    pitch: "A 22-year-old desktop tool, modernised into a website.",
-    body: "Council staff used to install software on every PC and queue for IT to update it. Now everything runs in a browser. We kept the existing forms exactly as they were — staff opened the new app on day one and just got on with their work.",
-    icon_kind: "flag",
-    metrics: [
-      { label: "Forms", value: "147" },
-      { label: "Staff using it", value: "380" },
-      { label: "Time", value: "6 weeks" },
-      { label: "Training needed", value: "30 min" },
-    ],
-  },
-  {
-    no: "06",
-    sector: "Retail",
-    company: "Halver & Sons",
-    pitch: "1,400 store tills, refreshed without losing a single sale.",
-    body: "Their checkout software hadn't been updated in nineteen years. We rebuilt the till experience and the back-office, keeping the printers, scanners and card machines working exactly as they always did — but everything else feels brand new.",
-    icon_kind: "cart",
-    metrics: [
-      { label: "Stores", value: "1.4k" },
-      { label: "Time", value: "11 weeks" },
-      { label: "Crashes", value: "−78%" },
-      { label: "Sales / hour", value: "+3.4×" },
-    ],
-  },
-];
+type Project = {
+  no: string;
+  sector: string;
+  company: string;
+  pitch: string;
+  body: string;
+  icon_kind?: string;
+  metrics: { label: string; value: string }[];
+};
+
+// Customer stories appear only with the customer's written permission (v2.0 Do NOT claim).
+const PROJECTS_FALLBACK: Project[] = [];
 
 const CTA_FALLBACK = {
   headline: "More on request. Quietly.",
-  body: "We can share three more recent projects under a quiet handshake — including one in a sector we don't list publicly. Ask, and we'll talk you through it.",
+  body: "Ask, and we'll talk you through it.",
   primary_label: "Start a project",
   primary_url: "/contact/start",
   secondary_label: "See the numbers",
@@ -160,6 +82,7 @@ export default async function ProjectsPage() {
       />
 
       {/* ============ Project grid ============ */}
+      {projects.length > 0 && (
       <section className="relative bg-chalk text-ink">
         <div className="absolute inset-0 bg-grid-soft opacity-60" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
@@ -204,6 +127,7 @@ export default async function ProjectsPage() {
           </ul>
         </div>
       </section>
+      )}
 
       {/* ============ More on request ============ */}
       <section className="relative bg-ink overflow-hidden">

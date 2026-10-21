@@ -33,25 +33,16 @@ const HERO_FALLBACK = {
   hero_title: "Built for organisations that can't afford a bad week.",
   hero_lede: "When the app at risk is the one your customers, regulators, and board actually depend on, you need a partner you can hand to legal, security, and procurement without a single follow-up email. That's how we're built.",
   hero_meta: [
-    { id: 0, text: "Used by listed and regulated firms" },
-    { id: 0, text: "SOC 2 · ISO 27001" },
     { id: 0, text: "NDAs welcome" },
   ],
 };
 
-const TRUSTED_BY_FALLBACK = [
-  { id: 0, text: "Top-10 European Bank" },
-  { id: 0, text: "Global Health Insurer" },
-  { id: 0, text: "Fortune 500 Retailer" },
-  { id: 0, text: "National Public Body" },
-  { id: 0, text: "Listed Logistics Group" },
-  { id: 0, text: "Tier-1 Wealth Manager" },
-];
+const TRUSTED_BY_FALLBACK: { id: number; text: string }[] = [];
 
 const INDUSTRIES_FALLBACK = [
   { no: "01", title: "Banking &amp; finance", body: "Core platforms, settlement systems, customer portals — modernised in pieces, never in one terrifying release.", icon_kind: "bank", tag: "Regulated" },
   { no: "02", title: "Insurance", body: "Policy admin, claims, underwriting tools. We rebuild without losing a single calculation rule.", icon_kind: "umbrella", tag: "Audited" },
-  { no: "03", title: "Healthcare", body: "Patient portals, clinic systems, internal admin tools. Privacy and audit trails baked in from day one.", icon_kind: "heart", tag: "HIPAA-ready" },
+  { no: "03", title: "Healthcare", body: "Patient portals, clinic systems, internal admin tools. Privacy and audit trails baked in from day one.", icon_kind: "heart" },
   { no: "04", title: "Public sector", body: "Government and council services that need to be steady, accessible and easy to support for years.", icon_kind: "flag", tag: "Accessibility" },
   { no: "05", title: "Retail &amp; logistics", body: "Tills, warehouses, freight tools. We modernise without dropping a single transaction or shipment.", icon_kind: "cart", tag: "Zero downtime" },
   { no: "06", title: "Energy &amp; utilities", body: "Field-service tools, customer billing, dispatch systems. Built for people who can't afford a bad Monday.", icon_kind: "bolt", tag: "Mission-critical" },
@@ -68,19 +59,9 @@ const SECURITY_FALLBACK = [
   { title: "Your code stays yours", body: "We don't keep your code, train on it, or share it. When the project ends, our copies are deleted with proof.", icon_kind: "shield" },
   { title: "Encryption end-to-end", body: "In transit, at rest, in our backups. Industry-standard, audited, and renewed every quarter.", icon_kind: "shield" },
   { title: "Access on a need basis", body: "Only the people working on your project can see your code. Each access is logged with who, when, and why.", icon_kind: "person" },
-  { title: "Annual penetration tests", body: "An independent firm tests our service every year. The report is available to your security team on request.", icon_kind: "verify" },
-  { title: "Incident response in 4 hours", body: "If anything looks wrong, you hear from a named person within four hours. In writing, with what we know and what we're doing.", icon_kind: "bolt" },
-  { title: "Data stays in your region", body: "Hosted in your chosen region — Europe, the United States, the UK, or Australia. Your data doesn't leave it without your sign-off.", icon_kind: "cloud" },
 ];
 
-const COMPLIANCE_FALLBACK = [
-  { id: 0, text: "SOC 2 Type II — Annual" },
-  { id: 0, text: "ISO 27001 — Certified" },
-  { id: 0, text: "GDPR — By default" },
-  { id: 0, text: "HIPAA — On request" },
-  { id: 0, text: "DORA-ready — Financial sector" },
-  { id: 0, text: "WCAG 2.2 — Public sector" },
-];
+const COMPLIANCE_FALLBACK: { id: number; text: string }[] = [];
 
 const ENGAGEMENT_FALLBACK = [
   { no: "01", title: "Initial conversation", body: "A 30-minute call with no obligation. We understand what you need; you understand whether we're a fit.", icon_kind: "pulse" },
@@ -91,18 +72,9 @@ const ENGAGEMENT_FALLBACK = [
   { no: "06", title: "Steady delivery", body: "Weekly steering note, monthly steering call, quarterly business review. The level of formality your governance expects.", icon_kind: "cycle" },
 ];
 
-const COMMITMENTS_FALLBACK = [
-  { value: "4 hr", label: "Maximum response time during business hours" },
-  { value: "99.9%", label: "Uptime guarantee on hosted services" },
-  { value: "30 days", label: "From contract signature to first delivered milestone" },
-  { value: "0", label: "Cancelled enterprise projects, ever" },
-];
+const COMMITMENTS_FALLBACK: { value: string; label: string }[] = [];
 
-const TESTIMONIAL_FALLBACK = {
-  quote: "We brought Moderniza in because three big names had failed before them. They were live with a working preview before our security review even finished. That's not normal.",
-  attribution_role: "Group CTO",
-  attribution_sector: "Top-10 European Bank",
-};
+const TESTIMONIAL_FALLBACK = null;
 
 const CTA_FALLBACK = {
   headline: "Ready when your procurement is.",
@@ -153,6 +125,7 @@ export default async function EnterprisesPage() {
       />
 
       {/* ============ TRUSTED BY ============ */}
+      {trustedBy.length > 0 && (
       <section className="relative bg-chalk text-ink border-b border-ink/10">
         <div className="absolute inset-0 bg-grid-soft opacity-50" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-14 md:py-16">
@@ -171,6 +144,7 @@ export default async function EnterprisesPage() {
           </Reveal>
         </div>
       </section>
+      )}
 
       {/* ============ 02 — INDUSTRIES ============ */}
       <section id="industries" className="relative bg-ink scroll-mt-20">
@@ -273,7 +247,7 @@ export default async function EnterprisesPage() {
             <span className="h-px flex-1 bg-glow/30" />
           </Reveal>
           <Reveal delay={1} as="h2" className="mt-8 max-w-3xl text-4xl md:text-6xl font-semibold leading-[1.02] tracking-[-0.02em]">
-            Six promises <span className="text-gradient">we keep in writing</span>.
+            Promises <span className="text-gradient">we keep in writing</span>.
           </Reveal>
 
           <div className="mt-14 grid gap-px md:grid-cols-2 lg:grid-cols-3 bg-white/10 border border-white/10 rounded-3xl overflow-hidden">
@@ -297,6 +271,7 @@ export default async function EnterprisesPage() {
       </section>
 
       {/* ============ 05 — COMPLIANCE BADGES ============ */}
+      {compliance.length > 0 && (
       <section className="relative bg-bone text-ink border-y border-ink/10">
         <div className="absolute inset-0 bg-grid-soft opacity-50" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-20 md:py-24">
@@ -327,6 +302,7 @@ export default async function EnterprisesPage() {
           </Reveal>
         </div>
       </section>
+      )}
 
       {/* ============ 06 — HOW TO ENGAGE ============ */}
       <section id="engage" className="relative bg-ink scroll-mt-20">
@@ -368,6 +344,7 @@ export default async function EnterprisesPage() {
       </section>
 
       {/* ============ 07 — COMMITMENTS NUMBERS ============ */}
+      {commitments.length > 0 && (
       <section className="relative bg-ink border-y border-white/5">
         <div className="mx-auto max-w-[1400px] px-5 md:px-8 py-20 grid gap-10 md:grid-cols-4 text-center md:text-left">
           {commitments.map((m, i) => {
@@ -384,8 +361,10 @@ export default async function EnterprisesPage() {
           })}
         </div>
       </section>
+      )}
 
       {/* ============ 08 — TESTIMONIAL ============ */}
+      {testimonial && (
       <section className="relative bg-chalk text-ink">
         <div className="absolute inset-0 bg-grid-soft opacity-60" />
         <div className="pointer-events-none absolute -top-20 left-1/3 h-[260px] w-[460px] rounded-full bg-ember/15 blur-3xl float-y" />
@@ -403,6 +382,7 @@ export default async function EnterprisesPage() {
           </Reveal>
         </div>
       </section>
+      )}
 
       {/* ============ 09 — CTA ============ */}
       <section className="relative bg-ink overflow-hidden">

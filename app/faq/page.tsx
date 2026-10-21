@@ -20,7 +20,10 @@ const GROUPS: { id: string; title: string; items: QA[] }[] = [
       { q: "What is Moderniza?", a: "An AI-powered platform that turns legacy applications into modern, running applications. It scans your code, explains it in plain words, freezes a plan, builds the new app with parallel AI agents, tests it live and deploys it — tracing every business rule along the way." },
       { q: "What does a modernization deliver?", a: "A running application; its source code in your Git repository; a Jenkinsfile and Kubernetes manifests; a blueprint of the old system; a frozen contract with OpenAPI and DDL; a business-rules document; an equivalence report; a code report; batch job documentation; and a ledger of every AI call." },
       { q: "Is this just a code translator?", a: "No. A translator converts files one by one. Moderniza first understands the whole application, freezes a contract, builds against it, and proves the result runs. Translation is only one part of the job." },
-      { q: "Can I modernize only my CI/CD pipeline?", a: "Yes. Pipeline modernization keeps your code and builds a modern pipeline for it in four steps: Read, Choose, Write & check, Push & run." },
+      { q: "Can I modernize only my CI/CD pipeline?", a: "Yes. Choose Pipeline conversion at upload. Your code stays exactly as it is; your existing pipeline (for example Jenkins or Azure Pipelines) is rewritten for a new provider such as GitLab CI or GitHub Actions, checked, pushed to a new project on your GitLab and run." },
+      { q: "Do I get user stories and a backlog?", a: "Yes. The Blueprint step builds epics for each business area and a user story for every screen, with Given/When/Then acceptance criteria, priority and roles. Your team can edit, add, link and rewrite them, and every story is carried into the contract." },
+      { q: "Which CI/CD tools do you support?", a: "We write pipelines for GitHub Actions, GitLab CI, Jenkins, Azure DevOps, Gitea Actions and Forgejo Actions. We can read pipelines from those plus CircleCI, Bitbucket Pipelines and AWS CodeBuild." },
+      { q: "Can I add security scanning to the pipeline?", a: "Yes. DevSecOps and MLOps pipelines offer 16 security scan areas — such as code, secrets, dependencies, containers, infrastructure and web — each with a choice of tool." },
     ],
   },
   {
@@ -37,7 +40,7 @@ const GROUPS: { id: string; title: string; items: QA[] }[] = [
     title: "Quality and trust",
     items: [
       { q: "How do I know no business rules were lost?", a: "Every rule is found by code, explained by AI, and checked against the original source. Each rule gets one owner in the new code and a proof status. Priority rules become tests. The equivalence report shows old vs new and marks what was not measured." },
-      { q: "What if the generated code does not work?", a: "It cannot leave the build step until it passes six gates, including a real Docker start, API checks and live tests. Failures are repaired automatically, up to 12 rounds. If a problem cannot be fixed, the platform says so." },
+      { q: "What if the generated code does not work?", a: "It cannot leave the build step until it passes six gates, including a real Docker start, API checks and live tests. Failures are repaired automatically for a set number of rounds. If a problem cannot be fixed, the platform says so." },
       { q: "Do humans stay involved?", a: "Yes. You approve the planning budget, choose the stack, set the delivery pipeline and set the build budget. You can edit the backlog, run each step by hand, and pause at any time." },
     ],
   },
@@ -45,9 +48,11 @@ const GROUPS: { id: string; title: string; items: QA[] }[] = [
     id: "cost",
     title: "Cost and time",
     items: [
-      { q: "How much does it cost?", a: "Contact us for our commercial model. The platform shows an estimate before each phase and records actual spend per call." },
+      { q: "How much does it cost?", a: "The platform shows an estimate before each phase and records actual spend per call." },
       { q: "How long does a project take?", a: "It depends on the size and complexity of your code. We scan it first and give you a plan and estimate before anything is built." },
-      { q: "Can I pause a project?", a: "Yes. Pause stops the agents at once. Resume continues from where it stopped." },
+      { q: "Can I pause a project?", a: "Yes. Pause stops every running part of the step within seconds. Resume continues from where it stopped." },
+      { q: "Will the new app keep our screen names and menu?", a: "Yes. The Repo Scan reads every screen’s real name, the old menu and the roles, the contract carries them, and the new app’s menu is built from them." },
+      { q: "Who can do what on the platform?", a: "Engineers run conversions; Super Admins manage accounts, switches and approvals and never run conversions. Super Admin power needs a passkey and runs out on its own. Any page or step can be switched off per role or person." },
     ],
   },
   {
@@ -58,7 +63,9 @@ const GROUPS: { id: string; title: string; items: QA[] }[] = [
       { q: "Which AI models do you use?", a: "Anthropic Claude models, directly or through AWS Bedrock in GovCloud." },
       { q: "Is my code used to train AI models?", a: "This is governed by our AI provider agreement. Ask us for the current statement." },
       { q: "Can admins stop the AI?", a: "Yes. One switch halts every AI call across the platform. It needs a fresh passkey and every change is audited." },
-      { q: "Are you FedRAMP authorized?", a: "Moderniza tracks the FedRAMP 20x Key Security Indicators with automated checks and publishes its posture in a Trust Center. Authorization is in progress; the FedRAMP ID is pending today." },
+      { q: "Are you FedRAMP authorized?", a: "Moderniza measures all 46 FedRAMP 20x Key Security Indicators on its live platform every six hours, keeps the proof, and publishes its posture in a Trust Center." },
+      { q: "Can an assessor check your evidence?", a: "Yes. Each snapshot comes with plain-English proof, a proof PDF, JSON files and an evidence package with a verifier the assessor runs, backed by hash-chained ledgers. CIS scans have their own evidence package." },
+      { q: "How do you monitor the platform?", a: "A live Monitoring page backed by Prometheus, Grafana and Uptime Kuma, alert mails, and two SIEMs (Splunk and Wazuh) for logs and change monitoring." },
     ],
   },
 ];

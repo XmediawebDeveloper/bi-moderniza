@@ -123,8 +123,8 @@ const VARIANT_META: Record<RobotVariant, {
     foot: "moderniza · enterprise-ready",
     bubbles: [
       { txt: "Locked 🔒",     delay: "0s" },
-      { txt: "SOC-2 ✓",       delay: "3s" },
-      { txt: "ISO 27001 ✓",   delay: "6s" },
+      { txt: "Passkeys ✓",    delay: "3s" },
+      { txt: "Audit log ✓",   delay: "6s" },
       { txt: "All green",     delay: "9s" },
     ],
   },
@@ -659,7 +659,7 @@ function BlueprintSlides() {
         <rect x="86" y="350" width="228" height="100" fill="#072018" />
         <circle cx="200" cy="384" r="14" fill="#d6ff3a" />
         <path d="M193 384 L 198 389 L 208 379" stroke="#0a0a0b" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <text x="128" y="416" fill="#fff" fontFamily="var(--font-geist-sans)" fontSize="11" fontWeight="700">Plan signed off</text>
+        <text x="128" y="416" fill="#fff" fontFamily="var(--font-geist-sans)" fontSize="11" fontWeight="700">Budget approved</text>
         <text x="120" y="430" fill="#d6ff3a" fontFamily="var(--font-geist-mono)" fontSize="8" letterSpacing="1.6">SCOPE LOCKED · MOVING TO BUILD</text>
       </g>
     </>
@@ -689,15 +689,15 @@ function ShipSlides() {
             <rect x="138" y={381 + i*16} width={[160, 130, 70][i]} height="6" rx="3" fill="#d6ff3a" />
           </g>
         ))}
-        <text x="98" y="438" fill="#22d3ee" fontFamily="var(--font-geist-mono)" fontSize="7.5" opacity="0.85">3 regions · 0 errors · -18% latency</text>
+        <text x="98" y="438" fill="#22d3ee" fontFamily="var(--font-geist-mono)" fontSize="7.5" opacity="0.85">6 gates · live tests · smoke checks</text>
       </g>
       <g className="cr-slide cr-slide-c">
         <rect x="86" y="350" width="228" height="100" fill="#072018" />
         <circle cx="200" cy="382" r="14" fill="#d6ff3a" />
         <path d="M196 376 L 196 388 M 200 374 L 200 388 M 204 376 L 204 388" stroke="#0a0a0b" strokeWidth="2" strokeLinecap="round" />
         <path d="M193 388 L 207 388 L 200 396 Z" fill="#0a0a0b" />
-        <text x="120" y="416" fill="#fff" fontFamily="var(--font-geist-sans)" fontSize="11" fontWeight="700">Live in 3 regions</text>
-        <text x="124" y="430" fill="#d6ff3a" fontFamily="var(--font-geist-mono)" fontSize="8" letterSpacing="1.6">v4.2.0 · 312 FNS · 100% VERIFIED</text>
+        <text x="120" y="416" fill="#fff" fontFamily="var(--font-geist-sans)" fontSize="11" fontWeight="700">Live and reachable</text>
+        <text x="124" y="430" fill="#d6ff3a" fontFamily="var(--font-geist-mono)" fontSize="8" letterSpacing="1.6">v4.2.0 · 6 GATES PASSED</text>
       </g>
     </>
   );
@@ -753,7 +753,7 @@ function ShieldSlides() {
       <g className="cr-slide cr-slide-a">
         <rect x="86" y="350" width="228" height="100" fill="url(#cr-screen)" opacity="0.95" />
         <text x="98" y="380" fill="#fff" fontFamily="var(--font-geist-sans)" fontSize="16" fontWeight="700">Enterprise-ready</text>
-        <text x="98" y="400" fill="#fff" fontFamily="var(--font-geist-mono)" fontSize="8.5" letterSpacing="2" opacity="0.92">SECURE · COMPLIANT</text>
+        <text x="98" y="400" fill="#fff" fontFamily="var(--font-geist-mono)" fontSize="8.5" letterSpacing="2" opacity="0.92">SECURE · EVIDENCED</text>
         <rect x="98" y="412" width="170" height="5" rx="2" fill="rgba(255,255,255,0.55)" />
         <rect x="98" y="422" width="120" height="5" rx="2" fill="rgba(255,255,255,0.4)" />
         <rect x="98" y="432" width="84" height="14" rx="7" fill="#d6ff3a" />
@@ -768,10 +768,10 @@ function ShieldSlides() {
           <path d="M-9 -2 L -3 4 L 9 -8" stroke="#0a0a0b" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </g>
         {[
-          { l: "SOC 2 Type II",  d: "audited" },
-          { l: "ISO 27001",       d: "certified" },
-          { l: "GDPR · HIPAA",    d: "ready" },
-          { l: "SSO · SAML",      d: "supported" },
+          { l: "FedRAMP 20x",     d: "measured 6-hourly" },
+          { l: "CIS benchmarks",  d: "scanned daily" },
+          { l: "Audit log",       d: "hash-chained" },
+          { l: "SSO · OIDC",      d: "available" },
         ].map((c, i) => (
           <g key={c.l}>
             <rect x="156" y={376 + i*16} width="14" height="14" rx="3" fill="#d6ff3a" />
@@ -785,8 +785,8 @@ function ShieldSlides() {
         <rect x="86" y="350" width="228" height="100" fill="#072018" />
         <circle cx="200" cy="384" r="14" fill="#d6ff3a" />
         <path d="M193 384 L 198 389 L 208 379" stroke="#0a0a0b" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-        <text x="124" y="416" fill="#fff" fontFamily="var(--font-geist-sans)" fontSize="11" fontWeight="700">All checks pass</text>
-        <text x="118" y="430" fill="#d6ff3a" fontFamily="var(--font-geist-mono)" fontSize="8" letterSpacing="1.6">SECURITY POSTURE · GREEN</text>
+        <text x="124" y="416" fill="#fff" fontFamily="var(--font-geist-sans)" fontSize="11" fontWeight="700">Proof on record</text>
+        <text x="118" y="430" fill="#d6ff3a" fontFamily="var(--font-geist-mono)" fontSize="8" letterSpacing="1.6">SECURITY POSTURE · LIVE</text>
       </g>
     </>
   );

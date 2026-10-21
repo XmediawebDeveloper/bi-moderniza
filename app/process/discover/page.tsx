@@ -36,7 +36,7 @@ const HERO_FALLBACK = {
 
 const MOVES_FALLBACK = [
   { no: "01", title: "We listen.", body: "A 30-minute call. No slides. We ask three things: what's painful today, what's blocking you, and what 'fixed' would look like for your business.", icon_kind: "pulse" },
-  { no: "02", title: "We look at the app.", body: "We take a look at the software you'd like to rebuild. Anything goes — a website link, a folder, even one file. We do the heavy lifting from there.", icon_kind: "analyse" },
+  { no: "02", title: "We look at the app.", body: "We take a look at the software you'd like to rebuild. Anything goes — a Git repository link, a folder, or a .zip, .war or .ear archive. We do the heavy lifting from there.", icon_kind: "analyse" },
   { no: "03", title: "We share what we found.", body: "Live, on screen. We walk you through how the app is built, what's risky, what's safe, and what's likely to need extra care.", icon_kind: "doc" },
   { no: "04", title: "We agree what's next.", body: "By the end of the call you'll know the shape of the project, an honest timeline, and the cost. No follow-up needed unless you want one.", icon_kind: "flag" },
 ];

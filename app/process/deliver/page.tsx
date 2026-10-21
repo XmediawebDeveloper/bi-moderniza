@@ -22,7 +22,7 @@ const HANDOVER_ICONS: IconKind[] = ["rocket", "doc", "gear", "shield", "verify",
 
 export const metadata: Metadata = {
   title: "Deliver — Moderniza",
-  description: "We build the new app, prove it behaves like the old one, and put it live — all while you watch every step.",
+  description: "We build the new app, compare it with the old one by category, and put it live — all while you watch every step.",
 };
 
 const HERO_FALLBACK = {
@@ -39,27 +39,22 @@ const HERO_FALLBACK = {
 const STAGES_FALLBACK = [
   { no: "01", title: "Plan", body: "We start from the agreed plan: every screen, every name, every connection. Nothing is left to be invented later.", icon_kind: "blueprint" },
   { no: "02", title: "Outline", body: "We sketch out the new app's bones — the empty rooms, before any furniture. You can see it taking shape from day one.", icon_kind: "doc" },
-  { no: "03", title: "Tests first", body: "We write down how to check the new app behaves the same as the old one — before we even start building it.", icon_kind: "verify" },
+  { no: "03", title: "Tests first", body: "We write down how to check the new app against the old one — before we even start building it.", icon_kind: "verify" },
   { no: "04", title: "Rebuild", body: "We rebuild the app piece by piece. The harder pieces get more attention, not less. Every change is visible to you.", icon_kind: "convert" },
   { no: "05", title: "Connect", body: "We hook all the pieces together — payments, email, your existing tools — making sure nothing's missed.", icon_kind: "cycle" },
-  { no: "06", title: "Prove", body: "We compare the new app to the old one. If anything behaves differently, we fix it on the spot, until everything lines up.", icon_kind: "rocket" },
+  { no: "06", title: "Prove", body: "We compare the new app to the old one by category. Anything not measured is shown as unmeasured.", icon_kind: "rocket" },
 ];
 
 const HANDOVER_FALLBACK = [
   { no: "01", title: "The new app", body: "Live, working, hosted on a major cloud — yours to use immediately. No setup tasks left for someone to figure out.", icon_kind: "rocket" },
   { no: "02", title: "The full source", body: "Every line we wrote, in your account, on day one. Not licensed back to you — yours.", icon_kind: "doc" },
-  { no: "03", title: "Setup instructions", body: "Step-by-step notes on how to host the app, deploy updates, and bring it back if anything goes wrong.", icon_kind: "gear" },
+  { no: "03", title: "Setup instructions", body: "Step-by-step notes on how to host the app and deploy updates.", icon_kind: "gear" },
   { no: "04", title: "A runbook", body: "What to do when X happens — written for the people who'll own this after we leave. In plain English.", icon_kind: "shield" },
   { no: "05", title: "A test pack", body: "All the tests we wrote, set up so anyone can run them again next month, next year, anytime.", icon_kind: "verify" },
   { no: "06", title: "A short walkthrough", body: "A recorded screen-share of us showing your team around the new app. Watch once, refer to forever.", icon_kind: "person" },
 ];
 
-const STATS_FALLBACK = [
-  { value: "98%", label: "of our projects work on day one with no extra fixes." },
-  { value: "95%+", label: "behave the same as the original — proven, not promised." },
-  { value: "90 min", label: "is the average time from start to a live preview." },
-  { value: "200+", label: "projects we've already shipped this way." },
-];
+const STATS_FALLBACK: { value: string; label: string }[] = [];
 
 const CTA_FALLBACK = {
   headline: "See a live preview before the call ends.",
@@ -193,6 +188,7 @@ export default async function DeliverPage() {
       </section>
 
       {/* ============ Receipts ============ */}
+      {stats.length > 0 && (
       <section className="relative bg-ink border-y border-white/5">
         <div className="mx-auto max-w-[1400px] px-5 md:px-8 py-20 grid gap-10 md:grid-cols-4 text-center md:text-left">
           {stats.map((m, i) => {
@@ -208,6 +204,7 @@ export default async function DeliverPage() {
           })}
         </div>
       </section>
+      )}
 
       {/* ============ CTA ============ */}
       <section className="relative bg-ink overflow-hidden">

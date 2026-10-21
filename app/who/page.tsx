@@ -47,12 +47,7 @@ const HERO_FALLBACK = {
   ],
 };
 
-const TEAM_FALLBACK = [
-  { initials: "LM", name: "Lina Marković", role: "Reads code for a living", bio: "Has spent 12 years figuring out how complicated old apps actually work. Leads how we plan every project.", icon_kind: "analyse" },
-  { initials: "TR", name: "Theo Ramírez", role: "Makes things go live", bio: "Built the launch process for two well-known platforms. Owns how we put your new app online safely.", icon_kind: "rocket" },
-  { initials: "YT", name: "Yuki Tanaka", role: "Quality & testing", bio: "Designs the way we prove the new app behaves the same as the old one — so you can trust the result.", icon_kind: "verify" },
-  { initials: "SO", name: "Sam Okafor", role: "Customer side", bio: "Used to run technology at a 200-person company. Makes sure everything we hand over is easy to read and easy to keep.", icon_kind: "person" },
-];
+const TEAM_FALLBACK: { initials?: string; name: string; role: string; bio: string; icon_kind?: string }[] = [];
 
 const PRINCIPLES_FALLBACK = [
   { no: "01", title: "We show our work.", body: "Nothing happens in the dark. You watch the work as it happens, and you can ask us anything along the way.", icon_kind: "pulse" },
@@ -64,8 +59,6 @@ const PRINCIPLES_FALLBACK = [
 const STATS_FALLBACK = [
   { value: "12", label: "people on the team" },
   { value: "3", label: "countries we work from" },
-  { value: "200+", label: "projects shipped" },
-  { value: "0", label: "abandoned projects" },
 ];
 
 const FOUNDRY_FALLBACK = [
@@ -135,6 +128,7 @@ export default async function WhoPage() {
       />
 
       {/* ============ Team grid ============ */}
+      {team.length > 0 && (
       <section className="relative bg-chalk text-ink">
         <div className="absolute inset-0 bg-grid-soft opacity-60" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
@@ -179,6 +173,7 @@ export default async function WhoPage() {
           </ul>
         </div>
       </section>
+      )}
 
       {/* ============ AI foundry discipline ============ */}
       <section className="relative bg-bone text-ink overflow-hidden">
@@ -254,7 +249,7 @@ export default async function WhoPage() {
 
       {/* ============ Numbers ============ */}
       <section className="relative bg-bone text-ink border-y border-ink/10">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-8 py-16 grid gap-8 grid-cols-2 md:grid-cols-4 text-center md:text-left">
+        <div className={`mx-auto max-w-[1400px] px-5 md:px-8 py-16 grid gap-8 grid-cols-2 ${stats.length === 2 ? "md:grid-cols-2" : "md:grid-cols-4"} text-center md:text-left`}>
           {stats.map((s, i) => {
             const parsed = parseStat(s.value);
             return (

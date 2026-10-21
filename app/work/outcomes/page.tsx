@@ -29,46 +29,21 @@ export const metadata: Metadata = {
 const HERO_FALLBACK = {
   hero_eyebrow: "/ Receipts",
   hero_title: "The numbers behind the work.",
-  hero_lede: "What changes when you actually finish a modernization project — measured across more than two hundred customer projects. Methodology on request.",
-  hero_meta: [
-    { id: 0, text: "Last updated: Q2 2026" },
-    { id: 0, text: "Methodology on request" },
-  ],
+  hero_lede: "What changes when you actually finish a modernization project. Numbers appear here only once they are measured.",
+  hero_meta: [] as { id: number; text: string }[],
 };
 
-const HEADLINE_STATS_FALLBACK = [
-  { value: "200+", label: "Projects delivered to date" },
-  { value: "98%", label: "Work on day one with no extra fixes" },
-  { value: "95%+", label: "Behave the same as the original" },
-  { value: "$38M", label: "Saved across customer projects" },
-];
+const HEADLINE_STATS_FALLBACK: { value: string; label: string }[] = [];
 
-const MEASURES_FALLBACK = [
-  {
-    title: "How long it takes",
-    row_1_label: "Hand-rebuild",     row_1_value: "Months",         row_1_weight: 92,
-    row_2_label: "Other AI tools",   row_2_value: "Hours",          row_2_weight: 32,
-    row_3_label: "Moderniza",        row_3_value: "Days to weeks",  row_3_weight: 14,
-  },
-  {
-    title: "Behaves like the old one",
-    row_1_label: "Hand-rebuild",     row_1_value: "Roughly the same", row_1_weight: 65,
-    row_2_label: "Other AI tools",   row_2_value: "Often not",        row_2_weight: 55,
-    row_3_label: "Moderniza",        row_3_value: "Proven the same",  row_3_weight: 95,
-  },
-  {
-    title: "Works on day one",
-    row_1_label: "Hand-rebuild",     row_1_value: "About half",       row_1_weight: 50,
-    row_2_label: "Other AI tools",   row_2_value: "Most of the time", row_2_weight: 60,
-    row_3_label: "Moderniza",        row_3_value: "Almost always",    row_3_weight: 98,
-  },
-];
+type Measure = {
+  title: string;
+  row_1_label: string; row_1_value: string; row_1_weight: number;
+  row_2_label: string; row_2_value: string; row_2_weight: number;
+  row_3_label: string; row_3_value: string; row_3_weight: number;
+};
+const MEASURES_FALLBACK: Measure[] = [];
 
-const QUOTES_FALLBACK = [
-  { quote: "We'd had three failed attempts before this. Moderniza had a working preview in our first call.", attribution_role: "Head of Technology", attribution_sector: "Insurance" },
-  { quote: "Our nightly process used to take four and a half hours. Now it's done before breakfast.",        attribution_role: "Operations Director", attribution_sector: "Banking" },
-  { quote: "What sealed it for us is that we got the new app fully — code, instructions, the lot. No long-term lock-in.", attribution_role: "Platform Lead", attribution_sector: "Healthcare" },
-];
+const QUOTES_FALLBACK: { quote: string; attribution_role: string; attribution_sector?: string }[] = [];
 
 const CTA_FALLBACK = {
   headline: "Run it on your app. See your number.",
@@ -110,6 +85,7 @@ export default async function OutcomesPage() {
       />
 
       {/* ============ Headline numbers ============ */}
+      {headlineStats.length > 0 && (
       <section className="relative bg-chalk text-ink border-b border-ink/10">
         <div className="absolute inset-0 bg-grid-soft opacity-60" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-20 grid gap-10 md:grid-cols-4 text-center md:text-left">
@@ -127,8 +103,10 @@ export default async function OutcomesPage() {
           })}
         </div>
       </section>
+      )}
 
       {/* ============ Triple comparison ============ */}
+      {measures.length > 0 && (
       <section className="relative bg-ink overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-30" />
         <AmbientFx tone="dark" density="med" corner="tr" />
@@ -170,12 +148,14 @@ export default async function OutcomesPage() {
           </div>
 
           <Reveal delay={2} className="mt-10 text-sm text-mist">
-            Numbers based on 200+ projects we've shipped, with industry comparisons taken from public reports.
+            Industry comparisons taken from public reports.
           </Reveal>
         </div>
       </section>
+      )}
 
       {/* ============ Pull quotes ============ */}
+      {quotes.length > 0 && (
       <section className="relative bg-bone text-ink">
         <div className="absolute inset-0 bg-grid-soft opacity-50" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
@@ -207,6 +187,7 @@ export default async function OutcomesPage() {
           </ul>
         </div>
       </section>
+      )}
 
       {/* ============ CTA ============ */}
       <section className="relative bg-ink overflow-hidden">

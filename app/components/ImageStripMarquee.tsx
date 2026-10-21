@@ -36,7 +36,7 @@ function LegacyPanel({ tag }: { tag: string }) {
       </div>
       <div className="strip-foot">
         <span className="strip-foot-dot strip-foot-dot-amber" />
-        <span>cobol · vb6 · perl · pl/sql</span>
+        <span>cobol · vb6 · pl/sql</span>
       </div>
     </article>
   );
@@ -150,8 +150,9 @@ function DashboardPanel() {
             <span className="strip-kpi-lbl">quality gates</span>
           </div>
           <div className="strip-kpi">
-            <span className="strip-kpi-num">12</span>
-            <span className="strip-kpi-lbl">repair rounds</span>
+            <span className="strip-kpi-num">2</span>
+            <span className="strip-kpi-lbl">repair rounds by default</span>
+            <span className="strip-kpi-lbl">Configurable by your administrator</span>
           </div>
         </div>
         <svg viewBox="0 0 200 60" className="strip-dash-chart" aria-hidden>

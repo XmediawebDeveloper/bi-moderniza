@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import LogoMark from "./LogoMark";
 
-type MenuKey = "platform" | "solutions" | "security" | "about";
+type MenuKey = "platform" | "solutions" | "security" | "admin";
 
 type MenuItem = {
   title: string;
@@ -27,6 +27,9 @@ const MENU: Record<
       { title: "Features", href: "/platform", blurb: "The full feature catalog, grouped by the job it does.", icon: "◇" },
       { title: "Business rules", href: "/business-rules", blurb: "Every rule traced to its source line.", icon: "◎" },
       { title: "Verification", href: "/verification", blurb: "Six gates, live tests and an honest equivalence report.", icon: "▣" },
+      { title: "Epics & stories", href: "/epics-stories", blurb: "The ready backlog generated from legacy screens.", icon: "▤" },
+      { title: "Pipeline & CI/CD", href: "/pipeline", blurb: "Pipelines for new apps, and pipeline-only conversion.", icon: "◫" },
+      { title: "Product tour", href: "/product", blurb: "Every screen in the platform.", icon: "▦" },
     ],
     featured: { eyebrow: "Cost", title: "Know the cost before you spend it.", body: "Budget gates, Tokenomics and a ledger of every AI call.", cta: "Cost & transparency", href: "/pricing-transparency" },
   },
@@ -44,23 +47,20 @@ const MENU: Record<
     tagline: "Built in, not bolted on.",
     items: [
       { title: "Security & trust", href: "/security", blurb: "Passkeys, tamper-evident audit, signed builds, FedRAMP 20x readiness.", icon: "▣" },
+      { title: "Compliance & evidence", href: "/compliance", blurb: "FedRAMP 20x, CIS Benchmark, App Security, SIEM, Trust Center.", icon: "◈" },
       { title: "AI governance", href: "/ai-governance", blurb: "Kill switch, agent fence, agent limits, AI ledger.", icon: "◎" },
       { title: "Trust Center", href: "/trust-center", blurb: "Security posture, policies, vulnerabilities and change notices.", icon: "▦" },
     ],
     featured: { eyebrow: "FedRAMP 20x", title: "Readiness tracked with automated checks.", body: "Every Key Security Indicator shows the evidence behind it.", cta: "Open Trust Center", href: "/trust-center" },
   },
-  about: {
-    label: "About",
-    tagline: "The story behind Moderniza.",
+  admin: {
+    label: "Platform admin",
+    tagline: "Roles, feature switches and live monitoring.",
     items: [
-      { title: "Why we exist", href: "/why", blurb: "The problem we set out to solve.", icon: "✶" },
-      { title: "What we do", href: "/what", blurb: "Our craft, in plain language.", icon: "◇" },
-      { title: "Who we are", href: "/who", blurb: "The team and the principles.", icon: "◎" },
-      { title: "Process", href: "/process/discover", blurb: "Discover, Define, Deliver.", icon: "❶" },
-      { title: "Work", href: "/work/projects", blurb: "Projects and outcomes.", icon: "▤" },
-      { title: "Enterprises", href: "/enterprises", blurb: "Why large teams choose Moderniza.", icon: "◈" },
+      { title: "Admin & team control", href: "/team-control", blurb: "Roles, Super Admin power, feature switches, access reviews.", icon: "◈" },
+      { title: "Monitoring & operations", href: "/operations", blurb: "Live Monitoring page, uptime, alerts, logs.", icon: "▣" },
     ],
-    featured: { eyebrow: "Start", title: "Send us a brief.", body: "Start a project with a short brief.", cta: "Start a project", href: "/contact/start" },
+    featured: { eyebrow: "Compliance", title: "Evidence you can hand to an assessor.", body: "FedRAMP 20x, CIS Benchmark and App Security results with proof.", cta: "Compliance & evidence", href: "/compliance" },
   },
 };
 
@@ -71,7 +71,7 @@ const NAV: NavEntry[] = [
   { kind: "link", label: "Languages", href: "/languages" },
   { kind: "menu", key: "solutions" },
   { kind: "menu", key: "security" },
-  { kind: "menu", key: "about" },
+  { kind: "menu", key: "admin" },
   { kind: "link", label: "Deployment", href: "/deployment" },
   { kind: "link", label: "FAQ", href: "/faq" },
 ];

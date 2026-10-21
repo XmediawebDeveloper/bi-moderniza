@@ -135,16 +135,44 @@ const COMPARE_FALLBACK = [
   },
 ];
 
+const TWO_WAYS: { h: string; icon: IconKind; rows: [string, string][] }[] = [
+  {
+    h: "Full modernization",
+    icon: "convert",
+    rows: [
+      ["What changes", "The application moves to a new technology stack"],
+      ["Your code", "Rebuilt on the stack you choose"],
+      ["Steps", "Blueprint · Contract · Code · Testing · Deploy"],
+      ["You get", "A running app, its code, backlog, rules and reports"],
+    ],
+  },
+  {
+    h: "Pipeline conversion",
+    icon: "gear",
+    rows: [
+      ["What changes", "Only the CI/CD pipeline moves to a new provider"],
+      ["Your code", "Left exactly as it is"],
+      ["Steps", "Read · Choose · Write & check · Push & run"],
+      ["You get", "A checked pipeline, pushed and run, plus a hand-over report"],
+    ],
+  },
+];
+
 const JOURNEY_FALLBACK = [
-  { n: "01", h: "A running application", t: "Deployed and reachable." },
-  { n: "02", h: "Source code", t: "In your Git repository." },
-  { n: "03", h: "CI/CD files", t: "A Jenkinsfile and Kubernetes manifests for AWS or Azure." },
-  { n: "04", h: "Blueprint", t: "The old system, in plain words." },
-  { n: "05", h: "Frozen contract", t: "With OpenAPI and database schema files." },
-  { n: "06", h: "Business-rules document", t: "Source file and line for each rule." },
-  { n: "07", h: "Equivalence and code reports", t: "Old vs new, and a code report." },
-  { n: "08", h: "Batch job documentation", t: "For every scheduled job." },
-  { n: "09", h: "Cost ledger", t: "Every AI call made on your project." },
+  { n: "01", h: "A running modern application", t: "Deployed and reachable." },
+  { n: "02", h: "Its source code", t: "In your Git repository." },
+  { n: "03", h: "A Jenkinsfile and Kubernetes manifests", t: "For AWS or Azure." },
+  { n: "04", h: "A blueprint", t: "Of the old system, in plain words." },
+  { n: "05", h: "A screen catalogue", t: "Of the old application — every screen with its real name, its place in the old menu and the roles that use it." },
+  { n: "06", h: "A common app base", t: "One design, one menu and one set of roles shared by every screen of the new app." },
+  { n: "07", h: "A test proof record", t: "Which suites ran, which rules were proven by a test, and confirmation that your original source was not changed." },
+  { n: "08", h: "A backlog of epics and stories", t: "With Given/When/Then acceptance criteria." },
+  { n: "09", h: "A frozen contract", t: "With OpenAPI and database schema files." },
+  { n: "10", h: "A CI/CD pipeline", t: "For your chosen provider, with the security scans you picked." },
+  { n: "11", h: "A business-rules document", t: "With source file and line for each rule." },
+  { n: "12", h: "An old-vs-new equivalence report", t: "And a code report." },
+  { n: "13", h: "Batch job documentation", t: "For every scheduled job." },
+  { n: "14", h: "A cost ledger", t: "Of every AI call made on your project." },
 ];
 
 const BUILT_FOR = [
@@ -160,7 +188,7 @@ const DIFFERENTIATORS = [
   ["Nothing hidden", "See the plan before code is written, the cost before each phase, and every AI call with its tokens and cost."],
   ["Runs, not just compiles", "Before release, code must build, start in Docker, pass health checks, answer every API without server errors, and pass its own tests."],
   ["You stay in charge", "Approve budgets, choose the target stack, and run each step by hand or let it flow automatically. Pause and resume any time."],
-  ["Secure by default", "Passkeys, tamper-evident audit log, just-in-time admin access, and a one-switch AI kill switch."],
+  ["Secure by default", "Passkeys, tamper-evident audit log, Super Admin power that needs a passkey and runs out on its own, malware-scanned uploads, and a one-switch AI kill switch."],
   ["Your infrastructure", "Single-tenant SaaS, self-hosted, fully air-gapped, or AI routed through AWS GovCloud."],
 ];
 
@@ -195,20 +223,21 @@ const METRICS_FALLBACK = [
   { num: 0, suf: "", label: "Rule-level traceability — every rule linked to its source file and line", title: "Traced" },
   { num: 6, suf: " gates", label: "Code must build, start and answer its APIs before release", title: "" },
   { num: 0, suf: "", label: "You approve the spend — cost estimate shown before each phase", title: "Approved" },
+  { num: 0, suf: "", label: "Evidence, not claims — the platform measures its own security every six hours and shows the proof", title: "Evidence" },
   { num: 0, suf: "", label: "Runs where you need it — single-tenant SaaS, self-hosted, air-gapped or GovCloud", title: "Anywhere" },
 ];
 
 const CTA_FALLBACK = {
-  eyebrow: "/ 09 — Next",
+  eyebrow: "/ 10 — Next",
   headline_line1: "See your own code",
   headline_line2: "modernized.",
-  headline_line3: "Before anything is built.",
+  headline_line3: "",
   body: "Bring a repository. We will scan it and show you the blueprint, the plan and the cost estimate — before anything is built.",
   primary_label: "Book a demo →",
   primary_url: "/contact",
   secondary_label: "See how it works",
   secondary_url: "/how-it-works",
-  status_text: "Open · Q3 / Q4 2026 capacity",
+  status_text: "",
 };
 
 export default async function Home() {
@@ -259,6 +288,20 @@ export default async function Home() {
         scroll_note={hero.scroll_note}
         pills={hero.pills}
       />
+
+      {/* ============ PROOF STRIP  (DARK) — directly under the hero ============ */}
+      <section className="relative bg-ink border-y border-white/5">
+        <div className={`mx-auto max-w-[1400px] px-5 md:px-8 py-20 grid gap-10 md:grid-cols-2 ${metrics.length > 4 ? "lg:grid-cols-5" : "lg:grid-cols-4"} text-center md:text-left`}>
+          {metrics.map((m, i) => (
+            <Reveal key={m.label} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
+              <p className="text-5xl md:text-6xl font-semibold tracking-[-0.02em]">
+                {m.num > 0 ? <Counter to={m.num} suffix={m.suf} /> : m.title}
+              </p>
+              <p className="mt-3 text-sm text-mist max-w-xs mx-auto md:mx-0">{m.label}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
 
       {/* ============ 02 · WHY  (DARK) — animated giant numbers ============ */}
       <section className="relative bg-ink">
@@ -362,6 +405,11 @@ export default async function Home() {
                 contract in parallel, and the result is started, tested and checked before you ever
                 see it.
               </p>
+              <p className="mt-4 text-ink/60">
+                At every step you can see what was found, what was carried forward, and what still
+                needs attention. If something could not be measured, Moderniza says &ldquo;unmeasured&rdquo;
+                — it never fills the gap with 100%.
+              </p>
             </Reveal>
           </div>
 
@@ -416,13 +464,51 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ============ 04 · PIPELINE  (DARK) — 6 phases progress rail ============ */}
+      {/* ============ 04 · TWO WAYS  (LIGHT) — full vs pipeline-only ============ */}
+      <section className="relative bg-bone text-ink border-t border-ink/10">
+        <div className="absolute inset-0 bg-grid-soft opacity-50" />
+        <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
+          <Reveal className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-ink/70">
+            <span className="font-mono">/ 03 — Two ways</span>
+            <span className="h-px flex-1 bg-ink/20" />
+          </Reveal>
+
+          <Reveal delay={1} as="h2" className="mt-8 max-w-4xl text-4xl md:text-6xl font-semibold leading-[1.02] tracking-[-0.02em]">
+            Modernize the whole application — <span className="text-gradient-ink">or just its pipeline</span>.
+          </Reveal>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-2">
+            {TWO_WAYS.map((w, i) => (
+              <Reveal
+                key={w.h}
+                delay={((i % 4) + 1) as 1 | 2 | 3 | 4}
+                className="rounded-3xl border border-ink/10 bg-white/80 p-7 md:p-9 lift"
+              >
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl md:text-3xl font-semibold tracking-tight">{w.h}</h3>
+                  <CardIcon kind={w.icon} tone="light" className="h-11 w-11" />
+                </div>
+                <dl className="mt-7 divide-y divide-ink/10">
+                  {w.rows.map(([label, value]) => (
+                    <div key={label} className="grid gap-1 py-4 sm:grid-cols-[9rem_1fr] sm:gap-4">
+                      <dt className="text-[11px] uppercase tracking-[0.18em] text-ink/55 sm:pt-1">{label}</dt>
+                      <dd className="text-base text-ink/85 leading-relaxed">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ 05 · PIPELINE  (DARK) — 5 steps progress rail ============ */}
       <section className="relative bg-ink">
         <div className="absolute inset-0 bg-grid opacity-30" />
         <AmbientFx tone="dark" density="low" corner="tl" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
           <Reveal className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-glow">
-            <span className="font-mono">/ 03 — How</span>
+            <span className="font-mono">/ 04 — How</span>
             <span className="h-px flex-1 bg-glow/30" />
           </Reveal>
 
@@ -476,7 +562,7 @@ export default async function Home() {
 
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
           <Reveal className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-ink/70">
-            <span className="font-mono">/ 04 — Proof</span>
+            <span className="font-mono">/ 05 — Proof</span>
             <span className="h-px flex-1 bg-ink/20" />
           </Reveal>
 
@@ -535,7 +621,7 @@ export default async function Home() {
         <AmbientFx tone="dark" density="med" corner="br" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
           <Reveal className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-glow">
-            <span className="font-mono">/ 05 — Journey</span>
+            <span className="font-mono">/ 06 — Journey</span>
             <span className="h-px flex-1 bg-glow/30" />
           </Reveal>
 
@@ -594,7 +680,7 @@ export default async function Home() {
         <div className="absolute inset-0 bg-grid-soft opacity-60" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
           <Reveal className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-ink/70">
-            <span className="font-mono">/ 06 — Need</span>
+            <span className="font-mono">/ 07 — Need</span>
             <span className="h-px flex-1 bg-ink/20" />
           </Reveal>
 
@@ -660,7 +746,7 @@ export default async function Home() {
 
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
           <Reveal className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-glow">
-            <span className="font-mono">/ 07 — Built for</span>
+            <span className="font-mono">/ 08 — Built for</span>
             <span className="h-px flex-1 bg-glow/30" />
           </Reveal>
 
@@ -709,7 +795,7 @@ export default async function Home() {
         <div className="absolute inset-0 bg-grid-soft opacity-50" />
         <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-24 md:py-32">
           <Reveal className="flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-ink/70">
-            <span className="font-mono">/ 08 — Why we win</span>
+            <span className="font-mono">/ 09 — Why we win</span>
             <span className="h-px flex-1 bg-ink/20" />
           </Reveal>
 
@@ -767,20 +853,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ============ 10 · METRICS  (DARK) ============ */}
-      <section className="relative bg-ink border-y border-white/5">
-        <div className="mx-auto max-w-[1400px] px-5 md:px-8 py-20 grid gap-10 md:grid-cols-4 text-center md:text-left">
-          {metrics.map((m, i) => (
-            <Reveal key={m.label} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
-              <p className="text-5xl md:text-6xl font-semibold tracking-[-0.02em]">
-                {m.num > 0 ? <Counter to={m.num} suffix={m.suf} /> : m.title}
-              </p>
-              <p className="mt-3 text-sm text-mist max-w-xs mx-auto md:mx-0">{m.label}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* ============ 11 · CTA  (DARK with light tail) ============ */}
       <section className="relative overflow-hidden bg-ink">
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-50" />
@@ -800,8 +872,12 @@ export default async function Home() {
                 {cta.headline_line1}
                 <br />
                 <span className="text-gradient">{cta.headline_line2}</span>
-                <br />
-                <span className="text-chalk/60">{cta.headline_line3}</span>
+                {cta.headline_line3 && (
+                  <>
+                    <br />
+                    <span className="text-chalk/60">{cta.headline_line3}</span>
+                  </>
+                )}
               </h2>
             </Reveal>
             <Reveal delay={2} className="space-y-6">
@@ -819,16 +895,6 @@ export default async function Home() {
                 >
                   {cta.secondary_label}
                 </MagneticButton>
-              </div>
-              <div className="flex flex-wrap items-center gap-4 text-xs text-mist">
-                <span className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-glow pulse-dot" />
-                  {cta.status_text}
-                </span>
-                <span>·</span>
-                <span>Reply within 1 business day</span>
-                <span>·</span>
-                <span>NDA on request</span>
               </div>
             </Reveal>
           </div>

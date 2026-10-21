@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "../components/PageHero";
 import ContactRobot, { SHOW_PINK_HEART_SCAN_BOT } from "../components/ContactRobot";
 import { Section, Bullets, Cards, SubHead, Prose, CtaBand } from "../components/content";
@@ -27,6 +28,7 @@ export default function PlatformPage() {
           { title: "Repo Scan", body: "Every file is classified by language and role, with an honest support level for each language. You see the shape of your estate in minutes, before any spend on planning.", icon: "analyse" },
           { title: "Legacy Explain", body: "A plain inventory of COBOL programs, JCL jobs, copybooks and screen maps — built by code, not guessed by AI. Ask for a walkthrough of any program, or ask questions about it. The legacy code stays read-only to the AI.", icon: "doc" },
           { title: "Plain-language Blueprint", body: "“Your app today”, “The plan”, “Your screens” and “App flow” explain the system for business owners, not just engineers. Old screens are mapped to new screens.", icon: "blueprint" },
+          { title: "Screen catalogue", body: "Every screen of the old application with its real name, menu path, fields, buttons and roles — with file-and-line proof for each menu entry.", icon: "analyse" },
           { title: "Epics & stories backlog", body: "A Jira-style backlog generated from your code: epics, user stories and Given/When/Then acceptance criteria. Add your own items; they flow into the contract.", icon: "flag" },
         ]} />
       </Section>
@@ -35,6 +37,7 @@ export default function PlatformPage() {
         <Cards cols={2} items={[
           { title: "Frozen Contract", body: "The single source of truth for the build: services, APIs, data models, rules, screens, access and tests. Simple and technical views, plus a compare view that shows anything dropped or added.", icon: "blueprint" },
           { title: "Symbol Registry", body: "One locked master list of names and signatures, sealed with a checksum. Generates OpenAPI and DDL. Stops parallel agents from drifting apart.", icon: "shield" },
+          { title: "Real names, real menu", body: "The contract keeps the old application’s screen names, menu tree and roles, so the new app is familiar on day one.", icon: "flag" },
           { title: "Wave Plan", body: "A dependency graph of every build task, grouped into waves that run in order, with tasks inside a wave running in parallel. The critical path is highlighted.", icon: "chart" },
           { title: "Modernization Dossier", body: "Eight sheets in one place for reviewers: overview, contract, master plan, dependency graph, symbol lock, wave execution, verification and delivery.", icon: "doc" },
         ]} />
@@ -44,6 +47,9 @@ export default function PlatformPage() {
         <Cards tone="light" cols={2} items={[
           { title: "Parallel AI agents", body: "Specialised agents — architecture, contract, engineering, verification, deployment — each own one step. Engineering agents build tasks in parallel, all against the same locked contract.", icon: "group" },
           { title: "Batch documentation", body: "Every delivery includes a written guide to its scheduled batch jobs.", icon: "clock" },
+          { title: "Common app base", body: "Design, app frame, menu, roles and page templates written by code before any page agent starts. Written for React front ends today.", icon: "gear" },
+          { title: "Agent help desk", body: "Lookup tools that give each agent the screen name, menu, roles and design rules it needs.", icon: "person" },
+          { title: "Running-app mode", body: "Where your old application can be started, Moderniza opens it, walks its menus and forms, and uses what it sees: menu sections, filter chips, the kinds of ‘New’ records, and a side-by-side comparison of old and new.", icon: "rocket" },
         ]} />
         <SubHead tone="light">Legacy construct handling</SubHead>
         <Prose tone="light"><p>Purpose-built handling for the parts of legacy systems that generic AI tools miss:</p></Prose>
@@ -62,11 +68,13 @@ export default function PlatformPage() {
 
       <Section tone="dark" id="verify" eyebrow="/ 04 — Verify" title={<>Proof, <span className="text-gradient">not promises</span>.</>}>
         <Cards cols={3} items={[
-          { title: "Six-gate exit check", body: "Completeness, wiring, navigation, Docker build and start, API smoke, and live tests, with up to 12 automatic repair rounds.", icon: "verify" },
+          { title: "Six-gate exit check", body: "Completeness, wiring, navigation, Docker build and start, API smoke, and live tests, with automatic repair rounds.", icon: "verify" },
+          { title: "Every screen works", body: "A data screen counts only when it has its API, its file is written (not a placeholder) and it calls the app’s API.", icon: "analyse" },
           { title: "Run & Fix", body: "Automatic fixing against the live running stack, with hand-back to earlier steps when a problem belongs there.", icon: "cycle" },
           { title: "Live checks", body: "API pass/fail, screen screenshots, schema and migration checks, mutation testing, traffic replay.", icon: "pulse" },
           { title: "Equivalence view", body: "Old vs new by business category, with the measurement basis on every row.", icon: "chart" },
-          { title: "Business-rule tests", body: "Given/When/Then tests generated from priority rules.", icon: "doc" },
+          { title: "Business-rule tests", body: "Given/When/Then tests generated from priority rules, with each rule shown as proven, failed or not run.", icon: "doc" },
+          { title: "Test proof record", body: "Nothing-ran checks, rule tests, mutation score (report only) and a source-unchanged check in one verdict.", icon: "shield" },
         ]} />
       </Section>
 
@@ -75,6 +83,8 @@ export default function PlatformPage() {
           { title: "Docker and Kubernetes deployment", body: "Live URL, preview, service status and smoke checks.", icon: "deploy" },
           { title: "Delivery repository", body: "Source code, Jenkinsfile and Kubernetes manifests for AWS and Azure, pushed to Git.", icon: "cloud" },
           { title: "Error tracking", body: "A Sentry project per conversion, wired into the delivered app.", icon: "broken" },
+          { title: "Delivery pipeline designer", body: "DevOps, DevSecOps or MLOps pipelines for six CI/CD providers, with 16 security scan areas.", icon: "cycle" },
+          { title: "Pipeline-only conversion", body: "Move an existing pipeline to a new CI/CD provider without touching application code; checked, pushed and run.", icon: "convert" },
         ]} />
       </Section>
 
@@ -87,6 +97,9 @@ export default function PlatformPage() {
           { title: "Insights", body: "Common problems and lessons learned across conversions, in plain words.", icon: "pulse" },
           { title: "Continuous change tracking", body: "Watches for CVEs, regulation and policy changes, assesses impact, and regenerates only what is affected.", icon: "cycle" },
           { title: "Pause, resume, retry", body: "Stop at any time and continue from the same point.", icon: "clock" },
+          { title: "Super Admin dashboard", body: <>Accounts, feature switches, all projects, AI control, compliance and live monitoring in one place. See <Link href="/team-control" className="underline underline-offset-4">Admin &amp; team control</Link>.</>, icon: "person" },
+          { title: "Compliance evidence", body: <>FedRAMP 20x, CIS Benchmark and App Security results with proof. See <Link href="/compliance" className="underline underline-offset-4">Compliance &amp; evidence</Link>.</>, icon: "shield" },
+          { title: "Live Monitoring", body: <>Servers, containers, databases, conversions, uptime, alerts and logs. See <Link href="/operations" className="underline underline-offset-4">Monitoring &amp; operations</Link>.</>, icon: "server" },
         ]} />
       </Section>
 

@@ -60,10 +60,13 @@ export default function HowItWorksPage() {
       {/* Step 0 */}
       <Section tone="light" eyebrow="/ Step 0 — Bring your code" title={<>Start with the code <span className="text-gradient-ink">you have</span>.</>} lede="Connect your application in one of three ways:">
         <Bullets tone="light" items={[
-          { title: "Git repository URL —", body: "paste the link to your repository and Moderniza clones it." },
+          { title: "Git repository URL —", body: "paste the link to a public repository and Moderniza clones it in the background, so even very large repositories upload without slowing anyone else down." },
           { title: "Folder upload —", body: "upload a project folder; the full folder structure is kept." },
           { title: "Archive upload —", body: "upload a .zip, .war or .ear file." },
         ]} />
+        <Prose tone="light">
+          <p>Every upload is scanned for malware before it is kept. An upload that cannot be fully scanned is refused, not waved through.</p>
+        </Prose>
         <SubHead tone="light">Then choose the kind of modernization:</SubHead>
         <Cards tone="light" cols={2} items={[
           { title: "Full modernization", body: "Move the application to a new technology stack.", icon: "convert" },
@@ -74,7 +77,13 @@ export default function HowItWorksPage() {
       {/* Step 1 */}
       <Section tone="dark" eyebrow="/ Step 1 — Blueprint: understand what you have" title={<>See your application clearly — <span className="text-gradient">maybe for the first time</span>.</>}>
         <Bullets numbered items={[
-          { title: "Repo Scan.", body: "Every file is read and classified by language and role. Each language gets an honest support level: full, supported or detected. Nothing is skipped silently." },
+          { title: "Repo Scan.", body: (
+            <>
+              Every file is read and classified by language and role. Each language gets an honest support level: full, supported or detected. Nothing is skipped silently.
+              <span className="mt-3 block"><span className="font-semibold text-chalk">Screen catalogue.</span> The Repo Scan also lists every screen of your application with its real name, the old menu it sits in (with the exact file and line that proves it), its fields, columns and buttons, and the user roles that may open it. Mainframe menus, CICS transactions, numbered menu screens, web navigation, sitemaps and Salesforce tabs are all read. Screens no menu opens are listed, not hidden.</span>
+              <span className="mt-3 block"><span className="font-semibold text-chalk">Your source is sealed.</span> A fingerprint of every source file is recorded. Testing and Deploy check that the original source was not changed by any step.</span>
+            </>
+          ) },
           { title: "Approve planning.", body: "You see an estimated cost for the planning phase and approve it before any planning starts." },
           { title: "Choose your target stack.", body: "Pick the backend language and framework, frontend framework, database, and monolith or microservices. The blueprint waits until you choose." },
           { title: "The Blueprint.", body: "Moderniza explains your application in plain words, in five views:" },
@@ -100,7 +109,8 @@ export default function HowItWorksPage() {
           { title: "Technical view —", body: "overview, user flow, a three-level deep dive, services, APIs, data models and the full report." },
           { title: "Compare view —", body: "exactly what changed between blueprint and contract. Nothing is silently dropped." },
           { title: "Inputs panel —", body: "what went into this contract." },
-          { title: "Type fidelity —", body: "flags dropdown values or fields that would be lost." },
+          { title: "Type fidelity —", body: "flags dropdown values or fields that would be lost. Names that are not your data (database catalog tables, bundled libraries, test files) are set aside with the reason shown." },
+          { title: "Real names and the old menu —", body: "the contract carries every screen’s real name, its menu path, its field labels and its roles, and the old menu as a tree. A contract that loses names or repeats menu entries is stopped." },
         ]} />
         <SubHead tone="light">The Symbol Registry</SubHead>
         <Prose tone="light">
@@ -127,7 +137,10 @@ export default function HowItWorksPage() {
           { title: "Generated tests —", body: "the application’s own tests pass against the live stack." },
         ]} />
         <Prose>
-          <p>When a gate fails, Moderniza diagnoses the cause and repairs it — up to 12 repair rounds, scaled to project size. If repairs stop making progress, or the same cause appears twice, it stops and tells you. It does not loop forever or hide the failure.</p>
+          <p>When a gate fails, Moderniza diagnoses the cause and repairs it — for a set number of repair rounds (two by default, set by your administrator). If repairs stop making progress, or the same cause appears twice, it stops and tells you. It does not loop forever or hide the failure.</p>
+          <p><strong className="text-chalk">A common base before any screen.</strong> Before the agents write a single page, Moderniza writes the app’s common base by code: design tokens, the app frame with the old menu, the list of screens with their real names, the roles, and page templates for list, detail, form and menu pages. Every page agent builds on it, so the new app looks and behaves as one application. (React front ends today.)</p>
+          <p><strong className="text-chalk">One place for every screen.</strong> The plan names one folder per module for screens; files planned anywhere else are moved there by code before the build.</p>
+          <p><strong className="text-chalk">An agent help desk.</strong> Agents look up a screen’s name, the menu, the roles and the design rules when they need them, instead of carrying the whole contract in every prompt.</p>
         </Prose>
       </Section>
 
@@ -139,11 +152,15 @@ export default function HowItWorksPage() {
           { title: "Schema checks —", body: "the database schema and migrations are compared with the contract." },
           { title: "Mutation testing —", body: "small faults are injected to prove the tests can catch bugs." },
           { title: "Behaviour parity —", body: "traffic is replayed to compare behaviour." },
-          { title: "Business-rule tests —", body: "priority rules run as Given/When/Then tests." },
+          { title: "Business-rule tests —", body: "priority rules are written as tests once, run in Testing, and every rule is shown as proven, failed or not run." },
+          { title: "Nothing ran is not a pass —", body: "a test suite that ran no tests, or a delivery with no test suite at all, is reported, never counted as green." },
+          { title: "Database built from the models —", body: "the new database is created from the application’s own models, missing columns are added safely, and any table that cannot be created is reported by name." },
+          { title: "Your source unchanged —", body: "the source fingerprint from the Repo Scan is checked again." },
         ]} />
-        <Cards tone="light" cols={3} items={[
+        <Cards tone="light" cols={2} items={[
           { title: "Run & Fix", body: "Problems are fixed automatically in a loop against the live stack. Issues that belong to an earlier step are sent back to that step and tracked — sent, received, closed — so nothing falls through the gap.", icon: "cycle" },
           { title: "Old vs new", body: "The equivalence view compares screens, workflows, rules, validations, entities, fields and interfaces. Every row shows how it was measured. Anything not measured is labelled unmeasured.", icon: "chart" },
+          { title: "Test proof record", body: "One verdict — ready, conditional or not ready — with the reason in plain words.", icon: "verify" },
           { title: "Code Report", body: "A final report closes the step.", icon: "doc" },
         ]} />
       </Section>
@@ -163,9 +180,9 @@ export default function HowItWorksPage() {
       <Section tone="light" bone eyebrow="/ Control" title={<>You stay in control <span className="text-gradient-ink">at every step</span>.</>}>
         <Cards tone="light" cols={4} items={[
           { title: "Manual, hybrid or automatic", body: "Press a button for each step, or let the run flow on its own.", icon: "gear" },
-          { title: "Pause and resume", body: "Pause stops the agents at once. Resume continues from the saved state of the current step, not from the beginning.", icon: "clock" },
+          { title: "Pause and resume", body: "Pause stops every running part of the step within seconds: agents, builds and tests. Resume continues from the saved state of the current step, not from the beginning.", icon: "clock" },
           { title: "Watch it live", body: "The live console, the agents’ browser, the running app, and every agent’s instructions, files, tokens and cost.", icon: "pulse" },
-          { title: "Automatic retry", body: "If the AI provider’s usage window closes, the run waits and retries on its own.", icon: "cycle" },
+          { title: "Automatic retry", body: "If the AI account reaches its usage limit, the run parks itself and restarts on its own after the limit resets.", icon: "cycle" },
         ]} />
       </Section>
 

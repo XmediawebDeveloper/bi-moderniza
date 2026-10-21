@@ -34,7 +34,6 @@ const STATS_FALLBACK = [
   { value: "75%", label: "of business apps run on software that's now considered old." },
   { value: "24 mo", label: "is the average time a hand-rebuild takes — when it finishes." },
   { value: "1 in 2", label: "rebuilds done by hand never make it to launch." },
-  { value: "95%+", label: "of Moderniza projects ship and behave just like the original." },
 ];
 
 const VALUES_FALLBACK = [
@@ -51,7 +50,6 @@ const HERO_FALLBACK = {
   hero_meta: [
     { id: 0, text: "Founded 2024" },
     { id: 0, text: "For business leaders" },
-    { id: 0, text: "Used in 12 countries" },
   ],
 };
 
@@ -144,7 +142,7 @@ export default async function WhyPage() {
       <section className="relative bg-ink border-y border-white/5 overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-30" />
         <AmbientFx tone="dark" density="low" corner="tr" />
-        <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 py-20 grid gap-10 md:grid-cols-4 text-center md:text-left">
+        <div className={`relative mx-auto max-w-[1400px] px-5 md:px-8 py-20 grid gap-10 ${stats.length === 3 ? "md:grid-cols-3" : "md:grid-cols-4"} text-center md:text-left`}>
           {stats.map((m, i) => {
             const parsed = parseStat(m.value);
             return (

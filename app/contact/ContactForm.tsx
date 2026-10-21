@@ -6,8 +6,8 @@ import MagneticButton from "../components/MagneticButton";
 import CardIcon from "../components/CardIcon";
 
 /* ============================================================================
-   Demo request form — fields follow "Moderniza — Website Content" v1.0,
-   Page 13 (Contact / Book a demo).
+   Demo request form — fields follow "Moderniza — Website Content" v2.0,
+   Page 19 (Contact / Book a demo).
    ========================================================================== */
 
 export const ROLE_OPTIONS = ["CIO/CTO", "Architect", "Application owner", "Security/Compliance", "System integrator", "Other"] as const;
@@ -149,7 +149,7 @@ export default function ContactForm() {
             <span className="rounded-full bg-ember/15 px-3 py-1 type-eyebrow text-ember">Sent</span>
             <h2 className="mt-6 type-h2">Thanks — we have your request.</h2>
             <p className="mt-5 type-lede text-ink/75">
-              We will reply shortly to set up your demo.
+              We will reply to set up your demo.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <MagneticButton href="/" className="h-12 w-full rounded-full bg-ink px-6 text-sm font-semibold text-chalk sm:w-auto">Back home</MagneticButton>

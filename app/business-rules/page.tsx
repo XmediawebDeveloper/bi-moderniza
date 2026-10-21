@@ -6,7 +6,7 @@ import { Section, Bullets, Prose, Callout, CtaBand } from "../components/content
 export const metadata: Metadata = {
   title: { absolute: "Business Rule Extraction and Traceability — Moderniza" },
   description:
-    "Every business rule found by code, explained by AI, checked against its source line, owned in the new code, and tested. Export to Markdown or CSV.",
+    "Every business rule found by code, explained by AI, checked against its source line, owned in the new code, and tested. Export to Drools, Markdown or CSV.",
 };
 
 export default function BusinessRulesPage() {
@@ -39,7 +39,7 @@ export default function BusinessRulesPage() {
           { title: "One owner per rule —", body: "each rule is assigned to exactly one task in the new code, so it is neither lost nor built twice." },
           { title: "Marked in the code —", body: "the agent must label the rule in the code it writes." },
           { title: "Checked for proof —", body: "the platform checks where the code lives, finds the rule’s label, and has a reviewer model judge it. Each rule gets a clear status, such as Confirmed or Claimed without proof." },
-          { title: "Turned into tests —", body: "priority rules become Given/When/Then tests that run against the new application." },
+          { title: "Turned into tests —", body: "priority rules become Given/When/Then tests, written once and run in Testing against the new application. The Business Rules page shows how many rules a passing test has proven." },
           { title: "Enforced at runtime —", body: "the running app is checked to confirm it applies the contract’s rules." },
         ]} />
       </Section>
@@ -49,7 +49,7 @@ export default function BusinessRulesPage() {
           { title: "Business Rules page —", body: "every rule with its plain-English meaning, source file and line, owner task and proof status." },
           { title: "Business Logic view —", body: "the same rules grouped by type of decision, for business reviewers." },
           { title: "Rules document —", body: "export to Markdown or CSV, with source file and line for every rule." },
-          { title: "Rule bundle —", body: "export rules as an executable rule bundle. Rule conditions are translated from the cited source lines and the bundle is compiled for real. Any rule that cannot be translated is clearly marked — never hidden or faked." },
+          { title: "Drools Workbench —", body: "export rules as a Drools rule bundle (.drl). Rule conditions are translated from the cited source lines and the bundle is compiled for real. Any rule that cannot be translated is clearly marked — never hidden or faked." },
         ]} />
         <Callout tone="light">
           A rewrite that drops one interest-rounding rule can cost more than the whole project saved. Moderniza makes every rule visible, owned and tested — so you can sign off with evidence, not hope.
