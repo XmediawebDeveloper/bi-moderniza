@@ -1,0 +1,354 @@
+Final completion review — 23 October 2026
+Website text corrections: COMPLETE. Overall verification: PARTIALLY FINISHED.
+This final review changed only MODERNIZA-VERIFICATION-2026-10-23.txt.
+No website content was rewritten; existing changes were preserved.
+The A/O/B and 20-page checklists below remain the item-by-item record.
+
+Status clarification:
+- A1-A7, A9, O1-O13 and B9: Corrected and verified as website wording.
+- A8: Corrected and verified for source and previously rendered six-gate fallback;
+  corrected, but runtime verification is pending for browser hydration/live CMS.
+- B1-B8: Corrected and verified as limited, documented website descriptions.
+  Actual product capabilities: Blocked by missing evidence, as individually listed
+  below. Their runtime-pending labels do not mean website copy is unfinished.
+- All 20 pages: website copy and prior local HTTP checks verified as listed below;
+  visual/responsive verification remains pending for every page.
+- No safe requested text correction remains in Still needs correction status.
+
+Checks performed in this final review:
+- Inspected git status and existing diff; checked current source for the original
+  counts, date, gates, identity caveats and Product entries.
+- Referred again to the approved DOCX, including its React-only common-base limit
+  and warning to confirm development features are deployed before publication.
+- Retried supported in-app browser: failed before connection with
+  node_repl/js: codex/sandbox-state-meta: missing field sandboxPolicy.
+  No browser, responsive or hydration pass is claimed.
+- Local-only TCP diagnostic to 127.0.0.1:1337 returned Windows 10061
+  (connection refused). No CMS request/content or override could be verified.
+- Prior passing TypeScript, lint, build, all-20-route, internal-link, rendered-copy
+  and isolated local SMTP tests below were retained, not unnecessarily rerun.
+- Production email remains unverified; no external email was sent.
+Exact evidence requests and manual browser steps are retained below.
+No commit, push, deployment, production change or prohibited file edit occurred.
+
+Moderniza website — current verification report
+Date: 23 October 2026
+Overall status: PARTIALLY FINISHED
+Safe website copy corrections: implemented.
+Outstanding: browser/responsive/client interaction checks, live CMS content/precedence,
+production mail delivery, and external product evidence. No unsupported capability
+was marked proven merely because its website description renders.
+
+Reference and scope
+Read the existing report, git status and git diff before editing.
+Approved copy: C:/Users/xmedia/Downloads/Moderniza_Website_Content_v2.0.docx.
+The task's explicit evidence limits and the document's Do NOT claim section take
+precedence over conflicting statements elsewhere in the document.
+docs/website/01_home.md was not used as a content source.
+Existing user changes, including earlier completed corrections, were preserved.
+No commit, push, deploy, production change, backend edit, dependency/lockfile edit,
+environment-file edit or database write was performed.
+
+Exact files changed in the preceding implementation continuation
+Paths relative to moderniza-frontend:
+1. app/ai-governance/page.tsx
+   Replaced pause/recovery headings that overstated the qualified body text.
+   Added the distinction between provider names/configuration and actual use;
+   requests inventory, model-call records, locations and downstream data flows.
+2. app/operations/page.tsx
+   Replaced unconditional "handled", "keep going" and pause/usage-limit headings
+   with run-status/control wording. Existing safe-update and recovery caveats retained.
+3. app/compliance/page.tsx
+   Explicitly names the verifier script and instructions; no invented script filename.
+   Replaced fixed CIS timing with configured schedule/last/next-run review.
+   Qualified SIEM coverage, forwarding/retry, licensing and report schedules.
+   Aligned Trust Center, JSON/schema, configuration-guide and disclosure descriptions
+   with available evidence rather than promising unverified public services.
+4. app/deployment/page.tsx
+   Replaced universal dual-SIEM delivery claim with enabled-destination/delivery review.
+5. app/security/page.tsx
+   Corrected hero and metadata that still implied every build was scanned and signed;
+   now describes deployment-specific controls and evidence review.
+6. app/trust-center/page.tsx
+   Expanded backup schedule/retention/encryption/restore-drill evidence wording.
+   Removed the remaining asserted assessment boundary.
+   Qualified API availability, public/restricted data and assessor access.
+7. app/faq/page.tsx
+   Aligned assessor export and monitoring answers with available evidence,
+   deployed configuration, masking and tested alert recipients.
+8. app/components/ContactRobot.tsx
+   Replaced decorative fixed measurement/scan-cadence labels with evidence-review text.
+9. MODERNIZA-VERIFICATION-2026-10-23.txt
+   Updated this report with explicit statuses and fresh actual validation results.
+
+Earlier changes retained
+The earlier continuation changed app/page.tsx, app/how-it-works/page.tsx,
+app/platform/page.tsx, app/verification/page.tsx, app/security/page.tsx,
+app/compliance/page.tsx, app/ai-governance/page.tsx, app/operations/page.tsx,
+app/trust-center/page.tsx, app/product/page.tsx, app/pipeline/page.tsx,
+app/faq/page.tsx and app/solutions/page.tsx. Their safe-copy corrections remain.
+Other pre-existing changes remain in .env.example, app/business-rules/page.tsx,
+app/components/ContactRobot.tsx, app/components/Footer.tsx,
+app/components/Header.tsx, app/components/HeroIntro.tsx,
+app/components/HeroOverlay.tsx, app/components/IntroLoader.tsx,
+app/components/RobotMascot.tsx, app/contact/start/StartPageClient.tsx,
+app/deployment/page.tsx, app/enterprises/page.tsx, app/globals.css,
+app/languages/page.tsx, app/layout.tsx, app/pricing-transparency/page.tsx,
+app/who/page.tsx, app/lib/site.ts, app/robots.ts and app/sitemap.ts.
+In particular, the pre-existing .env.example change was not edited or reverted.
+Existing lint fixes were reused; no rule was disabled or suppressed.
+
+Status definitions
+"Corrected and verified" below means the requested WEBSITE correction was checked in
+source/rendered local HTML. It does not establish a product capability or a visual pass.
+"Corrected, but runtime verification is pending" means the website description is present,
+but product behavior or a CMS-dependent branch cannot be checked with available evidence.
+"Blocked by missing evidence" is used for unavailable technical/owner proof.
+No required safe website item remains "Still needs correction".
+
+A1-A9
+A1 Operations — Corrected and verified.
+No "One page, twelve tabs", four-view or unsupported Monitoring layout count is
+published. Neutral monitoring-area descriptions retained.
+A2 Trust Center date — Corrected and verified.
+No 15 December 2026/2026-12-15 scheduled certification date is published.
+No environment variable was used as approval for a public date.
+A3 Trust Center editorial notes — Corrected and verified.
+No Fully Operational Since pending-owner line, confirm-before-publishing authorization
+note or public TBD report placeholder remains.
+A4 Subprocessor count — Corrected and verified.
+No "five companies" claim and no invented fifth provider. The reference entries
+explicitly are not a verified current processing inventory.
+A5 Database TLS/FIPS — Corrected and verified.
+Public copy requests deployment-specific TLS/certificate and cryptographic evidence.
+It asserts neither verified production database TLS nor an unencrypted connection,
+and does not claim FIPS module validation/mode.
+A6 Provider disclosures — Corrected and verified.
+AI Governance, Trust Center and FAQ do not infer active/inactive use from config.
+OpenAI/OpenRouter reference entries require confirmation; no DeepSeek use or non-use
+claim was added. Provider inventory, call records and data-flow evidence remain blocked.
+A7 Session-token signing — Corrected and verified.
+Security requests actual signing algorithm, implementation and enabled configuration.
+No HMAC session-token or ML-DSA availability assertion. Password-hashing terminology
+is not presented as evidence of session-token signing.
+A8 Six-gate Home card — Corrected, but runtime verification is pending.
+Fallback rendering is verified: local HTML contains the stat span with 6 and " gates",
+not a counter initialized to zero. Source still prefers nonempty CMS metric rows.
+Live CMS content and override behavior remain unverified because Strapi is unavailable.
+A9 Audit-event count — Corrected and verified.
+No "about 80" event count and no replacement 100+ or other unverified event count.
+
+Other original corrections
+O1 Gate 1 planning-cost approval in Blueprint — Corrected and verified.
+O2 Gate 2 build-budget decision in Contract — Corrected and verified.
+O3 Languages/FAQ unverified signature counts removed — Corrected and verified.
+O4 SSO provider/CAC-PIV capability claims qualified — Corrected and verified.
+O5 Verification exact seven/7 business-category count removed — Corrected and verified.
+O6 Approved v2.0 source used, not docs/website/01_home.md — Corrected and verified.
+O7 Business Rules/Solutions do not universally promise every rule tested/proven —
+   Corrected and verified; priority rules and proof status retained.
+O8 Pricing Transparency does not claim server-enforced approval gates —
+   Corrected and verified.
+O9 FAQ distinguishes measurement from authorization — Corrected and verified.
+O10 Compliance uses passive, signed-out ZAP baseline wording — Corrected and verified.
+O11 Product/Operations unsupported tab/view-count wording absent — Corrected and verified.
+O12 Existing lint errors/warnings corrected — Corrected and verified; current lint passes.
+O13 Backup, provider and security claims not promoted to proven facts —
+   Corrected and verified as website wording; underlying evidence remains blocked.
+
+B1-B9
+B1 Compliance package/verifier/masked copy/JSON/manifest —
+Corrected, but runtime verification is pending.
+Existing content reused and clarified. It names the verifier script/instructions,
+masked copy, combined and individual JSONs and per-file SHA-256 manifest.
+Manifest availability is requested, not invented or asserted as demonstrated.
+Needed: original and masked packages for the same snapshot, JSONs, manifest,
+verifier source/instructions and original/modified/missing-file verifier results.
+Owner: compliance engineering.
+
+B2 Proof cards/failing-item ordering/PDFs —
+Corrected, but runtime verification is pending.
+Cards and individual/full-set PDFs retained. Failed-result prioritization is described
+without promising a deployed sorting implementation. Masking must be reviewed.
+Needed: proof-card UI source, failed/passed/stale sample, ordering/filter tests,
+individual and full-set PDFs and masking comparison.
+Owner: compliance UI/reporting engineering.
+
+B3 Run now/Re-test all/logs/ledger/publication —
+Corrected, but runtime verification is pending.
+All topics present; copy requires run results, IDs and publication timestamps,
+rather than guaranteeing automatic publication.
+Needed: handlers/jobs, live-log schema, hash-chain/verifier implementation,
+snapshot publisher and an integration run connecting jobs, proof and snapshot IDs.
+Owner: compliance backend engineering.
+
+B4 CIS reviews/passkeys/expiry/exceptions —
+Corrected, but runtime verification is pending.
+Super Admin/passkey workflow, review expiry, changed-scan review and signed expiring
+exceptions are present. Accepted risk remains distinct from a passing scan.
+Needed: review/exception endpoints, authorization/passkey checks, configured expiry,
+negative role/passkey/expired-review tests and signed sample records.
+Owner: security/compliance engineering.
+
+B5 Backups/encryption/restore drills —
+Corrected, but runtime verification is pending.
+Security and Trust Center request schedule, retention, encryption/key management,
+last backup and dated restore evidence. No schedule or restore success is invented.
+Needed: deployed job/scheduler and retention config, encryption/KMS evidence without
+secrets, job logs and restore drill with backup ID, target, integrity checks and result.
+Owner: infrastructure/operations.
+
+B6 Monitoring/services/containers/urgency/email —
+Corrected, but runtime verification is pending.
+Service board, container status/timestamps, urgency category and recipients are
+present. No category names, timing, delivery or dual-SIEM guarantee invented.
+Needed: deployed UI/API, service inventory, container update cadence/events, urgency
+rules, recipient routing, test-alert delivery and unavailable/stale-source tests.
+Owner: observability/operations.
+
+B7 CI scanners/results/gating —
+Corrected, but runtime verification is pending.
+Scanner names retained as documented tools; results tied to commit/run and actual
+deployment-blocking policy must be confirmed. Hero/metadata now agree with this.
+Needed: product CI/scanner definitions, retained reports tied to a commit, displayed
+result implementation and a failing-run demonstration of protected deployment gating.
+Owner: release/security engineering.
+amplify.yml only builds this website; it does not verify the product security pipeline.
+
+B8 Safe updates/AI usage limits —
+Corrected, but runtime verification is pending.
+Operations, AI Governance and related pages use qualified checkpoint/retry language.
+Headings no longer contradict body caveats. No always-resume or uninterrupted guarantee.
+Needed: checkpoint/update coordinator, provider retry/limit handlers and tests for
+interrupted agents/builds/tests, provider reset and partial/duplicate output recovery.
+Owner: orchestration engineering.
+
+B9 Product catalogue/base —
+Corrected and verified (website content).
+Screen catalogue and Common app base each appear once in the Product content table.
+React front ends today is explicit. Existing Platform content supports these entries.
+Product generation itself still needs extractor/generator source and a generated sample.
+
+All 20 pages
+All reviewed against the approved reference and existing corrections; all returned
+200 with one H1, title and nonempty meta description in the freshly built local site.
+[x] Home / — six-gate fallback, CMS precedence source, React limitation.
+[x] How it works /how-it-works — both decision gates; qualified recovery/parity.
+[x] Platform /platform — catalogue/base retained; qualified comparisons/recovery.
+[x] Verification /verification — no exact category count or identical-output claim.
+[x] Languages /languages — no unverified signature count.
+[x] Security /security — neutral signing/TLS/backup/gating; updated hero/metadata.
+[x] Compliance /compliance — B1-B4 coverage; qualified cadence/SIEM/public-service copy.
+[x] Team Control /team-control — existing v2.0 role/switch/review content retained.
+[x] AI Governance /ai-governance — provider evidence and recovery-heading corrections.
+[x] Operations /operations — no layout count; service/alert and qualified recovery copy.
+[x] Trust Center /trust-center — no scheduled date/editorial/count claims; scope/API qualified.
+[x] Product /product — catalogue and React-only app base retained.
+[x] Deployment /deployment — SSO/GovCloud caveats retained; SIEM delivery qualified.
+[x] Business Rules /business-rules — priority tests/proof status, not universal proven status.
+[x] Epics & Stories /epics-stories — v2.0 content retained; no all-criteria-tested claim.
+[x] Pipeline /pipeline — read/write and GitLab/Jenkins limits; scan/gating distinction.
+[x] Pricing Transparency /pricing-transparency — no server-enforcement claim.
+[x] FAQ /faq — authorization distinction; evidence exports/monitoring qualified.
+[x] Contact /contact — required fields/options retained; local API success/failure verified.
+[x] Solutions /solutions — rule proof status and deployment-specific evidence retained.
+Rendered internal links and fragment targets across these pages passed HTTP checks.
+No claim of visual/responsive/keyboard testing is made.
+
+Actual preceding implementation validation (retained; not rerun in final review)
+1. git diff --check: PASS, exit 0; LF/CRLF notices only.
+2. node node_modules/typescript/bin/tsc --noEmit: PASS, exit 0.
+3. node node_modules/eslint/bin/eslint.js .: PASS, exit 0, no errors or warnings.
+4. npm.cmd run build: PASS, exit 0. Next.js 16.2.4, 37/37 generated pages.
+   Warning: multiple lockfiles cause parent-root inference. Lockfiles/settings unchanged.
+5. Fresh local HTTP server on 127.0.0.1:3101:
+   PASS all 20 routes, one H1, title/description, internal destinations and anchors.
+   PASS rendered A/B copy assertions, gate labels, no prohibited dates/counts,
+   Product entries/React limitation and actual Home "6 gates" fallback.
+   Initial overbroad global "0 gates" assertion failed because text extraction joined
+   separate decorative labels "drift 0" and "gates 6". HTML inspection showed the
+   actual stat span was 6 gates. Corrected targeted assertion passed; no website
+   regression or fabricated success was concealed.
+6. Contact server flow tested through an isolated loopback-only SMTP sink:
+   Empty and malformed-email submissions -> HTTP 400, no SMTP message.
+   Valid synthetic request -> HTTP 200 {ok:true}; exactly one message accepted by
+   the local sink; name, company, email, role, selected technologies, hosting and
+   message checked in the captured email.
+   Simulated SMTP DATA rejection -> HTTP 503 with error; no second message accepted.
+   No external email sent. SMTP settings existed only in the test child process.
+   No environment file, backend code or production setting changed.
+   Test server and SMTP sink stopped after the run.
+   This verifies local unencrypted test SMTP and API response handling, not real
+   provider authentication, TLS delivery, production mailbox arrival or browser UI.
+7. CMS retry: build logs show ECONNREFUSED at 127.0.0.1:1337; direct local reachability
+   retry also failed (TimeoutError). Fallback used; live CMS content/override unverified.
+8. Browser retry: FAILED before connection:
+   node_repl/js: codex/sandbox-state-meta: missing field sandboxPolicy.
+   Responsive visuals, keyboard interaction, client form validation, success/error
+   UI, animation and hydration behavior remain unverified.
+9. Windows ACL sandbox failures prevented patching; approved outside-sandbox commands
+   applied focused exact-text replacements after verifying each original match.
+
+Remaining external evidence / approvals
+All items below: Blocked by missing evidence. Source filenames are not available in
+this frontend repository; owners must supply the actual file paths and revision IDs,
+not inferred filenames. No unrelated repository was accessed or modified.
+- Audit backend: active event registry, retirement mapping and count test excluding
+  retired/disabled events. Do not restore a count from marketing copy.
+- Orchestration backend: planning/build transition handlers, authorization and
+  dispatch paths; direct-request/stale/revoked-approval negative tests.
+- Parser owner: canonical language/signature registry, deduplicated count test,
+  deployed registry version and current support view.
+- Identity owner: OIDC adapters/config and provider/smart-card success/rejection
+  tests, including claim validation. Configuration alone is not implementation proof.
+- Security owner: signing/verification source, enabled algorithm/key configuration
+  and tests for tampering, wrong algorithm/key and rotation (HMAC/ML-DSA).
+- Verification owner: report generator/schema, category/indicator registries,
+  representative report and failed/unmeasured/empty-suite tests.
+- Compliance/infrastructure/release/observability owners: B1-B8 artifacts above.
+- AI/security/legal owners: approved subprocessor inventory, model-call ledger,
+  routing and downstream hosts, processing locations, data flows and agreements
+  governing retention/training. Neither active nor inactive use inferred from config.
+- Security/compliance owner: approved authorization status/program record if any,
+  assessment boundary and completed report if any, crypto module inventory,
+  external/database TLS results and current approved policies.
+- Release owner: map documented features to the deployed product revision; v2.0
+  explicitly warns that some features were only on a development server.
+- Company/legal owner: confirm public contact details/routing, legal entity,
+  privacy/terms, training statement and any desired demo response time.
+  No new owner fact, policy text, date or operational guarantee was invented.
+
+Precise remaining manual verification
+1. In moderniza-frontend run npm.cmd run start -- --hostname 127.0.0.1 --port 3100
+   after the current build. The automated test server has been stopped.
+2. Open http://127.0.0.1:3100 at widths 375, 768 and 1440 CSS px; also check 200% zoom
+   and reduced-motion preference. Visit all 20 routes listed above.
+3. Check clipping, overlap, table scrolling, headings, footer, sticky demo CTA and
+   browser console for hydration/runtime errors. A successful HTTP response is not
+   a visual pass.
+4. Test desktop menus using mouse and keyboard. On mobile open/close the menu and
+   each submenu, follow every link, verify closing behavior and reach Pricing via
+   the footer. Test section-anchor scrolling.
+5. Inspect the Home stat card before/after hydration: it should read 6 gates.
+   CMS owner must restore local Strapi and provide a read-only fixture or approved
+   test environment containing a nondefault metric to verify actual CMS precedence.
+   Do not modify production or database records merely to run this test.
+6. Check Product's two entries and React caveat, Compliance proof/export/review
+   content, Operations service/alert wording and neutral Trust Center disclosures.
+7. Contact: empty submit, malformed/consumer email, dropdown keyboard selection,
+   multi-select technologies, focus/error visibility and narrow-screen layout.
+8. Use browser network mocks for local /api/contact: 200 {ok:true}, delayed response,
+   503 {error:"Test delivery failure"} and network failure. Check disabled pending
+   button, retained fields on failure, success state/reset and Send another.
+9. Real SMTP delivery remains a separate owner-approved integration check with an
+   approved test recipient/mailbox, TLS/authentication and delivery confirmation.
+   Local sink success does not prove production delivery. Do not change production.
+10. Repair the browser integration's missing sandboxPolicy field and repeat visual/
+    interaction checks; restore local CMS availability before marking those complete.
+
+Completion
+Every remaining safe website correction identified in this continuation was applied;
+completed corrections were reused. No backend feature was implemented or claimed
+verified. Overall remains PARTIALLY FINISHED solely for the runtime/visual/CMS and
+external-evidence boundaries described above. No commit, push or deployment.
+

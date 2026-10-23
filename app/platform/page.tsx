@@ -60,8 +60,8 @@ export default function PlatformPage() {
           { title: "Copybooks and COMP-3 —", body: "record layouts and packed decimals" },
           { title: "JCL batch —", body: "job graphs turned into Kubernetes CronJob, Argo or Airflow schedules" },
           { title: "Stored procedures —", body: "DB2 SQL PL, Oracle PL/SQL, T-SQL, MySQL and PL/pgSQL" },
-          { title: "Embedded SQL —", body: "in COBOL, PL/I, RPG and C, across nine SQL dialects" },
-          { title: "Reports —", body: "12 legacy report kinds, including COBOL Report Writer, Easytrieve, SSRS, Jasper, Oracle Reports and SQR" },
+          { title: "Embedded SQL —", body: "in COBOL, PL/I, RPG and C" },
+          { title: "Reports —", body: "Legacy report formats, including COBOL Report Writer, Easytrieve, SSRS, Jasper, Oracle Reports and SQR" },
           { title: "ETL —", body: "SSIS packages" },
         ]} />
       </Section>
@@ -71,7 +71,7 @@ export default function PlatformPage() {
           { title: "Six-gate exit check", body: "Completeness, wiring, navigation, Docker build and start, API smoke, and live tests, with automatic repair rounds.", icon: "verify" },
           { title: "Every screen works", body: "A data screen counts only when it has its API, its file is written (not a placeholder) and it calls the app’s API.", icon: "analyse" },
           { title: "Run & Fix", body: "Automatic fixing against the live running stack, with hand-back to earlier steps when a problem belongs there.", icon: "cycle" },
-          { title: "Live checks", body: "API pass/fail, screen screenshots, schema and migration checks, mutation testing, traffic replay.", icon: "pulse" },
+          { title: "Live checks", body: "API pass/fail, screen screenshots, schema and migration checks, and mutation results. Review what was measured; identical output is not established.", icon: "pulse" },
           { title: "Equivalence view", body: "Old vs new by business category, with the measurement basis on every row.", icon: "chart" },
           { title: "Business-rule tests", body: "Given/When/Then tests generated from priority rules, with each rule shown as proven, failed or not run.", icon: "doc" },
           { title: "Test proof record", body: "Nothing-ran checks, rule tests, mutation score (report only) and a source-unchanged check in one verdict.", icon: "shield" },
@@ -96,7 +96,7 @@ export default function PlatformPage() {
           { title: "Agent board", body: "Every orchestrator and sub-agent, with its instructions, report, files, tokens and cost.", icon: "group" },
           { title: "Insights", body: "Common problems and lessons learned across conversions, in plain words.", icon: "pulse" },
           { title: "Continuous change tracking", body: "Watches for CVEs, regulation and policy changes, assesses impact, and regenerates only what is affected.", icon: "cycle" },
-          { title: "Pause, resume, retry", body: "Stop at any time and continue from the same point.", icon: "clock" },
+          { title: "Pause, resume, retry", body: "Review run status and saved checkpoints; confirm recovery behavior for the affected step.", icon: "clock" },
           { title: "Super Admin dashboard", body: <>Accounts, feature switches, all projects, AI control, compliance and live monitoring in one place. See <Link href="/team-control" className="underline underline-offset-4">Admin &amp; team control</Link>.</>, icon: "person" },
           { title: "Compliance evidence", body: <>FedRAMP 20x, CIS Benchmark and App Security results with proof. See <Link href="/compliance" className="underline underline-offset-4">Compliance &amp; evidence</Link>.</>, icon: "shield" },
           { title: "Live Monitoring", body: <>Servers, containers, databases, conversions, uptime, alerts and logs. See <Link href="/operations" className="underline underline-offset-4">Monitoring &amp; operations</Link>.</>, icon: "server" },

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import PageHero from "../../components/PageHero";
 import Reveal from "../../components/Reveal";
 import MagneticButton from "../../components/MagneticButton";
@@ -148,7 +148,7 @@ export default function StartPageClient({ data }: { data: StartPage | null }) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
-  const titleNode = useMemo(() => {
+  const titleNode = (() => {
     const words = title.split(" ");
     if (words.length < 3) return <>{title}</>;
     const head = words.slice(0, -2).join(" ");
@@ -158,7 +158,7 @@ export default function StartPageClient({ data }: { data: StartPage | null }) {
         {head} <span className="text-gradient">{tail}</span>
       </>
     );
-  }, [title]);
+  })();
 
   const updateField = (field: keyof ContactForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));

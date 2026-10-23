@@ -4912,3 +4912,43 @@ html.intro-done .intro-after {
 /* one vertical rhythm for every content section */
 .sec-pad { padding-block: clamp(5rem, 3rem + 6vw, 8rem); }
 .sec-pad-sm { padding-block: clamp(3.5rem, 2rem + 4vw, 5rem); }
+
+/* ---------- Trademark mark: glowing ™ ---------- */
+.tm-glow {
+  display: inline-block;
+  margin-left: 0.1em;
+  font-size: 0.9em;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: super;
+  color: var(--color-glow);
+  text-shadow: 0 0 6px rgba(214, 255, 58, 0.8), 0 0 14px rgba(214, 255, 58, 0.5);
+  animation: tm-glow-pulse 2.4s ease-in-out infinite;
+}
+.tm-glow--light {
+  color: #B84316;
+  text-shadow: 0 0 4px rgba(184, 67, 22, 0.15);
+  animation-name: tm-glow-pulse-light;
+}
+.tm-glow--lg { font-size: 1.4em; }
+/* Smaller trademark next to the footer brand name. */
+.brand-label {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.tm-glow--brand { font-size: 16px; letter-spacing: 0; }
+@keyframes tm-glow-pulse {
+  0%, 100% { text-shadow: 0 0 6px rgba(214, 255, 58, 0.8), 0 0 14px rgba(214, 255, 58, 0.5); }
+  50%      { text-shadow: 0 0 10px rgba(214, 255, 58, 1), 0 0 24px rgba(214, 255, 58, 0.75); }
+}
+@keyframes tm-glow-pulse-light {
+  0%, 100% { text-shadow: 0 0 4px rgba(184, 67, 22, 0.15); }
+  50%      { text-shadow: 0 0 6px rgba(184, 67, 22, 0.25); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tm-glow { animation: none; }
+}

@@ -109,7 +109,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3 group" aria-label="Moderniza home">
           <LogoMark size={32} />
           <span className="text-[15px] font-semibold tracking-tight ai-flicker">
-            Moderniza<span className="text-glow">.</span>
+            Moderniza<sup className="tm-glow tm-glow--lg">™</sup><span className="text-glow">.</span>
           </span>
         </Link>
 
@@ -155,7 +155,7 @@ export default function Header() {
                     <span className="h-2 w-2 rounded-full bg-[#27c93f] term-led-green" />
                   </div>
                   <div className="absolute left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.22em] text-glow/70">
-                    /// {MENU[k].label.toUpperCase()}_INDEX
+                    {"/// "}{MENU[k].label.toUpperCase()}_INDEX
                   </div>
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-mist">
                     <span>0x{(kIdx + 1).toString(16).padStart(2, "0")}</span>
@@ -173,7 +173,7 @@ export default function Header() {
                     <span className="term-cursor inline-block h-3 w-1.5 bg-glow translate-y-0.5" />
                   </div>
                   <p className="mb-4 text-[11.5px] text-mist leading-relaxed">
-                    <span className="text-glow/70">// </span>
+                    <span className="text-glow/70">{"// "}</span>
                     {MENU[k].tagline}
                   </p>
 

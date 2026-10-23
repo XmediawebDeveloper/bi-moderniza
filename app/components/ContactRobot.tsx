@@ -768,10 +768,10 @@ function ShieldSlides() {
           <path d="M-9 -2 L -3 4 L 9 -8" stroke="#0a0a0b" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
         </g>
         {[
-          { l: "FedRAMP 20x",     d: "measured 6-hourly" },
-          { l: "CIS benchmarks",  d: "scanned daily" },
+          { l: "FedRAMP 20x",     d: "review evidence" },
+          { l: "CIS benchmarks",  d: "review scans" },
           { l: "Audit log",       d: "hash-chained" },
-          { l: "SSO · OIDC",      d: "available" },
+          { l: "SSO · OIDC",      d: "confirm setup" },
         ].map((c, i) => (
           <g key={c.l}>
             <rect x="156" y={376 + i*16} width="14" height="14" rx="3" fill="#d6ff3a" />

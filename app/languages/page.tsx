@@ -6,7 +6,7 @@ import { Section, Bullets, Table, Prose, CtaBand } from "../components/content";
 export const metadata: Metadata = {
   title: { absolute: "Supported Legacy Languages and Target Stacks — Moderniza" },
   description:
-    "COBOL, JCL, CICS, DB2, RPG, PL/SQL, .NET, Salesforce, PHP and 180+ detected languages, modernized to Python, Java, .NET, Go and modern web frameworks.",
+    "Explore legacy languages and target stacks, including COBOL, JCL, .NET, Salesforce and PHP, with Full, Supported and Detected support levels.",
 };
 
 export default function LanguagesPage() {
@@ -51,7 +51,7 @@ export default function LanguagesPage() {
         ]} />
       </Section>
 
-      <Section tone="dark" id="detected" eyebrow="/ 04 — Detected" title={<>Around 180 language signatures <span className="text-gradient">in total</span>.</>}>
+      <Section tone="dark" id="detected" eyebrow="/ 04 — Detected" title={<>Language detection <span className="text-gradient">across your estate</span>.</>}>
         <Prose>
           <p>Including IMS DL/I, Smalltalk, Uniface, Magic xpa, Gupta and LotusScript. Every detected file appears in the inventory, so you know exactly what your estate contains.</p>
           <p>The live support table inside the product always shows the current level for each language.</p>
@@ -66,8 +66,8 @@ export default function LanguagesPage() {
           ["Copybooks and COMP-3", "Record layouts and packed decimals mapped to typed fields"],
           ["JCL batch", "Job graphs turned into Kubernetes CronJob, Argo or Airflow, chosen from the shape of your jobs"],
           ["Stored procedures", "DB2 SQL PL, PL/SQL, T-SQL, MySQL and PL/pgSQL"],
-          ["Embedded SQL", "COBOL, PL/I, RPG and C hosts; nine SQL dialects"],
-          ["Reports", "12 kinds, including COBOL print, Report Writer, Easytrieve, FOCUS, Natural, RPG, SAS, SSRS, Jasper, SQR, Oracle Reports and Informix"],
+          ["Embedded SQL", "COBOL, PL/I, RPG and C hosts"],
+          ["Reports", "Formats including COBOL print, Report Writer, Easytrieve, FOCUS, Natural, RPG, SAS, SSRS, Jasper, SQR, Oracle Reports and Informix"],
           ["ETL", "SSIS packages"],
         ]} />
       </Section>

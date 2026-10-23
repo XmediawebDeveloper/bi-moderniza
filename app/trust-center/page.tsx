@@ -45,21 +45,19 @@ const extDark = (href: string, text = href) => (
 const GENERAL_INFO: Spec[] = [
   { label: "Provider", value: "Business Integra Technology Solutions, Inc." },
   { label: "Cloud Service Offering", value: "Moderniza (acronym MODZ)" },
-  { label: "FedRAMP ID", value: "FR2701557044" },
-  { label: "Certification Type", value: "FedRAMP 20x Class C Target" },
-  { label: "Authorization Path", value: "FedRAMP Program (20x) — confirm before publishing" },
+  { label: "FedRAMP program details", value: "Request the current program record and approved scope from the security team." },
+  { label: "Program focus", value: "FedRAMP 20x evidence and readiness" },
+  { label: "Authorization Path", value: "FedRAMP Program (20x)" },
   { label: "Service Model", value: "Software as a Service (SaaS)" },
   { label: "Deployment Model", value: "Public Cloud" },
   { label: "Business Category", value: "Development Tools; Artificial Intelligence (AI) — application modernization and legacy code conversion" },
-  { label: "FIPS 199 Security Categorization", value: "Moderate" },
-  { label: "Digital Identity Level", value: "IAL Level 2 / AAL Level 2 / FAL Level 2" },
-  { label: "FedRAMP Authorization Status", value: "In progress; not yet FedRAMP authorized" },
-  { label: "Fully Operational Since", value: "Pending (owner to confirm the date)" },
-  { label: "Hosting Environment", value: "Moderniza-operated servers; encrypted backups in AWS US East (N. Virginia). Move to AWS GovCloud planned" },
+  { label: "Security categorization", value: "Request the approved deployment-specific categorization." },
+  { label: "Digital identity assurance", value: "Request the identity assurance assessment for your deployment." },
+  { label: "FedRAMP Authorization Status", value: "Indicator measurement does not constitute authorization. Request current status and supporting evidence." },
+  { label: "Hosting Environment", value: "Request the current hosting locations and backup configuration for your deployment." },
   { label: "UEI Number", value: "NBELUNT3NMG3" },
   { label: "CAGE Code", value: "3BGU6" },
-  { label: "Independent Assessor", value: "Kompleye" },
-  { label: "Next Ongoing Certification Report", value: "TBD" },
+  { label: "Assessment evidence", value: "Request the current assessment scope and any completed report." },
   { label: "Company Address", value: "6550 Rock Spring Drive, Suite 600, Bethesda, MD 20817-1185" },
   { label: "Product Website", value: ext("https://platform.gomoderniza.ai") },
   {
@@ -106,8 +104,8 @@ const CONTACTS: { kind: string; icon: IconKind; details?: Spec[] }[] = [
 ];
 
 const SERVICES: { name: string; desc: string; category: string; inScope: "Yes" | "No" }[] = [
-  { name: "Blueprint", desc: "Scans the uploaded legacy source (inventory, reading plan, business-rule extraction; unsafe files are quarantined) and produces the target architecture, epics, user stories and screen designs. Code generation does not start until the Blueprint is approved.", category: "Moderate", inScope: "Yes" },
-  { name: "Contract", desc: "Defines the entities, APIs, business rules and screens the modern application must honor, built from the approved Blueprint and approved rules.", category: "Moderate", inScope: "Yes" },
+  { name: "Blueprint", desc: "Scans the uploaded legacy source (inventory, reading plan, business-rule extraction; unsafe files are quarantined) and produces the target architecture, epics, user stories and screen designs.", category: "Moderate", inScope: "Yes" },
+  { name: "Contract", desc: "Defines the entities, APIs, business rules and screens the modern application must honor, built from the Blueprint and extracted rules.", category: "Moderate", inScope: "Yes" },
   { name: "Code", desc: "Splits the work into tasks and generates the application; accepted only after it builds, starts, answers API smoke tests, navigates correctly and passes its generated tests.", category: "Moderate", inScope: "Yes" },
   { name: "Testing", desc: "Runs the generated application, records every defect in an issue ledger and repairs it (Run & Fix), then produces the fidelity, maintainability and security code report.", category: "Moderate", inScope: "Yes" },
   { name: "Deploy", desc: "Deploys the delivery into the customer’s containers after the pre-deploy gates pass.", category: "Moderate", inScope: "Yes" },
@@ -146,27 +144,28 @@ const SECURITY_CARDS: { title: string; body: ReactNode; icon: IconKind; wide?: b
     title: "Encryption",
     icon: "bolt",
     body: [
-      "Passwords are stored with PBKDF2-HMAC-SHA256.",
-      "Stored secrets are encrypted with AES and protected with HMAC-SHA256.",
-      "Web traffic to the platform uses TLS.",
-      "Backups are encrypted with AWS Key Management Service.",
-      "Not yet done: FIPS 140-validated modules in FIPS mode, and encryption of the database connection. Both are in the POA&M and are solved by the planned AWS GovCloud move.",
+      "Request the deployed password-hashing configuration and its implementation evidence.",
+      "Request the encryption and signing algorithms, key-management configuration and verification tests for your deployment.",
+      "Request the current external TLS configuration and scan results.",
+      "Request the backup schedule, retention, encryption and key-management configuration, last successful backup and a dated restore-drill result.",
+      "Request deployment-specific evidence for database TLS and certificate verification.",
+      "FIPS-approved algorithms do not establish module validation or operation in FIPS mode. Request the current cryptographic module inventory and assessment evidence.",
     ],
   },
   { title: "Security Awareness and Training", icon: "person", body: "The Security Awareness and Training Policy (AT-1) requires security awareness training for every user and role-based training for administrators and developers. Training records will be published once the first training cycle is complete." },
-  { title: "Secure Software Development and Code Reviews", icon: "gear", body: "All platform source code lives in a Git repository. Every change runs through an automated CI pipeline with security checks before it reaches production. AI agents that generate customer code run inside a fence that stops them from changing Moderniza’s own code." },
-  { title: "Network Security", icon: "cloud", body: "All traffic enters through one front door that applies TLS, request limits and connection caps. Each customer’s generated application runs in its own containers, separate from the Moderniza platform." },
+  { title: "Secure Software Development and Code Reviews", icon: "gear", body: "Review the CI security results for the relevant commit and confirm which checks block deployment. Request pipeline configuration, retained scanner reports and a failing-run demonstration of the blocking rule." },
+  { title: "Network Security", icon: "cloud", body: "Request the deployed network-boundary configuration, TLS evidence, request-limit settings and isolation tests for customer application containers." },
   { title: "Audit & Logging", icon: "doc", body: "Every sign-in, permission change, data access and administrator action is written to the platform audit log. Customer administrators read it in the app; the log schema is part of the customer documentation. Compliance evidence is kept in a hash-chained ledger." },
   { title: "Role & Attribute-Based Access Control", icon: "verify", body: "Moderniza has two roles, Super Admin and Engineer, plus per-account feature switches. Higher privileges need a just-in-time elevation confirmed with a passkey. Scripts and integrations use service accounts, never a person’s account. A daily access review revokes sessions that have no second-factor sign-in behind them." },
-  { title: "Federated Identity", icon: "group", body: "Users sign in with a password plus one second factor of their choice: passkey, authenticator app (2FA) or fingerprint / face lock. Single sign-on through OIDC is available once the identity provider is configured. PIV/CAC sign-in is built but off by default; it is turned on per customer." },
-  { title: "Moderniza Trust Center API Documentation", icon: "server", body: <>The Trust Center data is open through a read-only API under <code className="font-mono text-[13px]">/api/v1/trust-center</code>: index, cso, certification (per KSI), snapshots, policies, vulnerabilities, changes, access and health. Public calls get the public view; a token with <code className="font-mono text-[13px]">compliance:read</code> unlocks full evidence on the same URLs.</> },
+  { title: "Federated Identity", icon: "group", body: "Users sign in with a password plus one second factor of their choice: passkey, authenticator app (2FA) or fingerprint / face lock. Confirm identity-provider and CAC/PIV compatibility, configuration and test evidence for your deployment." },
+  { title: "Moderniza Trust Center API Documentation", icon: "server", body: <>Request the current Trust Center API documentation, available endpoints, access requirements and a sample snapshot from the security team. Confirm which data is public and which evidence requires assessor access.</> },
 ];
 
 const SUBPROCESSORS: (string | ReactNode)[][] = [
-  ["Anthropic, PBC (Claude)", "San Francisco, California, USA; processed in the United States", "Main AI model. Reads legacy code, plans the new system, writes and fixes code, writes reports. Receives parts of customer source code and prompts. Not FedRAMP authorized for this use."],
-  ["OpenRouter, Inc.", "United States, then a model host OpenRouter selects", "Backup AI provider, used only when the Claude account hits its usage limit. Receives the same data for the step it re-runs. Not FedRAMP authorized."],
-  ["OpenAI, Inc.", "San Francisco, California, USA; processed in the United States", "Optional AI tool (Codex), used only when a user picks it in Settings. Not FedRAMP authorized for this use."],
-  ["Amazon Web Services, Inc.", "Seattle, Washington, USA; AWS US East (N. Virginia)", "Encrypted nightly backups of the database and customer workspace (AWS S3 + KMS). FedRAMP authorized, Moderate."],
+  ["Anthropic, PBC (Claude)", "Requires deployment-specific confirmation", "Reference AI provider; active use, data received and authorization scope require confirmation."],
+  ["OpenRouter, Inc.", "Requires deployment-specific confirmation", "Reference AI routing provider; active use, downstream model hosts and data received require confirmation."],
+  ["OpenAI, Inc.", "Requires deployment-specific confirmation", "Reference AI provider; active use, data received and authorization scope require confirmation."],
+  ["Amazon Web Services, Inc.", "Requires deployment-specific confirmation", "Reference infrastructure provider; services, backup configuration and authorization scope require confirmation."],
 ];
 
 const POLICIES: { name: string; summary: string; version: string; status: string; words: string; availability: string }[] = [
@@ -401,15 +400,15 @@ export default function TrustCenterPage() {
       {/* ============ 03 SERVICE LIST ============ */}
       <Section id="services" bg="chalk" title="Service List (CDS-CSO-SVC)">
         <SubHead tone="chalk" first>Services &amp; Security Categories</SubHead>
-        <Prose tone="chalk" paras={["All services below are offered together under one certification. Each service has a Moderate FIPS 199 security categorization."]} />
+        <Prose tone="chalk" paras={["The services below describe the product workflow. Request the approved assessment scope and security categorization; this list does not establish certification or authorization."]} />
         <Table
           tone="chalk"
-          head={["Service", "Description", "Security Category", "In Minimum Assessment Scope"]}
+          head={["Service", "Description", "Security Category", "Assessment Scope"]}
           rows={SERVICES.map((s) => [
             s.name,
             s.desc,
-            <Badge key="c" kind="warn">{s.category}</Badge>,
-            <Badge key="s" kind={s.inScope === "Yes" ? "pos" : "neutral"}>{s.inScope}</Badge>,
+            <Badge key="c" kind="neutral">Request assessment</Badge>,
+            <Badge key="s" kind="neutral">Confirm scope</Badge>,
           ])}
           minWidth={960}
         />
@@ -421,7 +420,7 @@ export default function TrustCenterPage() {
         <Prose
           tone="bone"
           paras={[
-            <>The Moderniza Secure Configuration Guide v1.0 (2 October 2026, draft for approval) tells customer administrators how to run Moderniza safely: first steps, roles and privileges, privilege elevation, service accounts, inactive accounts, removing an administrator, second factors, passwords and lockout, sessions, single sign-on, AI use and customer code (stop all AI, agent limits, which AI vendor sees your code), uploads and data classification, audit records and retention, integrations and secrets.</>,
+            <>Request the current approved Moderniza Secure Configuration Guide for customer administrators. Its topics include first steps, roles and privileges, privilege elevation, service accounts, inactive accounts, removing an administrator, second factors, passwords and lockout, sessions, single sign-on, AI use and customer code (stop all AI, agent limits, which AI vendor sees your code), uploads and data classification, audit records and retention, integrations and secrets.</>,
           ]}
         />
 
@@ -446,26 +445,26 @@ export default function TrustCenterPage() {
       {/* ============ 05 AUTHORIZATION PACKAGE ============ */}
       <Section id="authorization-package" bg="ink" title="Authorization Package">
         <SubHead tone="ink" first>Authorization Package Overview</SubHead>
-        <Prose tone="ink" paras={["Moderniza is pursuing a FedRAMP 20x Class C certification. The whole package sits in one folder with 17 numbered sections, from the Certification Package Overview to the Security Decision Log."]} />
+        <Prose tone="ink" paras={["Request the current security package and approved program scope. The catalogue below describes the documents to review and does not establish authorization or a completed assessment."]} />
 
         <SubHead tone="ink">Submission Rationale</SubHead>
         <Prose tone="ink" paras={["Federal agencies hold large legacy estates (COBOL, VB6, .NET, Java) that are costly to run and hard to staff. Moderniza converts them to modern, containerised applications and proves each step: the business rules found in the old code, the contract the new code must honor, the tests it passes, and the deploy. That evidence trail is what makes the service a good fit for agencies that must show how a system was changed."]} />
 
         <SubHead tone="ink">Submission Approach</SubHead>
-        <Prose tone="ink" paras={["Moderniza follows the FedRAMP 20x model: automated checks and machine-readable evidence instead of static documents and point-in-time reviews. Every Key Security Indicator (KSI) is measured by a script against the running platform. A snapshot is taken every 6 hours and added to a hash-chained ledger, so any edited or missing snapshot is detected. The checks themselves are mutation-tested, so a check that always passes is caught."]} />
+        <Prose tone="ink" paras={["Review automated checks and machine-readable evidence alongside policy documents. Request the current indicator inventory, snapshot schedule, hash-chain verifier results and tests showing how checks respond to missing or failing evidence."]} />
 
         <SubHead tone="ink">Security Package Contents</SubHead>
         <Table tone="ink" head={["#", "Folder", "Availability"]} rows={PACKAGE_CONTENTS.map((r) => [...r, "Available on Request"])} minWidth={560} firstStrong={false} />
-        <p className="mt-5 text-sm text-chalk/80">Most documents are version 1.0, issued 2 October 2026, as drafts for approval.</p>
+        <p className="mt-5 text-sm text-chalk/80">Request the current approved versions and publication dates before using these documents for an assessment.</p>
 
         <SubHead tone="ink">Minimum Assessment Scope</SubHead>
-        <Prose tone="ink" paras={["The scope covers the six customer-facing services in the Service List (Blueprint, Contract, Code, Testing, Deploy, Business Rules), the platform that runs them, its database and backups, and the five outside companies in the Sub-processors section. The Demo evidence page is outside the scope."]} />
+        <Prose tone="ink" paras={["Request the approved assessment boundary, including the applicable services, platform infrastructure, database, backups and third-party processing. The service and provider reference lists on this page do not establish assessment scope."]} />
 
         <SubHead tone="ink">Continuous KSI Validation Reporting</SubHead>
-        <Prose tone="ink" paras={["KSI results are published live on the Moderniza Trust Center and refreshed every 6 hours. Failing items are tracked in the POA&M. Agency customers and assessors with a read-only account see the evidence behind each measurement and the snapshot history."]} />
+        <Prose tone="ink" paras={["Request the latest KSI snapshot, publication timestamp, supporting proof and tracked remediation items. Confirm access to the evidence and snapshot history for your assessor."]} />
 
         <SubHead tone="ink">Machine-Readable Package Data Schema</SubHead>
-        <Prose tone="ink" paras={[<>The package overview follows the official FedRAMP Certification Package Overview JSON schema (2026-06-24), and is served by the Trust Center API. KSI rules follow the FedRAMP Consolidated Rules for 2026 (version 2026.07.14.01).</>]} />
+        <Prose tone="ink" paras={[<>Request the machine-readable package, its schema version and validation result for the submission being reviewed.</>]} />
       </Section>
 
       {/* ============ 06 SECURITY & CONTINUOUS MONITORING ============ */}
@@ -495,7 +494,7 @@ export default function TrustCenterPage() {
       {/* ============ 07 SUB-PROCESSORS ============ */}
       <Section id="subprocessors" bg="ink" title="Sub-processors">
         <SubHead tone="ink" first>Third-Party Service Providers (Sub-processors)</SubHead>
-        <Prose tone="ink" paras={["A sub-processor is an outside company that receives or stores customer data so Moderniza can deliver its service. Moderniza lists them from what the platform actually did (its own model-call ledger), not only from its settings. Five companies receive or may receive customer data; only Amazon Web Services holds a FedRAMP authorization. Customers can mark a project public, internal, confidential or CUI, and can stop all AI work at any time."]} />
+        <Prose tone="ink" paras={["A sub-processor is an outside company that receives or stores customer data so Moderniza can deliver its service. The reference entries below are not a verified inventory of current processing. Request the approved sub-processor inventory, processing locations and data flows for your deployment. Customers can mark a project public, internal, confidential or CUI, and can stop all AI work at any time."]} />
 
         <SubHead tone="ink">Sub-processor Table</SubHead>
         <Table tone="ink" head={["Sub-processor", "Headquarters / Processing Location", "Services Provided"]} rows={SUBPROCESSORS} minWidth={900} />
@@ -504,16 +503,14 @@ export default function TrustCenterPage() {
       {/* ============ 08 RESOURCES ============ */}
       <Section id="resources" bg="bone" title="Resources (CDS-CSO-IRP)">
         <SubHead tone="bone" first>Resources Table</SubHead>
-        <Prose tone="bone" paras={["Policies and related documents, with version, length and how to get them."]} />
+        <Prose tone="bone" paras={["Policies and related documents to request. Confirm approved versions and availability with the security team."]} />
         <Table
           tone="bone"
-          head={["Policy / Procedure", "Summary", "Version", "Words", "Availability"]}
+          head={["Policy / Procedure", "Summary", "Availability"]}
           rows={POLICIES.map((p) => [
             p.name,
             p.summary,
-            p.version,
-            p.words,
-            p.availability,
+            "Request current approved copy",
           ])}
           minWidth={1100}
         />
@@ -524,10 +521,10 @@ export default function TrustCenterPage() {
         <SubHead tone="ink" first>Accessing Trust Center Information</SubHead>
         <div className="mt-8 grid gap-5 md:grid-cols-2">
           {[
-            { h: "Public Information", b: <>This page is public and needs no account. It is updated whenever certification details change, and KSI results refresh every 6 hours.</> },
-            { h: "Machine-Readable Data", b: <>The same data is available as JSON from the Trust Center API, for example {extDark("https://platform.gomoderniza.ai/api/v1/trust-center/package-overview")} (package overview) and {extDark("https://bimod.mo.vc/api/v1/trust-center/certification")} (KSI results).</> },
-            { h: "Full Certification Package", b: <>Federal agencies, assessors and other authorized parties can ask the Security Contact for the full package. Approved requesters receive a read-only account with the compliance:read permission, which unlocks per-measurement evidence and snapshot history on the same pages and API.</> },
-            { h: "Trust Center Navigation Instructions", b: <>The Moderniza Trust Center is the central place for security, privacy, compliance and FedRAMP 20x Class C information. Open it from the website’s Resources menu or at {extDark("https://bimod.mo.vc/api/v1/trust-center/cso")}. Restricted documents are shown in the list with a request link; they open after the request is verified.</> },
+            { h: "Public Information", b: <>This page is public and needs no account. It describes the evidence to request; it is not a live indicator dashboard. Confirm current status and snapshot timestamps with the security team.</> },
+            { h: "Machine-Readable Data", b: <>Confirm current availability and access requirements for the reference Trust Center API endpoints: {extDark("https://platform.gomoderniza.ai/api/v1/trust-center/package-overview")} (package overview) and {extDark("https://bimod.mo.vc/api/v1/trust-center/certification")} (KSI results).</> },
+            { h: "Full Certification Package", b: <>Federal agencies, assessors and other authorized parties can ask the Security Contact for the full package. The security team can confirm the approval process, available documents and read-only evidence access for your assessment.</> },
+            { h: "Trust Center Navigation Instructions", b: <>The Moderniza Trust Center is the central place for security, privacy, compliance and FedRAMP 20x readiness information. Open it from the website’s Security menu or at {extDark("https://bimod.mo.vc/api/v1/trust-center/cso")}. Request restricted documents and confirm access with the security team.</> },
           ].map((item, i) => (
             <Reveal key={item.h} delay={((i % 4) + 1) as 1 | 2 | 3 | 4} className="rounded-3xl border border-white/10 bg-graphite/40 p-6 lift">
               <h4 className="text-lg font-semibold tracking-tight text-chalk">{item.h}</h4>

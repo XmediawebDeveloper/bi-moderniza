@@ -7,7 +7,7 @@ import Reveal from "../components/Reveal";
 export const metadata: Metadata = {
   title: { absolute: "Moderniza Security — Passkeys, Tamper-Evident Audit, Signed Builds" },
   description:
-    "Phishing-resistant login, just-in-time admin access, a hash-chained audit log, encrypted secrets, a scanned and signed supply chain, and FedRAMP 20x readiness.",
+    "Review Moderniza sign-in controls, audit records, build scans, signing requirements and FedRAMP 20x readiness evidence for your deployment.",
 };
 
 export default function SecurityPage() {
@@ -17,7 +17,7 @@ export default function SecurityPage() {
         crumb={[{ label: "Security", href: "/security" }, { label: "Security & trust" }]}
         eyebrow="/ Security & trust"
         title={<>Security built in, <span className="text-gradient">not bolted on</span>.</>}
-        lede="Your source code is one of your most sensitive assets. Moderniza is built to protect it — from the way people sign in to the way every build is scanned and signed."
+        lede="Your source code is one of your most sensitive assets. Review sign-in controls, audit records and build-security evidence for the deployment you use."
         meta={<><span>Passkeys</span><span>·</span><span>Hash-chained audit</span><span>·</span><span>Signed builds</span><span>·</span><span>FedRAMP 20x readiness</span></>}
         rightSlot={SHOW_PINK_HEART_CONTACT_BOT ? <ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
         centered={!SHOW_PINK_HEART_CONTACT_BOT}
@@ -28,8 +28,8 @@ export default function SecurityPage() {
           ["Strong passwords", "Stored with PBKDF2-HMAC-SHA256 at 600,000 iterations. 12-character minimum. Screened against breached-password lists. Account locks for 30 minutes after 5 failed attempts. New accounts must set their own password at first sign-in."],
           ["Second factor — your choice", "Passkey (WebAuthn / FIDO2), authenticator-app code (TOTP) with recovery codes, or fingerprint / Face Lock on a linked phone. No SMS codes. Passkeys and phone sign-in can be switched off and on again without losing the keys."],
           ["Passwordless sign-in", "Sign in with a passkey alone. Cloned keys are detected and refused."],
-          ["Single sign-on", "Available: OpenID Connect with Okta, Microsoft Entra ID (Azure AD), Keycloak or Login.gov. New SSO users start with least privilege."],
-          ["CAC / PIV smart cards", "Available for government deployments, including DoD EDIPI identities."],
+          ["Single sign-on", "Confirm identity-provider compatibility and sign-in requirements for your deployment before relying on single sign-on."],
+          ["CAC / PIV smart cards", "Confirm smart-card compatibility and deployment requirements with the security team."],
           ["Two-step sign-in for everyone", "Required for every person. Service accounts used by scripts cannot sign in as a person."],
         ]} />
       </Section>
@@ -48,7 +48,7 @@ export default function SecurityPage() {
 
       <Section tone="light" id="audit" eyebrow="/ 03 — Tamper-evident audit log" title={<>Every record linked to <span className="text-gradient-ink">the one before it</span>.</>}>
         <Bullets tone="light" items={[
-          { title: "About 80 kinds of events —", body: "sign-ins and sign-outs, MFA and passkey events, permission denials, role and privilege changes, policy approvals, downloads, configuration changes, deployments, and every project and conversion step." },
+          { title: "Audit event coverage —", body: "sign-ins and sign-outs, MFA and passkey events, permission denials, role and privilege changes, policy approvals, downloads, configuration changes, deployments, and every project and conversion step." },
           { title: "Hash-chained and append-only —", body: "every record is linked to the one before it with SHA-256, and the database refuses to change or delete a record. One click verifies the whole chain, or a single record." },
           { title: "Never lost with the request —", body: "each record is written in its own transaction." },
           { title: "Privacy-aware —", body: "sensitive fields are removed before writing." },
@@ -58,13 +58,13 @@ export default function SecurityPage() {
         ]} />
       </Section>
 
-      <Section tone="dark" id="data" eyebrow="/ 04 — Data protection" title={<>Encrypted, FIPS-approved, <span className="text-gradient">post-quantum ready</span>.</>}>
+      <Section tone="dark" id="data" eyebrow="/ 04 — Data protection" title={<>Data protection <span className="text-gradient">and deployment requirements</span>.</>}>
         <Bullets items={[
           { body: "Secrets encrypted at rest with a rotating key ring. No built-in fallback key." },
-          { body: "FIPS-approved algorithms for password hashing and signatures." },
-          { title: "Post-quantum ready —", body: "session tokens can be signed with ML-DSA (FIPS 204)." },
-          { title: "Controlled AI traffic —", body: "source code is only sent to approved AI hosts. AWS GovCloud (Bedrock) available." },
-          { title: "Encrypted database connections —", body: "the platform database requires TLS with full certificate checks, and keeps a write-ahead log archive and daily base backups." },
+          { body: "Algorithm selection alone does not establish FIPS module validation or operation in FIPS mode." },
+          { title: "Token signing —", body: "Request the signing algorithm, implementation evidence and enabled configuration for your deployment." },
+          { title: "Controlled AI traffic —", body: "Confirm the approved endpoints, processing locations and data sent to each provider for your deployment." },
+          { title: "Database and backup evidence —", body: "Request deployment-specific evidence for TLS certificate verification, the backup schedule, retention and last successful backup, encryption and key management, and a dated restore-drill record showing what was restored, the result and unresolved failures. A completed backup is not proof that a restore works." },
           { title: "A separate key for sign-in codes —", body: "authenticator secrets are sealed with their own key, apart from integration secrets." },
           { body: "Every generated app gets its own database login — never the platform’s." },
           { title: "Outbound requests checked —", body: "imports from a URL can only reach public addresses; internal and cloud-metadata addresses are refused, including after a redirect." },
@@ -72,17 +72,18 @@ export default function SecurityPage() {
         ]} />
       </Section>
 
-      <Section tone="light" id="supply-chain" eyebrow="/ 05 — Secure supply chain" title={<>Every build scanned, <span className="text-gradient-ink">checked and signed</span>.</>}>
-        <Table tone="light" head={["Stage", "Tools"]} rows={[
+      <Section tone="light" id="supply-chain" eyebrow="/ 05 — Secure supply chain" title={<>Review build scans, <span className="text-gradient-ink">checks and signatures</span>.</>}>
+        <Table tone="light" head={["Stage", "Documented tools — confirm enabled configuration"]} rows={[
           ["Secrets", "gitleaks"],
-          ["Code", "Semgrep — a real full scan on every pipeline, findings kept as evidence"],
+          ["Code", "Semgrep — request the scan result for the relevant commit"],
           ["Dependencies", "OSV-Scanner + CISA Known Exploited Vulnerabilities list"],
           ["Infrastructure as code", "Checkov, KICS"],
           ["Container images", "Grype, Trivy, ClamAV"],
           ["Policy gate", "Open Policy Agent (conftest)"],
           ["Signing", "cosign signatures and attestations with a cloud KMS key"],
-          ["Bill of materials", "CycloneDX and SPDX SBOMs, with OpenVEX statements — pulled from each pipeline and kept as evidence"],
+          ["Bill of materials", "CycloneDX and SPDX SBOMs, with OpenVEX statements — request the artifacts for the relevant build"],
         ]} />
+        <Prose tone="light"><p>Confirm scanner execution, displayed results and deployment-blocking rules for the exact commit and pipeline run. A tool listed here is not proof that it ran or that a failing result blocks deployment.</p></Prose>
       </Section>
 
       <Section tone="dark" id="runtime" eyebrow="/ 06 — Runtime protection (Kubernetes deployments)" title={<>Protected <span className="text-gradient">while it runs</span>.</>}>
@@ -96,7 +97,7 @@ export default function SecurityPage() {
 
       <Section tone="light" bone id="fedramp" eyebrow="/ 07 — FedRAMP 20x readiness" title={<>Built for the <span className="text-gradient-ink">public sector</span>.</>}>
         <Prose tone="light">
-          <p>Moderniza measures all 46 FedRAMP 20x Key Security Indicators on its own running platform every six hours, scans the whole stack against CIS benchmarks every day, and publishes its posture in a Trust Center and in FedRAMP&rsquo;s machine-readable package format. See the Compliance &amp; evidence page.</p>
+          <p>Review FedRAMP 20x indicator evidence, CIS benchmark results and snapshot timestamps for your deployment. Measurements do not constitute authorization. See the Compliance &amp; evidence page for the review workflow.</p>
         </Prose>
         <Reveal delay={3} className="mt-6 flex flex-wrap gap-6">
           <Arrow href="/compliance" tone="light">Compliance &amp; evidence</Arrow>

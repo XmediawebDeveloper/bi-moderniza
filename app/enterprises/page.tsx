@@ -160,7 +160,7 @@ export default async function EnterprisesPage() {
             Six industries. <span className="text-gradient">One steady hand.</span>
           </Reveal>
           <Reveal delay={2} className="mt-6 max-w-2xl text-lg text-chalk/80">
-            Wherever the stakes are high — money, health, citizens, supply chains — we've done this. The shapes change; the discipline doesn't.
+            Wherever the stakes are high — money, health, citizens, supply chains — we&apos;ve done this. The shapes change; the discipline doesn&apos;t.
           </Reveal>
 
           <ul className="mt-14 grid gap-px md:grid-cols-2 lg:grid-cols-3 bg-white/10 border border-white/10 rounded-3xl overflow-visible">

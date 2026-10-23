@@ -56,10 +56,8 @@ const PRINCIPLES_FALLBACK = [
   { no: "04", title: "First it has to work.", body: "If the new app doesn't run, nothing else matters. So that's the first bar we clear, every time.", icon_kind: "bolt" },
 ];
 
-const STATS_FALLBACK = [
-  { value: "12", label: "people on the team" },
-  { value: "3", label: "countries we work from" },
-];
+// Left empty until the owner supplies verified team numbers.
+const STATS_FALLBACK: { value: string; label: string }[] = [];
 
 const FOUNDRY_FALLBACK = [
   {
@@ -248,6 +246,7 @@ export default async function WhoPage() {
       </section>
 
       {/* ============ Numbers ============ */}
+      {stats.length > 0 && (
       <section className="relative bg-bone text-ink border-y border-ink/10">
         <div className={`mx-auto max-w-[1400px] px-5 md:px-8 py-16 grid gap-8 grid-cols-2 ${stats.length === 2 ? "md:grid-cols-2" : "md:grid-cols-4"} text-center md:text-left`}>
           {stats.map((s, i) => {
@@ -263,6 +262,7 @@ export default async function WhoPage() {
           })}
         </div>
       </section>
+      )}
 
       {/* ============ CTA ============ */}
       <section className="relative bg-ink overflow-hidden">

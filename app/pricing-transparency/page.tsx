@@ -22,12 +22,12 @@ export default function PricingTransparencyPage() {
         centered={!SHOW_PINK_HEART_CONTACT_BOT}
       />
 
-      <Section tone="light" id="budget-gates" eyebrow="/ 01 — Budget gates" title={<>Nothing past the gate starts <span className="text-gradient-ink">without your decision</span>.</>}>
+      <Section tone="light" id="budget-gates" eyebrow="/ 01 — Budget gates" title={<>Review planning cost <span className="text-gradient-ink">and build budget</span>.</>}>
         <Table tone="light" head={["Gate", "When", "What you decide"]} rows={[
           ["Planning approval", "After the Repo Scan", "Approve the estimated cost of planning before it starts"],
           ["Build budget", "After the Contract", "Set a budget for the build, or continue at full quality"],
         ]} />
-        <Prose tone="light"><p>The server enforces both gates. Nothing past the gate starts without your decision.</p></Prose>
+        <Prose tone="light"><p>In Blueprint, review and approve the estimated planning cost. In Contract, choose a build budget or continue at full quality.</p></Prose>
       </Section>
 
       <Section tone="dark" id="tokenomics" eyebrow="/ 02 — Tokenomics" title={<>Every dollar, <span className="text-gradient">explained</span>.</>} lede="The Tokenomics page for each project shows:">
@@ -50,7 +50,7 @@ export default function PricingTransparencyPage() {
           { title: "Agent board —", body: "every agent’s instructions, report, files, tokens and cost, read from the real records." },
           { title: "Stage banner —", body: "tokens and cost shown on each step as it runs." },
         ]} />
-        <Callout tone="light" label="Callout">
+        <Callout tone="light">
           You never have to ask &ldquo;why did this cost so much?&rdquo; The answer is already on the page, call by call.
         </Callout>
       </Section>

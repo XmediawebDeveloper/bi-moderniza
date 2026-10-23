@@ -6,7 +6,7 @@ import { Section, Bullets, Prose, Callout, CtaBand } from "../components/content
 export const metadata: Metadata = {
   title: { absolute: "Business Rule Extraction and Traceability — Moderniza" },
   description:
-    "Every business rule found by code, explained by AI, checked against its source line, owned in the new code, and tested. Export to Drools, Markdown or CSV.",
+    "Review extracted business rules, source references, ownership and proof status. Priority rules become tests. Export to Drools, Markdown or CSV.",
 };
 
 export default function BusinessRulesPage() {
@@ -16,7 +16,7 @@ export default function BusinessRulesPage() {
         crumb={[{ label: "Platform", href: "/platform" }, { label: "Business rules" }]}
         eyebrow="/ Business rules"
         title={<>Every business rule, <span className="text-gradient">traced to its source line</span>.</>}
-        lede="The biggest risk in any modernization is the rule nobody knew about. Moderniza finds rules with code first, uses AI only to explain them, and then checks every AI answer against the original source. Rules are not just documented — they are carried into the new code and proven."
+        lede="The biggest risk in any modernization is the rule nobody knew about. Moderniza finds rules with code first, uses AI only to explain them, and then checks every AI answer against the original source. Review rule ownership and proof status in the new code, including claims without proof."
         meta={<><span>Found by code</span><span>·</span><span>Explained by AI</span><span>·</span><span>Checked by code</span></>}
         rightSlot={SHOW_PINK_HEART_SCAN_BOT ? <ContactRobot variant="scan" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
         centered={!SHOW_PINK_HEART_SCAN_BOT}
@@ -52,7 +52,7 @@ export default function BusinessRulesPage() {
           { title: "Drools Workbench —", body: "export rules as a Drools rule bundle (.drl). Rule conditions are translated from the cited source lines and the bundle is compiled for real. Any rule that cannot be translated is clearly marked — never hidden or faked." },
         ]} />
         <Callout tone="light">
-          A rewrite that drops one interest-rounding rule can cost more than the whole project saved. Moderniza makes every rule visible, owned and tested — so you can sign off with evidence, not hope.
+          A rewrite that drops one interest-rounding rule can cost more than the whole project saved. Review the extracted rules, their owners and available test evidence before sign-off.
         </Callout>
       </Section>
 

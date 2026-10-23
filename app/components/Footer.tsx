@@ -57,8 +57,8 @@ export default function Footer() {
                 <span className="absolute inset-1 rounded-full bg-chalk" />
                 <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember" />
               </span>
-              <p className="type-eyebrow text-ink/60">
-                Moderniza
+              <p className="brand-label text-ink">
+                Moderniza<sup className="tm-glow tm-glow--light tm-glow--brand">™</sup>
               </p>
             </div>
             <h3 className="mt-6 type-h2">
@@ -96,7 +96,10 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-ink/10 pt-6 type-small text-ink/60 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Moderniza. All rights reserved.</p>
+          <div>
+            <p className="text-ink">© {new Date().getFullYear()} Moderniza<sup className="tm-glow tm-glow--light" style={{ position: "static", display: "inline", fontSize: "0.75em", lineHeight: 0 }}>™</sup>. All rights reserved.</p>
+            <p className="mt-1 font-medium text-ink">Moderniza<sup className="tm-glow tm-glow--light" style={{ position: "static", display: "inline", fontSize: "0.75em", lineHeight: 0 }}>™</sup> is a trademark of Business Integra Technology Solutions, Inc.</p>
+          </div>
           <div className="flex flex-wrap items-center gap-5">
             <Link href="/security" className="hover:text-ink">Security</Link>
             <Link href="/ai-governance" className="hover:text-ink">AI governance</Link>

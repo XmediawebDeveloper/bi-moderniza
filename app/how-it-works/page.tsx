@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 const FLOW = [
   { no: "0", label: "Bring your code", gate: "" },
-  { no: "1", label: "Blueprint", gate: "Approval gate · planning cost" },
-  { no: "2", label: "Contract", gate: "Approval gate · build budget" },
+  { no: "1", label: "Blueprint", gate: "Gate 1 · approve planning cost" },
+  { no: "2", label: "Contract", gate: "Gate 2 · build budget decision" },
   { no: "3", label: "Code", gate: "Automatic · six-gate exit check" },
   { no: "4", label: "Testing", gate: "Automatic · hand-back loop" },
   { no: "5", label: "Deploy", gate: "Pre-deploy gates fail closed" },
@@ -84,7 +84,7 @@ export default function HowItWorksPage() {
               <span className="mt-3 block"><span className="font-semibold text-chalk">Your source is sealed.</span> A fingerprint of every source file is recorded. Testing and Deploy check that the original source was not changed by any step.</span>
             </>
           ) },
-          { title: "Approve planning.", body: "You see an estimated cost for the planning phase and approve it before any planning starts." },
+          { title: "Gate 1 — Planning approval.", body: "In Blueprint, review and approve the estimated planning cost." },
           { title: "Choose your target stack.", body: "Pick the backend language and framework, frontend framework, database, and monolith or microservices. The blueprint waits until you choose." },
           { title: "The Blueprint.", body: "Moderniza explains your application in plain words, in five views:" },
         ]} />
@@ -119,7 +119,7 @@ export default function HowItWorksPage() {
         <SubHead tone="light">Your decisions here</SubHead>
         <Bullets tone="light" items={[
           { title: "Delivery pipeline —", body: "choose your repository platform, CI/CD provider and security scans." },
-          { title: "Build budget —", body: "set a budget, or continue at full quality." },
+          { title: "Gate 2 — Build budget decision.", body: "In Contract, choose a build budget or continue at full quality." },
         ]} />
       </Section>
 
@@ -151,7 +151,7 @@ export default function HowItWorksPage() {
           { title: "Screen checks —", body: "every screen is opened in a real browser and screenshotted." },
           { title: "Schema checks —", body: "the database schema and migrations are compared with the contract." },
           { title: "Mutation testing —", body: "small faults are injected to prove the tests can catch bugs." },
-          { title: "Behaviour parity —", body: "traffic is replayed to compare behaviour." },
+          { title: "Behaviour parity —", body: "review available comparisons and unmeasured results; identical old-vs-new output is not established." },
           { title: "Business-rule tests —", body: "priority rules are written as tests once, run in Testing, and every rule is shown as proven, failed or not run." },
           { title: "Nothing ran is not a pass —", body: "a test suite that ran no tests, or a delivery with no test suite at all, is reported, never counted as green." },
           { title: "Database built from the models —", body: "the new database is created from the application’s own models, missing columns are added safely, and any table that cannot be created is reported by name." },
@@ -180,9 +180,9 @@ export default function HowItWorksPage() {
       <Section tone="light" bone eyebrow="/ Control" title={<>You stay in control <span className="text-gradient-ink">at every step</span>.</>}>
         <Cards tone="light" cols={4} items={[
           { title: "Manual, hybrid or automatic", body: "Press a button for each step, or let the run flow on its own.", icon: "gear" },
-          { title: "Pause and resume", body: "Pause stops every running part of the step within seconds: agents, builds and tests. Resume continues from the saved state of the current step, not from the beginning.", icon: "clock" },
+          { title: "Pause and resume", body: "Review the running step and saved checkpoint before pausing or resuming. Confirm recovery behavior for the affected agents, builds and tests.", icon: "clock" },
           { title: "Watch it live", body: "The live console, the agents’ browser, the running app, and every agent’s instructions, files, tokens and cost.", icon: "pulse" },
-          { title: "Automatic retry", body: "If the AI account reaches its usage limit, the run parks itself and restarts on its own after the limit resets.", icon: "cycle" },
+          { title: "AI usage limits", body: "Review provider limits and run status before retrying. Confirm automatic recovery behavior for the configured provider.", icon: "cycle" },
         ]} />
       </Section>
 

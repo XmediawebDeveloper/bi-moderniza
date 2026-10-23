@@ -20,13 +20,11 @@
 
 import { useEffect, useState } from "react";
 
-const EQ_DELAYS = [0, 0.12, 0.24, 0.36, 0.48, 0.6, 0.72, 0.84];
-
 const TERMINAL_LINES = [
   "$ moderniza analyse --target=prod",
   "$ scanning legacy modules ........... ok",
-  "$ blueprint generated · 1,247 nodes",
-  "$ verifying behavioural parity ....... 96.4%",
+  "$ review blueprint structure",
+  "$ review verification evidence",
   "$ deploy plan ready · awaiting signoff",
 ];
 

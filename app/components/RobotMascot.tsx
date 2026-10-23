@@ -26,7 +26,7 @@ export default function RobotMascot({ className = "" }: { className?: string }) 
     <div aria-hidden className={`relative ${className}`} role="img">
       {/* Cycling speech-bubble reactions — top-right of the robot */}
       <div className="absolute top-2 right-2 md:top-4 md:right-4 z-10 pointer-events-none">
-        {REACTIONS.map((r, i) => (
+        {REACTIONS.map((r) => (
           <div
             key={r.txt}
             className="robo-speech absolute right-0 top-0 whitespace-nowrap"

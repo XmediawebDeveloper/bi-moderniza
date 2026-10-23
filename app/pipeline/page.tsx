@@ -48,6 +48,7 @@ export default function PipelinePage() {
           { title: "Also:", body: "dependencies (SCA), SBOM (Syft), Kubernetes, licences, malware, cloud posture, runtime, policy and signing (Cosign)" },
         ]} />
         <Prose tone="light">
+          <p>Review scanner results for the exact commit and pipeline run, including failed, skipped and unavailable checks. Confirm which findings block deployment in your configured pipeline; selecting a scanner or displaying its results does not establish deployment gating.</p>
           <p>Paid tools are clearly labelled and can still be chosen. The default DevSecOps set covers secrets, code, dependencies, SBOM, containers, infrastructure and policy.</p>
           <p><strong>What you get:</strong> one native pipeline file for your provider — <code>.github/workflows/ci.yml</code>, <code>.gitlab-ci.yml</code>, <code>Jenkinsfile</code>, <code>azure-pipelines.yml</code>, or the Gitea / Forgejo workflow. At deploy it is pushed with the app to a new project on your GitLab and run there. A Jenkins job is created and started on your connected Jenkins. Live stage status is shown for GitLab CI and Jenkins.</p>
         </Prose>

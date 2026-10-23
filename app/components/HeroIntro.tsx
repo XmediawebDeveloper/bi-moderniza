@@ -16,7 +16,7 @@
  */
 
 import Link from "next/link";
-import { motion, useScroll, useTransform, type Variants } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform, type Variants } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import AmbientFx from "./AmbientFx";
 import HeroOverlay from "./HeroOverlay";
@@ -76,15 +76,10 @@ export default function HeroIntro({
 }: HeroIntroProps = {}) {
   const sectionRef = useRef<HTMLElement>(null);
   const [revealed, setRevealed] = useState(false);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      setRevealed(true);
-      return;
-    }
 
     const onDone = () => setRevealed(true);
     window.addEventListener("intro:done", onDone);
@@ -107,7 +102,7 @@ export default function HeroIntro({
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 0.96]);
   const ringRotate = useTransform(scrollYProgress, [0, 1], [0, 28]);
 
-  const state = revealed ? "show" : "hidden";
+  const state = revealed || reducedMotion ? "show" : "hidden";
 
   return (
     <motion.section

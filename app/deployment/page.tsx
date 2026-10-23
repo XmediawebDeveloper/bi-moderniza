@@ -6,7 +6,7 @@ import { Section, Bullets, Table, Prose, CtaBand } from "../components/content";
 export const metadata: Metadata = {
   title: { absolute: "Deploy Moderniza Your Way — SaaS, Self-Hosted, Air-Gapped, GovCloud" },
   description:
-    "Run Moderniza as single-tenant SaaS, on your own Docker or Kubernetes, fully air-gapped, or with AI through AWS GovCloud. Connects to GitLab, Jenkins, SonarQube, Sentry and Splunk.",
+    "Review Moderniza hosting and delivery options, including SaaS, self-hosted and air-gapped deployments, and discuss GovCloud AI requirements.",
 };
 
 export default function DeploymentPage() {
@@ -16,7 +16,7 @@ export default function DeploymentPage() {
         crumb={[{ label: "Deployment & integrations" }]}
         eyebrow="/ Deployment & integrations"
         title={<>Run Moderniza where <span className="text-gradient">your code must stay</span>.</>}
-        lede="Single-tenant SaaS, self-hosted, fully air-gapped, or with AI routed through AWS GovCloud — and a delivery that lands in the toolchain your team already runs."
+        lede="Review single-tenant SaaS, self-hosted and air-gapped options, discuss GovCloud AI requirements, and confirm the delivery toolchain for your deployment."
         meta={<><span>SaaS</span><span>·</span><span>Self-hosted</span><span>·</span><span>Air-gapped</span><span>·</span><span>GovCloud AI</span></>}
         rightSlot={SHOW_PINK_HEART_CONTACT_BOT ? <ContactRobot variant="form" className="w-[380px] md:w-[420px] h-[520px]" /> : undefined}
         centered={!SHOW_PINK_HEART_CONTACT_BOT}
@@ -27,7 +27,7 @@ export default function DeploymentPage() {
           ["Single-tenant SaaS", "Teams that want to start fast", "One isolated environment per customer, managed for you"],
           ["Self-hosted", "Enterprises with their own cloud or data centre", "Docker Compose or Kubernetes, with network policies, Falco runtime security and ClamAV anti-malware"],
           ["Air-gapped", "Defence, government and highly regulated sites", "An offline install bundle with images, packages, database migrations and checksums"],
-          ["GovCloud AI", "Public sector", "AI calls routed through AWS Bedrock in GovCloud, with an outbound allowlist"],
+          ["GovCloud AI", "Public sector", "Confirm AI routing, availability and processing boundaries for your deployment"],
         ]} />
       </Section>
 
@@ -51,8 +51,8 @@ export default function DeploymentPage() {
           ["Syft", "Software bills of materials"],
           ["Slack", "Review notifications by webhook"],
           ["AWS / Azure", "Container registry and Kubernetes delivery manifests"],
-          ["OpenID Connect IdPs", "Okta, Entra ID, Keycloak, Login.gov for single sign-on"],
-          ["Wazuh", "Second SIEM — every event is sent to Splunk and Wazuh"],
+          ["OpenID Connect IdPs", "Confirm provider compatibility and configuration for your deployment"],
+          ["Wazuh", "SIEM forwarding; confirm enabled destinations and event-delivery evidence for your deployment"],
           ["Prometheus · Grafana · Uptime Kuma", "Metrics history, dashboards, alert rules and uptime checks behind the Monitoring page"],
         ]} />
         <Prose tone="light">

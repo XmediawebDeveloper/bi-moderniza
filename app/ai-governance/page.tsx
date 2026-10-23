@@ -56,10 +56,10 @@ export default function AiGovernancePage() {
         ]} />
       </Section>
 
-      <Section tone="light" id="stop" eyebrow="/ 05 — Agents that stop when you say stop" title={<>Stop means <span className="text-gradient-ink">stop</span>.</>}>
+      <Section tone="light" id="stop" eyebrow="/ 05 — Pause and recovery" title={<>Review status <span className="text-gradient-ink">before resuming</span>.</>}>
         <Bullets tone="light" items={[
-          { title: "Pause stops everything —", body: "agents, builds and tests of the paused step stop within seconds." },
-          { title: "Usage limits handled honestly —", body: "when the AI account reaches its limit, the run parks and restarts after the reset instead of failing call after call." },
+          { title: "Pause status —", body: "review agent, build and test status to confirm the step has stopped before maintenance." },
+          { title: "Usage limits handled honestly —", body: "review provider limits and run status before retrying; confirm automatic recovery behavior for the configured provider." },
           { title: "Judged by progress —", body: "a fix agent keeps working while it makes progress and is stopped when it goes silent; every other agent has a fixed time limit." },
           { title: "Your source is sealed —", body: "a fingerprint of the original source is checked in Testing and before Deploy." },
         ]} />
@@ -72,9 +72,10 @@ export default function AiGovernancePage() {
       </Section>
 
       <Section tone="light" id="ai-route" eyebrow="/ 07 — Choice of AI route" title={<>Choose where <span className="text-gradient-ink">AI traffic goes</span>.</>}>
+        <Prose tone="light"><p>Provider names and configuration options do not establish active use. Request the approved provider inventory, model-call records, processing locations and data flows for your deployment, including any intermediary and downstream model host.</p></Prose>
         <Cards tone="light" cols={2} items={[
-          { title: "Anthropic Claude", body: "The default for every step.", icon: "bolt" },
-          { title: "AWS Bedrock in GovCloud", body: "For teams that need AI traffic to stay inside a government cloud boundary.", icon: "cloud" },
+          { title: "Anthropic Claude", body: "Confirm availability, enabled models and the data received in your deployment.", icon: "bolt" },
+          { title: "AWS Bedrock in GovCloud", body: "Confirm availability, routing and processing boundaries for your deployment.", icon: "cloud" },
         ]} />
       </Section>
 

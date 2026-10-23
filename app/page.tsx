@@ -164,7 +164,7 @@ const JOURNEY_FALLBACK = [
   { n: "03", h: "A Jenkinsfile and Kubernetes manifests", t: "For AWS or Azure." },
   { n: "04", h: "A blueprint", t: "Of the old system, in plain words." },
   { n: "05", h: "A screen catalogue", t: "Of the old application — every screen with its real name, its place in the old menu and the roles that use it." },
-  { n: "06", h: "A common app base", t: "One design, one menu and one set of roles shared by every screen of the new app." },
+  { n: "06", h: "A common app base", t: "One design, one menu and one set of roles shared by every screen of the new app. For React front ends today." },
   { n: "07", h: "A test proof record", t: "Which suites ran, which rules were proven by a test, and confirmation that your original source was not changed." },
   { n: "08", h: "A backlog of epics and stories", t: "With Given/When/Then acceptance criteria." },
   { n: "09", h: "A frozen contract", t: "With OpenAPI and database schema files." },
@@ -189,7 +189,7 @@ const DIFFERENTIATORS = [
   ["Runs, not just compiles", "Before release, code must build, start in Docker, pass health checks, answer every API without server errors, and pass its own tests."],
   ["You stay in charge", "Approve budgets, choose the target stack, and run each step by hand or let it flow automatically. Pause and resume any time."],
   ["Secure by default", "Passkeys, tamper-evident audit log, Super Admin power that needs a passkey and runs out on its own, malware-scanned uploads, and a one-switch AI kill switch."],
-  ["Your infrastructure", "Single-tenant SaaS, self-hosted, fully air-gapped, or AI routed through AWS GovCloud."],
+  ["Your infrastructure", "Review SaaS, self-hosted and air-gapped options; confirm AI routing and GovCloud requirements for your deployment."],
 ];
 
 const SOUNDBITES = [
@@ -223,7 +223,7 @@ const METRICS_FALLBACK = [
   { num: 0, suf: "", label: "Rule-level traceability — every rule linked to its source file and line", title: "Traced" },
   { num: 6, suf: " gates", label: "Code must build, start and answer its APIs before release", title: "" },
   { num: 0, suf: "", label: "You approve the spend — cost estimate shown before each phase", title: "Approved" },
-  { num: 0, suf: "", label: "Evidence, not claims — the platform measures its own security every six hours and shows the proof", title: "Evidence" },
+  { num: 0, suf: "", label: "Evidence, not claims — review security measurements, timestamps and supporting proof", title: "Evidence" },
   { num: 0, suf: "", label: "Runs where you need it — single-tenant SaaS, self-hosted, air-gapped or GovCloud", title: "Anywhere" },
 ];
 
@@ -295,7 +295,13 @@ export default async function Home() {
           {metrics.map((m, i) => (
             <Reveal key={m.label} delay={((i % 4) + 1) as 1 | 2 | 3 | 4}>
               <p className="text-5xl md:text-6xl font-semibold tracking-[-0.02em]">
-                {m.num > 0 ? <Counter to={m.num} suffix={m.suf} /> : m.title}
+                {m.num > 0 ? (
+                  m.suf.trim() === "gates" ? (
+                    <span className="tabular-nums">{m.num}{m.suf}</span>
+                  ) : (
+                    <Counter to={m.num} suffix={m.suf} />
+                  )
+                ) : m.title}
               </p>
               <p className="mt-3 text-sm text-mist max-w-xs mx-auto md:mx-0">{m.label}</p>
             </Reveal>

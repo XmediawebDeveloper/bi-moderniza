@@ -41,7 +41,6 @@ export default function IntroLoader() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (reduce) {
-      setPhase("done");
       window.dispatchEvent(new CustomEvent("intro:done"));
       return;
     }
@@ -68,7 +67,7 @@ export default function IntroLoader() {
     };
   }, [reduce]);
 
-  if (phase === "done") return null;
+  if (reduce || phase === "done") return null;
 
   // robot trajectory
   const robotAnimate =
@@ -124,12 +123,12 @@ export default function IntroLoader() {
         transition={{ duration: RUN_MS / 1000, ease: RUN_EASE }}
         className="absolute inset-0 flex items-center justify-center px-8 pointer-events-none"
       >
-        <h1
+        <p
           aria-label="Modernize legacy systems. Prove nothing was lost."
           className="text-center text-[40px] sm:text-[64px] md:text-[92px] lg:text-[112px] font-semibold leading-[0.95] tracking-[-0.04em] text-chalk"
         >
           Modernize legacy systems. <span className="italic text-glow">Prove nothing was lost.</span>
-        </h1>
+        </p>
       </motion.div>
 
       {/* ground line — robot runs along this line, below the text */}

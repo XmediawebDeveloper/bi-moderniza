@@ -6,7 +6,7 @@ import { Section, Bullets, Table, Prose, Callout, CtaBand } from "../components/
 export const metadata: Metadata = {
   title: { absolute: "How Moderniza Verifies Modernized Code — Gates, Tests, Equivalence" },
   description:
-    "Six exit gates, live API and screen checks, mutation testing, traffic replay and an honest old-vs-new equivalence report.",
+    "Six exit gates, live API and screen checks, mutation testing and an honest old-vs-new equivalence report.",
 };
 
 export default function VerificationPage() {
@@ -51,8 +51,8 @@ export default function VerificationPage() {
           { body: "Every API called and marked pass or fail" },
           { body: "Every screen opened in a real browser and screenshotted" },
           { body: "Schema and migrations compared with the contract" },
-          { body: "Mutation testing to prove the tests catch real bugs" },
-          { body: "Traffic replay to compare behaviour" },
+          { body: "Mutation testing reports how tests respond to injected faults" },
+          { body: "Review available behaviour evidence; identical old-vs-new output is not established" },
           { body: "Runtime smoke checks" },
           { body: "Business-rule tests in Given/When/Then form, each rule shown as proven, failed or not run" },
           { title: "Every data screen works —", body: "has its API, is written, and calls the app" },
@@ -66,7 +66,7 @@ export default function VerificationPage() {
 
       <Section tone="dark" id="equivalence" eyebrow="/ Layer 4 — Old vs new equivalence" title={<>An equivalence report that <span className="text-gradient">tells the truth</span>.</>}>
         <Prose>
-          <p>The equivalence view compares old and new across seven business categories: screens, workflows, rules, validations, entities, fields and interfaces. Every row shows how it was measured — from code or from the plan. Anything not measured is shown as unmeasured, never as 100%.</p>
+          <p>The equivalence view compares old and new across business categories including screens, workflows, rules, validations, entities, fields and interfaces. Every row shows how it was measured — from code or from the plan. Anything not measured is shown as unmeasured, never as 100%.</p>
         </Prose>
       </Section>
 
@@ -75,7 +75,7 @@ export default function VerificationPage() {
           { title: "Pre-deploy gates fail closed —", body: "a gate can only be skipped by naming it explicitly." },
           { title: "After deploy —", body: "service status, UI and API smoke checks, runtime errors and code-quality results." },
         ]} />
-        <Callout tone="light" label="Callout">
+        <Callout tone="light">
           Most tools report a single &ldquo;accuracy&rdquo; number. Moderniza shows you the evidence behind every number — and marks what it could not check.
         </Callout>
       </Section>
