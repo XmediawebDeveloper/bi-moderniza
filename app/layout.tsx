@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "./light-theme.css";
 import "./globals.css";
 import Header from "./components/Header";
+import { themeInitScript } from "./lib/theme";
 import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
 import IntroLoader from "./components/IntroLoader";
@@ -71,6 +73,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="min-h-full flex flex-col bg-ink text-chalk">
         <IntroLoader />
         <ScrollProgress />

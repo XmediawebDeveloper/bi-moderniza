@@ -367,7 +367,7 @@ export default function TrustCenterPage() {
       <Section
         id="overview" bg="chalk"
         title="Overview"
-        lede="BI’s AI Moderniza is a Software as a Service (SaaS) offering that converts legacy estates (COBOL, VB6, PHP, Java, .NET and others) into modern, tested, containerised applications. Work runs through five steps — Blueprint, Contract, Code, Testing and Deploy — and every step leaves a ledger the customer can audit. Moderniza is offered to government customers by Business Integra Technology Solutions, Inc."
+        lede={<>Business Integra<sup className="tm-glow tm-glow--light">™</sup>’s AI Moderniza is a Software as a Service (SaaS) offering that converts legacy estates (COBOL, VB6, PHP, Java, .NET and others) into modern, tested, containerised applications. Work runs through five steps — Blueprint, Contract, Code, Testing and Deploy — and every step leaves a ledger the customer can audit. Moderniza is offered to government customers by Business Integra Technology Solutions, Inc.</>}
       >
         <SubHead tone="chalk" first>General Information</SubHead>
         <SpecGrid tone="chalk" items={GENERAL_INFO} />
@@ -407,7 +407,7 @@ export default function TrustCenterPage() {
           rows={SERVICES.map((s) => [
             s.name,
             s.desc,
-            <Badge key="c" kind="neutral">Request assessment</Badge>,
+            <Badge key="c" kind="neutral">{s.category}</Badge>,
             <Badge key="s" kind="neutral">Confirm scope</Badge>,
           ])}
           minWidth={960}

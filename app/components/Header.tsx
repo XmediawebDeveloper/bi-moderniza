@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import LogoMark from "./LogoMark";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { getThemeSnapshot, getServerThemeSnapshot, setLightTheme, subscribeTheme } from "../lib/theme";
+import ModernizaSymbol from "./ModernizaSymbol";
+import styles from "./Header.module.css";
 
 type MenuKey = "platform" | "solutions" | "security" | "admin";
 
@@ -79,6 +81,8 @@ const NAV: NavEntry[] = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const lightTheme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerThemeSnapshot);
+  const toggleTheme = () => setLightTheme(!getThemeSnapshot());
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMobile, setOpenMobile] = useState<MenuKey | null>(null);
   // After a submenu link is clicked the panel is kept closed until the pointer
@@ -99,21 +103,21 @@ export default function Header() {
   return (
     <header
       className={[
-        "sticky top-0 z-50 w-full backdrop-blur-xl transition-colors duration-300",
+        `${styles.header} sticky top-0 z-50 w-full backdrop-blur-xl transition-colors duration-300`,
         scrolled
           ? "bg-ink/90 border-b border-white/5"
           : "bg-ink/70",
       ].join(" ")}
     >
-      <div className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-5 md:px-8">
-        <Link href="/" className="flex items-center gap-3 group" aria-label="Moderniza home">
-          <LogoMark size={32} />
-          <span className="text-[15px] font-semibold tracking-tight ai-flicker">
-            Moderniza<sup className="tm-glow tm-glow--lg">™</sup><span className="text-glow">.</span>
+      <div className={styles.row}>
+        <Link href="/" className={styles.brand} aria-label="Moderniza home">
+          <ModernizaSymbol className={styles.logo} />
+          <span className={styles.wordmark}>
+            Moderniza<sup className={styles.trademark}>&trade;</sup>
           </span>
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-1">
+        <nav aria-label="Main navigation" className={`${styles.navigation} hidden xl:flex items-center`}>
           {NAV.map((entry, kIdx) => {
             if (entry.kind === "link") {
               return (
@@ -258,16 +262,37 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className={styles.actions}>
           <Link
             href="/contact"
-            className="inline-flex h-9 md:h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-glow px-3.5 md:px-4 text-[13px] font-semibold text-ink hover:bg-chalk transition-colors"
+            className={`${styles.demo} inline-flex h-9 md:h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-glow px-3.5 md:px-4 text-[13px] font-semibold text-ink transition-colors`}
           >
             <span className="h-2 w-2 rounded-full bg-ink pulse-dot" />
             Book a demo
           </Link>
           <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={lightTheme ? "Switch to dark theme" : "Switch to light theme"}
+            aria-pressed={lightTheme}
+            title={lightTheme ? "Switch to dark theme" : "Switch to light theme"}
+            className="theme-toggle"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              {lightTheme ? (
+                <path d="M20.9 13a9 9 0 0 1-9.9-9.9A9 9 0 1 0 20.9 13Z" />
+              ) : (
+                <>
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+                </>
+              )}
+            </svg>
+          </button>
+          <button
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+            aria-controls="header-mobile-menu"
             onClick={() => setMobileOpen((v) => !v)}
             className="xl:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10"
           >
@@ -289,6 +314,8 @@ export default function Header() {
 
       {/* mobile sheet */}
       <div
+        id="header-mobile-menu"
+        inert={!mobileOpen}
         className={`xl:hidden border-b border-white/5 bg-ink transition-[max-height] duration-500 ${
           mobileOpen ? "max-h-[80vh] overflow-y-auto" : "max-h-0 overflow-hidden"
         }`}

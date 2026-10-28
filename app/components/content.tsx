@@ -49,7 +49,7 @@ export function Section({
     >
       <div className={`pointer-events-none absolute inset-0 ${dark ? "bg-grid opacity-30" : "bg-grid-soft opacity-60"}`} />
       {dark && <AmbientFx tone="dark" density="low" corner="br" />}
-      <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 sec-pad">
+      <div className="relative mx-auto max-w-[1400px] px-5 pt-5 pb-12 md:px-8 md:pt-7 md:pb-16">
         {eyebrow && (
           <Reveal className={`flex items-center gap-3 type-eyebrow ${dark ? "text-glow" : "text-ink/70"}`}>
             <span>{eyebrow}</span>

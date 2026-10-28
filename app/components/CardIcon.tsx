@@ -28,9 +28,9 @@ export default function CardIcon({
   tone?: "dark" | "light";
   className?: string;
 }) {
-  const fg = tone === "dark" ? "#d6ff3a" : "#ff6a3d";
+  const fg = tone === "dark" ? "var(--theme-icon-accent, #d6ff3a)" : "#ff6a3d";
   const fg2 = tone === "dark" ? "#ff6a3d" : "#d6ff3a";
-  const stroke = tone === "dark" ? "#f5f1ea" : "#0a0a0b";
+  const stroke = tone === "dark" ? "var(--theme-icon-stroke, #f5f1ea)" : "#0a0a0b";
   const bg = tone === "dark"
     ? "bg-glow/[0.08] border border-glow/30"
     : "bg-ember/[0.08] border border-ember/30";

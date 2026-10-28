@@ -1,0 +1,10 @@
+.brand { color: #f5f1ea; }
+.brand .symbol {
+  width: 24px;
+
+}
+.wordmark { white-space: nowrap; font-size: 22px; font-weight: 650; line-height: 1.2; letter-spacing: -.8px; }
+.trademark { position: relative; top: -.45em; margin-left: 2px; font-size: 13px; font-weight: 600; line-height: 0; letter-spacing: 0; vertical-align: baseline; }
+@media (max-width: 639px) {
+  .wordmark { font-size: 20px; }
+}

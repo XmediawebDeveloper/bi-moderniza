@@ -60,7 +60,7 @@ export default function PathDraw({ children, className = "", duration = 1800 }: 
   }, [duration, drawn]);
 
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={className} data-path-drawn={drawn}>
       {children}
     </div>
   );

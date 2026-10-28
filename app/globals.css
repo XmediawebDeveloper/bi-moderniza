@@ -7,10 +7,10 @@
 @source not "../.next";
 
 @theme inline {
-  --color-ink: #0a0a0b;
-  --color-char: #141416;
-  --color-graphite: #1c1c20;
-  --color-mist: #8a8a92;
+  --color-ink: var(--palette-ink);
+  --color-char: var(--palette-char);
+  --color-graphite: var(--palette-graphite);
+  --color-mist: var(--palette-mist);
   --color-chalk: #f5f1ea;
   --color-bone: #ebe6dd;
   --color-glow: #d6ff3a;
@@ -20,6 +20,10 @@
 }
 
 :root {
+  --palette-ink: #0a0a0b;
+  --palette-char: #141416;
+  --palette-graphite: #1c1c20;
+  --palette-mist: #8a8a92;
   color-scheme: dark;
   --background: #0a0a0b;
   --foreground: #f5f1ea;
@@ -4138,7 +4142,7 @@ html.intro-done .intro-after {
   background:
     radial-gradient(60% 80% at 50% 0%, rgba(214,255,58,0.06), transparent 60%),
     linear-gradient(180deg, #0a0a0b 0%, #0c0c0e 100%);
-  padding: 64px 0 56px;
+  padding: 64px 0;
   overflow: hidden;
   isolation: isolate;
 }
@@ -4150,6 +4154,8 @@ html.intro-done .intro-after {
   pointer-events: none;
 }
 .industries-eyebrow {
+  position: relative;
+  z-index: 3;
   text-align: center;
   font-family: var(--font-mono), ui-monospace, monospace;
   text-transform: uppercase;
@@ -4161,6 +4167,7 @@ html.intro-done .intro-after {
 }
 .industries-viewport {
   position: relative;
+  z-index: 3;
   width: 100%;
   overflow: hidden;
   mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
@@ -4916,11 +4923,14 @@ html.intro-done .intro-after {
 /* ---------- Trademark mark: glowing ™ ---------- */
 .tm-glow {
   display: inline-block;
-  margin-left: 0.1em;
-  font-size: 0.9em;
+  margin-left: 0;
+  font-size: max(0.9em, 13.5px);
   font-weight: 700;
-  line-height: 1;
-  vertical-align: super;
+  letter-spacing: 0;
+  line-height: 0;
+  position: relative;
+  top: -0.45em;
+  vertical-align: baseline;
   color: var(--color-glow);
   text-shadow: 0 0 6px rgba(214, 255, 58, 0.8), 0 0 14px rgba(214, 255, 58, 0.5);
   animation: tm-glow-pulse 2.4s ease-in-out infinite;
@@ -4930,8 +4940,7 @@ html.intro-done .intro-after {
   text-shadow: 0 0 4px rgba(184, 67, 22, 0.15);
   animation-name: tm-glow-pulse-light;
 }
-.tm-glow--lg { font-size: 1.4em; }
-/* Smaller trademark next to the footer brand name. */
+/* Footer brand wordmark. */
 .brand-label {
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 14px;
@@ -4940,7 +4949,6 @@ html.intro-done .intro-after {
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.tm-glow--brand { font-size: 16px; letter-spacing: 0; }
 @keyframes tm-glow-pulse {
   0%, 100% { text-shadow: 0 0 6px rgba(214, 255, 58, 0.8), 0 0 14px rgba(214, 255, 58, 0.5); }
   50%      { text-shadow: 0 0 10px rgba(214, 255, 58, 1), 0 0 24px rgba(214, 255, 58, 0.75); }
@@ -4952,3 +4960,28 @@ html.intro-done .intro-after {
 @media (prefers-reduced-motion: reduce) {
   .tm-glow { animation: none; }
 }
+
+/* Alternate theme changes only sections whose original background is dark. */
+:root {
+  --theme-border: rgba(245, 241, 234, 0.3);
+}
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--theme-border);
+  border-radius: 999px;
+  color: var(--foreground);
+  background: transparent;
+  cursor: pointer;
+}
+.theme-toggle:hover { background: color-mix(in srgb, var(--foreground) 10%, transparent); }
+.theme-toggle:focus-visible {
+  outline: 2px solid #6b8b12;
+  outline-offset: 3px;
+}
+
+/* Blend marquee edge decorations into their section, without recoloring its cards. */

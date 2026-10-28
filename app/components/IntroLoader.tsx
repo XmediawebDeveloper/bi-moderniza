@@ -21,6 +21,8 @@
 import { motion, useReducedMotion, type Easing } from "motion/react";
 import { useEffect, useState } from "react";
 import RobotMascot from "./RobotMascot";
+import ModernizaSymbol from "./ModernizaSymbol";
+import styles from "./IntroLoader.module.css";
 
 const RUN_EASE: Easing = [0.45, 0, 0.55, 1];
 const FLIP_EASE: Easing = [0.6, 0, 0.4, 1];
@@ -98,11 +100,9 @@ export default function IntroLoader() {
       <div className="pointer-events-none absolute -bottom-40 left-1/2 h-[460px] w-[820px] -translate-x-1/2 rounded-full bg-glow/15 blur-3xl" />
 
       {/* corner labels */}
-      <div className="absolute left-5 top-5 flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-mist">
-        <span className="relative inline-block h-5 w-5 rounded-full bg-glow">
-          <span className="absolute inset-1 rounded-full bg-ink" />
-        </span>
-        Moderniza
+      <div className={`${styles.brand} absolute left-5 top-5 flex items-center gap-2`}>
+        <ModernizaSymbol className={styles.symbol} />
+        <span className={styles.wordmark}>Moderniza<sup className={styles.trademark}>&trade;</sup></span>
       </div>
       <div className="absolute right-5 top-5 text-[11px] uppercase tracking-[0.22em] text-mist">v 26 · 04</div>
       <div className="absolute left-5 bottom-5 flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-mist">

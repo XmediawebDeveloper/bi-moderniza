@@ -10,7 +10,6 @@ import AmbientFx from "./components/AmbientFx";
 import MiniRobot from "./components/MiniRobot";
 import CardIcon, { type IconKind } from "./components/CardIcon";
 import IndustriesMarquee from "./components/IndustriesMarquee";
-import ImageStripMarquee from "./components/ImageStripMarquee";
 import CodeFactory from "./components/CodeFactory";
 import {
   getHero, getCta, getWhyPoints, getWhatPillars, getPipeline,
@@ -380,9 +379,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ============ stacked marquees: industries + image strip ============ */}
+      {/* ============ industries marquee ============ */}
       <IndustriesMarquee />
-      <ImageStripMarquee />
 
       {/* ============ 03 · WHAT  (LIGHT) — 4 pillars w/ Tilt ============ */}
       <section className="relative bg-chalk text-ink">
@@ -429,7 +427,7 @@ export default async function Home() {
               >
                 <MiniRobot
                   variant={REACTIONS[i % REACTIONS.length]}
-                  tone="light"
+                  tone="dark"
                   className="absolute -top-16 right-5 h-20 w-14 z-10"
                 />
                 <Tilt className="flex w-full rounded-3xl">
@@ -636,7 +634,7 @@ export default async function Home() {
           </Reveal>
 
           <PathDraw className="mt-16 hidden md:block" duration={1700}>
-            <svg viewBox="0 0 1280 80" className="w-full h-12 text-glow">
+            <svg viewBox="0 0 1280 80" className="journey-connector w-full h-12 text-glow">
               <line x1="40" y1="40" x2="1240" y2="40" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="0 0" />
               {/* arrow heads at every step */}
               {[210, 410, 610, 810, 1010, 1210].map((x, idx) => (
@@ -818,8 +816,8 @@ export default async function Home() {
                 className="group bg-bone hover:bg-white transition-colors relative"
               >
                 <MiniRobot
-                  variant={REACTIONS[i % REACTIONS.length]}
-                  tone="light"
+                  variant="wave"
+                  tone="dark"
                   className="absolute -top-16 right-5 h-20 w-14 z-10"
                 />
                 <Tilt className="h-full" max={4} glare={0.08}>

@@ -1,0 +1,28 @@
+.header { border-bottom: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent); }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 68px; max-width: 1400px; margin-inline: auto; padding-inline: 24px; }
+.brand { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; transition: opacity 180ms ease; }
+.brand:hover { opacity: .8; }
+.logo {
+  width: 34px; height: auto; flex-shrink: 0; object-fit: contain;
+}
+.wordmark { white-space: nowrap; font-size: 22px; line-height: 1.2; font-weight: 650; letter-spacing: -.8px; }
+.trademark { position: relative; top: -.45em; margin-left: 2px; font-size: 13px; line-height: 0; font-weight: 600; letter-spacing: 0; vertical-align: baseline; }
+.navigation { justify-content: center; flex: 1; gap: 0; }
+.navigation > a, .navigation > div > button { gap: 6px; padding-inline: 8px; white-space: nowrap; transition: color 180ms ease, background-color 180ms ease; }
+.navigation > a:hover, .navigation > div > button:hover { background-color: color-mix(in srgb, var(--foreground) 6%, transparent); }
+.navigation :global(.type-nav) { font-size: 12px; letter-spacing: .035em; }
+.navigation :global(.term-trig-dot) { animation: none; }
+.actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.actions button { transition: background-color 180ms ease, border-color 180ms ease; }
+.demo:hover { background-color: #c7ef2e; }
+.brand:focus-visible { outline: 2px solid #8b5cf6; outline-offset: 5px; border-radius: 4px; }
+@media (max-width: 1279px) { .row { gap: 12px; } }
+@media (max-width: 639px) {
+  .row { height: 64px; padding-inline: 12px; gap: 8px; }
+  .brand { gap: 7px; }
+  .logo { width: 30px; }
+  .wordmark { font-size: 20px; }
+  .actions { gap: 6px; }
+}
+/* Narrow phones retain the full demo action in the existing mobile menu. */
+@media (max-width: 479px) { .demo { display: none; } }

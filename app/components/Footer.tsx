@@ -1,4 +1,6 @@
 import Link from "next/link";
+import ModernizaSymbol from "./ModernizaSymbol";
+import styles from "./Footer.module.css";
 import { CookieSettingsButton } from "./CookieConsent";
 
 const COLS = [
@@ -45,68 +47,55 @@ const COLS = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-chalk text-ink">
-      <div className="absolute inset-0 bg-grid-soft opacity-60" />
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full bg-ember/10 blur-3xl" />
-
-      <div className="relative mx-auto max-w-[1400px] px-5 md:px-8 sec-pad-sm md:!py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_2.6fr]">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="relative inline-block h-7 w-7 rounded-full bg-ink">
-                <span className="absolute inset-1 rounded-full bg-chalk" />
-                <span className="absolute left-1/2 top-1/2 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember" />
-              </span>
-              <p className="brand-label text-ink">
-                Moderniza<sup className="tm-glow tm-glow--light tm-glow--brand">™</sup>
+    <footer className={styles.footer}>
+      <div aria-hidden="true" className={styles.grid} />
+      <div className={styles.container}>
+        <div className={styles.main}>
+          <div className={styles.brandSection}>
+            <div className={styles.brand}>
+              <ModernizaSymbol className={styles.logo} />
+              <p className={styles.wordmark}>
+                Moderniza<sup className={styles.trademark}>&trade;</sup>
               </p>
             </div>
-            <h3 className="mt-6 type-h2">
+            <h3 className={styles.headline}>
               Modernize legacy systems.
               <br />
-              <span className="text-gradient-ink">Prove nothing was lost.</span>
+              Prove nothing <span className={styles.accent}>was lost.</span>
             </h3>
-            <Link
-              href="/contact"
-              className="mt-8 inline-flex h-12 items-center gap-3 rounded-full bg-ink px-5 text-sm font-semibold text-chalk hover:bg-graphite transition-colors"
-            >
-              Book a demo
-              <span className="text-base">→</span>
+            <Link href="/contact" className={styles.cta}>
+              Book a demo <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <nav className={styles.columns} aria-label="Footer navigation">
             {COLS.map((c) => (
               <div key={c.title}>
-                <p className="type-eyebrow text-ink/55">
-                  {c.title}
-                </p>
-                <ul className="mt-4 space-y-2.5">
+                <h4 className={styles.heading}>{c.title}</h4>
+                <ul className={styles.links}>
                   {c.items.map(([label, href]) => (
                     <li key={label}>
-                      <Link href={href} className="type-body text-ink/80 hover:text-ember">
-                        {label}
-                      </Link>
+                      <Link href={href}>{label}</Link>
                     </li>
                   ))}
                 </ul>
               </div>
             ))}
-          </div>
+          </nav>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-ink/10 pt-6 type-small text-ink/60 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-ink">© {new Date().getFullYear()} Moderniza<sup className="tm-glow tm-glow--light" style={{ position: "static", display: "inline", fontSize: "0.75em", lineHeight: 0 }}>™</sup>. All rights reserved.</p>
-            <p className="mt-1 font-medium text-ink">Moderniza<sup className="tm-glow tm-glow--light" style={{ position: "static", display: "inline", fontSize: "0.75em", lineHeight: 0 }}>™</sup> is a trademark of Business Integra Technology Solutions, Inc.</p>
+        <div className={styles.bottom}>
+          <div className={styles.copyright}>
+            <p>&copy; {new Date().getFullYear()} Moderniza<sup className={styles.trademark}>&trade;</sup>. All rights reserved.</p>
+            <p className={styles.attribution}>Moderniza<sup className={styles.trademark}>&trade;</sup> is a trademark of Business Integra Technology Solutions, Inc.</p>
           </div>
-          <div className="flex flex-wrap items-center gap-5">
-            <Link href="/security" className="hover:text-ink">Security</Link>
-            <Link href="/ai-governance" className="hover:text-ink">AI governance</Link>
-            <Link href="/trust-center" className="hover:text-ink">Trust Center</Link>
-            <Link href="/contact" className="hover:text-ink">Contact</Link>
-            <CookieSettingsButton className="hover:text-ink" />
-          </div>
+          <nav className={styles.legal} aria-label="Legal and privacy">
+            <Link href="/security">Security</Link>
+            <Link href="/ai-governance">AI governance</Link>
+            <Link href="/trust-center">Trust Center</Link>
+            <Link href="/contact">Contact</Link>
+            <CookieSettingsButton className={styles.cookieSettings} />
+          </nav>
         </div>
       </div>
     </footer>
